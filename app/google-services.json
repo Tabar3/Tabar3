@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "460228048026",
+    "project_id": "tabar3-bc051",
+    "storage_bucket": "tabar3-bc051.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:460228048026:android:f9bffd97f433e9a0fcdb23",
+        "android_client_info": {
+          "package_name": "com.example.tabar3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "460228048026-46s1r728lab6d0n5mvr6l2k53cc8ug6m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC911u3T6gJwCggiR_9xy4uRfFbVC5KXDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "460228048026-46s1r728lab6d0n5mvr6l2k53cc8ug6m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
