@@ -4,28 +4,35 @@ import java.util.ArrayList;
 
 
 public class item {
-   String ItemId;
-   String ItemName;
+   String charityId;
+   String charityName;
 
-   public item(String itemId, String itemName) {
-      ItemId = itemId;
-      ItemName = itemName;
+   public item(String charityId, String charityName) {
+      this.charityId = charityId;
+      this.charityName = charityName;
    }
 
-   public String getItemId() {
-      return ItemId;
+   public item(String charityName) {
+      this.charityName = charityName;
    }
 
-   public void setItemId(String itemId) {
-      ItemId = itemId;
+   public item() {
    }
 
-   public String getItemName() {
-      return ItemName;
+   public String getCharityId() {
+      return charityId;
    }
 
-   public void setItemName(String itemName) {
-      ItemName = itemName;
+   public void setCharityId(String charityId) {
+      this.charityId = charityId;
+   }
+
+   public String getCharityName() {
+      return charityName;
+   }
+
+   public void setCharityName(String charityName) {
+      this.charityName = charityName;
    }
 }
 

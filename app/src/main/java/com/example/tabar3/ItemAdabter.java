@@ -27,7 +27,7 @@ import java.util.List;
 public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
     @NonNull
     @NotNull
-    List<item> Itm;
+    List<item> ItmA;
     private Context mContext;
     private static ItemAdabter.ClickListener clickListener;
     FirebaseFirestore fStore;
@@ -35,14 +35,14 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
 
 
     public ItemAdabter(List<item> Items) {
-        this.Itm= Items;
+        this.ItmA= Items;
 
         fStore = FirebaseFirestore.getInstance();
     }
 
     @Override
     public int getItemCount() {
-        return Itm.size();
+        return ItmA.size();
     }
 
     @Override
@@ -65,10 +65,10 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        item itm = Itm.get(position);
-        String ItemId = itm.getItemId();
+        item itm = ItmA.get(position);
+        String ItemId = itm.getCharityId();
 
-        if (ItemId != null) {
+       if (ItemId != null) {
             StorageReference bookReference = storageReference.child("Charities/"+ItemId+"/mainImage.jpg");
             bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
@@ -76,18 +76,11 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
                     Glide.with(mContext).load(uri).into(holder.img);
                 }
             });
-           /* try {
-                //Task<Uri> l= niceLink("Newbook/"+BookId+"/mainImage.jpg");
-                Glide.with(mContext).load(sstorageReference).into(img);
-                Toast.makeText(mContext,sstorageReference+"",Toast.LENGTH_LONG).show();
-            } catch (Exception e)
-            {
-                Log.d("Tag",e+"");
-            }*/
+
             DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
-                    holder.tname.setText(itm.getItemName());
+                    holder.tname.setText(itm.getCharityName());
 
 
                 } else {
@@ -98,14 +91,14 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
         }
 
         else {
-            holder.tname.setText("no name");
-            holder.tpr.setText("no des");
+            holder.tname.setText("nooo name");
+
         }
 
 
     }
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView tname, tpr;
+        TextView tname;
         ImageView img;
 
 
@@ -115,18 +108,18 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
             itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.imgItem);
             tname = itemView.findViewById(R.id.itemName);
-            tpr = itemView.findViewById(R.id.itemPr);
+
 
         }
 
         @Override
         public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v, Itm);
+            clickListener.onItemClick(getAdapterPosition(), v, ItmA);
         }
 
         @Override
         public boolean onLongClick(View v) {
-            clickListener.onItemLongClick(getAdapterPosition(), v, Itm);
+            clickListener.onItemLongClick(getAdapterPosition(), v, ItmA);
             return false;
         }
     }
