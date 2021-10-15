@@ -1,5 +1,6 @@
 package com.example.tabar3;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,17 +9,28 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
+
+import java.util.List;
+import java.util.Objects;
 
 public class Charities extends Fragment {
     private RecyclerView mRecyclerView;
     ListenerRegistration CharitiesListener;
     View v;
+    FirebaseFirestore fStore;
+    ListenerRegistration ItemListListener;
+    ItemAdabter itemAdapter;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.fragment_charities, container, false);
         FirebaseApp.initializeApp(getActivity());
@@ -27,7 +39,7 @@ public class Charities extends Fragment {
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setViews();
-        //setFirebase();
+        setFirebase();
     }
 
     private void setViews() {
@@ -38,8 +50,40 @@ public class Charities extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-       // setFirebase();
+       setFirebase();
     }
+    private void setFirebase() {
+        FirebaseApp.initializeApp(requireActivity());
+        fStore = FirebaseFirestore.getInstance();
+        Query query = fStore.collection("Charities");
+        //  CollectionReference documentReference2 = fStore.collection("Book");
+        ItemListListener = query.addSnapshotListener((documentSnapshots, error) -> {
+            Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");
+            itemAdapter = new ItemAdabter(Objects.requireNonNull(documentSnapshots).toObjects(item.class));
+            mRecyclerView.setAdapter(itemAdapter);
+             itemAdapter.setOnItemClickListener(new ItemAdabter.ClickListener() {
+                @Override
+              public void onItemClick(int position, View v, List<item> BookItems) {
+                    item ItemC = BookItems.get(position);
+                    if (ItemC.getCharityName() != null) {
+                        Intent intent = new Intent(getActivity(), Charity_Info.class);
+                        intent.putExtra("", ItemC.getCharityId());
+                        startActivity(intent);
+
+
+                    }else
+                        Toast.makeText(requireActivity(),"Nooot Dooonee", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onItemLongClick(int position, View v, List<item> productItems) {
+
+                }
+            });
+        });
+    }
+
+
 
     public void onStop() {
         super.onStop();
