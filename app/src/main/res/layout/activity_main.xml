@@ -60,6 +60,16 @@
                         android:textColor="@color/white"
                         android:background="@drawable/picture3"
                         />
+                    <Button
+                        android:layout_width="90dp"
+                        android:layout_height="50dp"
+                        android:text="التبرعات"
+                        android:id="@+id/Don1"
+                        android:layout_weight="1"
+                        android:textSize="20dp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/picture3"
+                        />
                 </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
