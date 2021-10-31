@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Donations"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+<Button
+    android:id="@+id/food"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="طعام"></Button>
+    <Button
+        android:id="@+id/cl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ملابس"></Button>
+    <Button
+        android:id="@+id/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مفروشات و ادوات"></Button>
+    <Button
+        android:id="@+id/sar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="خدمات عامة"></Button>
+    <Button
+        android:id="@+id/other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اخر"></Button>
+</LinearLayout>

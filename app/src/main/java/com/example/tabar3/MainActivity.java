@@ -37,4 +37,12 @@ public class MainActivity extends AppCompatActivity {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");
         replaceFragment(new Charities());
     }
+    public void tow(View view) {
+        Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 2222222222");
+        replaceFragment(new Advertisement());
+    }
+    public void third(View view) {
+        Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 33333333333");
+        replaceFragment(new Donations());
+    }
 }
