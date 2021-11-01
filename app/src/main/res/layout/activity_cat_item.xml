@@ -4,12 +4,15 @@
     android:layout_height="150dp"
     android:orientation="horizontal"
     android:layout_marginTop="10dp"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    android:background="@drawable/p1">
 
     <ImageView
         android:layout_width="110dp"
         android:layout_height="110dp"
-        android:layout_margin="20dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="15dp"
+
         android:scaleType="fitXY"
         android:id="@+id/imgItem2"
         ></ImageView>
@@ -24,6 +27,7 @@
             android:id="@+id/AdvmDes"
             android:text="جمعية.>"
             android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
             android:textDirection="rtl"
             ></TextView>
 
