@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<item
+    android:id="@+id/account"
+    android:title="account"
+    android:icon="@drawable/ic_baseline_account_box_24"/>
+
+    <item
+        android:id="@+id/logout"
+        android:title="Login or Sign up"
+        android:icon="@drawable/ic_baseline_login_24"/>
+    <item
+        android:id="@+id/history"
+        android:title="Your history"
+        android:icon="@drawable/ic_baseline_history_24"
+        />
+    <item
+        android:id="@+id/notifications"
+        android:title="Notifications"
+        android:icon="@drawable/ic_baseline_notifications_none_24"/>
+    <item
+        android:id="@+id/setting"
+        android:title="Setting"
+        android:icon="@drawable/ic_baseline_settings_24"/>
+    <item
+        android:id="@+id/privacy"
+        android:title="Privacy and policy"
+        android:icon="@drawable/ic_baseline_history_24"/>
+    <item
+        android:id="@+id/report"
+        android:title="Report a bug"
+        android:icon="@drawable/ic_baseline_bug_report_24"/>
+    <item
+        android:id="@+id/aboutUs"
+        android:title="About Us"
+        android:icon="@drawable/ic_baseline_info_24"/>
+
+
+
+</menu>

@@ -52,7 +52,7 @@ public class Advertisement extends Fragment {
         imgadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(requireContext(), Add_Adv.class);
+                Intent i = new Intent(getActivity(), Add_Adv.class);
                 startActivity(i);
             }
         });
