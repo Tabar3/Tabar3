@@ -69,7 +69,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
 
         if (ItemId != null) {
 
-            StorageReference bookReference = storageReference.child("Advertisement/"+ItemId+"/mainImage.jpg");
+            StorageReference bookReference = storageReference.child("Categoty/"+ItemId+"/mainImage.jpg");
             bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -77,7 +77,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
                 }
             });
 
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Advertisement").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getFoodDes());
@@ -110,8 +110,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            img = itemView.findViewById(R.id.imgItem2);
-            tname = itemView.findViewById(R.id.AdvmDes);
+            img = itemView.findViewById(R.id.imgItem3);
+            tname = itemView.findViewById(R.id.charDes);
 
 
         }
