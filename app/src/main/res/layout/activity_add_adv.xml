@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_Adv"
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imgBook"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        tools:srcCompat="@tools:sample/avatars"></ImageView>
+
+    <Button
+        android:id="@+id/button_choose_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اضافة صورة"
+        /></RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button_upload"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="عنوان الاعلان"
+        android:layout_marginTop="16dp"
+        ></TextView>
+    <EditText
+        android:id="@+id/AdvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></EditText>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="وصف الاعلان"
+        android:layout_marginTop="16dp"
+       ></TextView>
+    <EditText
+        android:id="@+id/AdvDes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       ></EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="تصنيف الاعلان"
+        ></TextView>
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+    <RadioButton
+        android:id="@+id/f1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="طعام"
+        ></RadioButton>
+    <RadioButton
+        android:id="@+id/f2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ملابس"
+      ></RadioButton>
+    <RadioButton
+        android:id="@+id/f3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مفروشات وادوات"
+        ></RadioButton>
+    <RadioButton
+            android:id="@+id/f4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="خدمات عامة"
+            ></RadioButton>
+    <RadioButton
+            android:id="@+id/f5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="اخرى"
+            ></RadioButton>
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="العدد المطلوب"
+        android:layout_marginTop="16dp"
+
+     ></TextView>
+    <EditText
+        android:id="@+id/NumF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       ></EditText>
+
+
+
+    <Button
+        android:id="@+id/add_Adv_DB"
+        android:layout_width="90dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="اضافة"
+        ></Button>
+
+
+</LinearLayout>
