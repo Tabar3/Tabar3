@@ -184,7 +184,7 @@ public void food_cat_DB(){
             "dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document().getId();
     uploadImg(mImageUri);
     Map<String,Object> itemsFood = new HashMap<>();
-    itemsFood.put("foodId", categotyId);
+    itemsFood.put("catId", categotyId);
     itemsFood.put("foodName", fe2.getText().toString());
     itemsFood.put("foodDes", desE.getText().toString());
     itemsFood.put("foodType", radio1);
@@ -228,7 +228,7 @@ public void food_cat_DB(){
                 "dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
-        itemsFood.put("clotheId", categotyId);
+        itemsFood.put("catId", categotyId);
         itemsFood.put("numclothe", cloe2.getText().toString());
         itemsFood.put("clotheDes", desE.getText().toString());
         itemsFood.put("clothesType", radio1);
@@ -263,7 +263,7 @@ public void food_cat_DB(){
                 "dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
-        itemsFood.put("toolId", categotyId);
+        itemsFood.put("catId", categotyId);
         itemsFood.put("toolAge", te4.getText().toString());
         itemsFood.put("toolDes", desE.getText().toString());
         itemsFood.put("toolType", te2.getText().toString());
@@ -298,7 +298,7 @@ public void food_cat_DB(){
                 "dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
-        itemsFood.put("serId", categotyId);
+        itemsFood.put("catId", categotyId);
         itemsFood.put("serName", se2.getText().toString());
         itemsFood.put("serDes", desE.getText().toString());
         itemsFood.put("serType", se4.getText().toString());

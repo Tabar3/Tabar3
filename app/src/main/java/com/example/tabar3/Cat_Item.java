@@ -1,13 +1,14 @@
 package com.example.tabar3;
 
-public class Cat_Item  {
+public class Cat_Item {
 
-    String foodId,foodName,foodDes,foodType,numHuman,region,street,building,phone;
-    String clotheId,numclothe,clotheDes,clothesType;
-    String toolId,toolAge,toolDes,toolType;
+    String catId, foodName, foodDes, foodType, numHuman, region, street, building, phone;
+    String numclothe, clotheDes, clothesType;
+    String toolAge, toolDes, toolType;
 
-    public Cat_Item(String foodId, String foodName, String foodDes, String foodType, String numHuman, String region, String street, String building, String phone, String clotheId, String numclothe, String clotheDes, String clothesType, String toolId, String toolAge, String toolDes, String toolType) {
-        this.foodId = foodId;
+    public Cat_Item(){}
+    public Cat_Item(String catId, String foodName, String foodDes, String foodType, String numHuman, String region, String street, String building, String phone, String numclothe, String clotheDes, String clothesType, String toolAge, String toolDes, String toolType) {
+        this.catId = catId;
         this.foodName = foodName;
         this.foodDes = foodDes;
         this.foodType = foodType;
@@ -16,88 +17,20 @@ public class Cat_Item  {
         this.street = street;
         this.building = building;
         this.phone = phone;
-        this.clotheId = clotheId;
         this.numclothe = numclothe;
         this.clotheDes = clotheDes;
         this.clothesType = clothesType;
-        this.toolId = toolId;
         this.toolAge = toolAge;
         this.toolDes = toolDes;
         this.toolType = toolType;
     }
 
-    public Cat_Item(){}
-
-    public String getClotheId() {
-        return clotheId;
+    public String getCatId() {
+        return catId;
     }
 
-    public void setClotheId(String clotheId) {
-        this.clotheId = clotheId;
-    }
-
-    public String getNumclothe() {
-        return numclothe;
-    }
-
-    public void setNumclothe(String numclothe) {
-        this.numclothe = numclothe;
-    }
-
-    public String getClotheDes() {
-        return clotheDes;
-    }
-
-    public void setClotheDes(String clotheDes) {
-        this.clotheDes = clotheDes;
-    }
-
-    public String getClothesType() {
-        return clothesType;
-    }
-
-    public void setClothesType(String clothesType) {
-        this.clothesType = clothesType;
-    }
-
-    public String getToolId() {
-        return toolId;
-    }
-
-    public void setToolId(String toolId) {
-        this.toolId = toolId;
-    }
-
-    public String getToolAge() {
-        return toolAge;
-    }
-
-    public void setToolAge(String toolAge) {
-        this.toolAge = toolAge;
-    }
-
-    public String getToolDes() {
-        return toolDes;
-    }
-
-    public void setToolDes(String toolDes) {
-        this.toolDes = toolDes;
-    }
-
-    public String getToolType() {
-        return toolType;
-    }
-
-    public void setToolType(String toolType) {
-        this.toolType = toolType;
-    }
-
-    public String getFoodId() {
-        return foodId;
-    }
-
-    public void setFoodId(String foodId) {
-        this.foodId = foodId;
+    public void setCatId(String catId) {
+        this.catId = catId;
     }
 
     public String getFoodName() {
@@ -162,5 +95,53 @@ public class Cat_Item  {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getNumclothe() {
+        return numclothe;
+    }
+
+    public void setNumclothe(String numclothe) {
+        this.numclothe = numclothe;
+    }
+
+    public String getClotheDes() {
+        return clotheDes;
+    }
+
+    public void setClotheDes(String clotheDes) {
+        this.clotheDes = clotheDes;
+    }
+
+    public String getClothesType() {
+        return clothesType;
+    }
+
+    public void setClothesType(String clothesType) {
+        this.clothesType = clothesType;
+    }
+
+    public String getToolAge() {
+        return toolAge;
+    }
+
+    public void setToolAge(String toolAge) {
+        this.toolAge = toolAge;
+    }
+
+    public String getToolDes() {
+        return toolDes;
+    }
+
+    public void setToolDes(String toolDes) {
+        this.toolDes = toolDes;
+    }
+
+    public String getToolType() {
+        return toolType;
+    }
+
+    public void setToolType(String toolType) {
+        this.toolType = toolType;
     }
 }

@@ -30,11 +30,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
     private static FoodAdapter.ClickListener clickListener;
     FirebaseFirestore fStore;
     StorageReference storageReference;
+    String typeCat;
 
-
-    public FoodAdapter(@NonNull List<Cat_Item> itmCat) {
+    public FoodAdapter(){}
+    public FoodAdapter(@NonNull List<Cat_Item> itmCat , String typeCat) {
         this.ItmCat = itmCat;
         fStore = FirebaseFirestore.getInstance();
+        this.typeCat = typeCat;
+
     }
 
 
@@ -53,7 +56,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
     @Override
     public FoodItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        View v = LayoutInflater.from(mContext).inflate(R.layout.fragment_categories__for__charitie, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.activity_cat_item, parent, false);
         storageReference= FirebaseStorage.getInstance().getReference();
 
         return new FoodItemHolder(v);
@@ -65,7 +68,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
     public void onBindViewHolder(@NonNull @org.jetbrains.annotations.NotNull FoodItemHolder holder, int position) {
 
         Cat_Item itm = ItmCat.get(position);
-        String ItemId = itm.getFoodId();
+        String ItemId = itm.getCatId();
 
         if (ItemId != null) {
 
@@ -76,7 +79,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
                     Glide.with(mContext).load(uri).into(holder.img);
                 }
             });
-
+            if(typeCat.equals("food")){
             DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
@@ -89,7 +92,64 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
                 }
             });
         }
+        else if(typeCat.equals("clo")){
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory").document(ItemId);
+            documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                if (documentSnapshot != null) {
+                    holder.tname.setText(itm.getClotheDes());
 
+
+                } else {
+                    holder.tname.setText("no name");
+
+                }
+            });
+        }
+        else if(typeCat.equals("tool")) {
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory").document(ItemId);
+                documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                    if (documentSnapshot != null) {
+                        holder.tname.setText(itm.getToolDes());
+
+
+                    } else {
+                        holder.tname.setText("no name");
+
+                    }
+                });
+
+            }
+
+            else if(typeCat.equals("sar")) {
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory").document(ItemId);
+                documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                    if (documentSnapshot != null) {
+                        holder.tname.setText(itm.getToolDes());
+
+
+                    } else {
+                        holder.tname.setText("no name");
+
+                    }
+                });
+
+            }
+            else if(typeCat.equals("other")) {
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("other_calegory").document(ItemId);
+                documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                    if (documentSnapshot != null) {
+                        holder.tname.setText(itm.getToolDes());
+
+
+                    } else {
+                        holder.tname.setText("no name");
+
+                    }
+                });
+
+            }
+
+        }
         else {
             holder.tname.setText("nooo name");
 
