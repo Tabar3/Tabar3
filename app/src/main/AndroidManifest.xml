@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabar3">
+        <activity android:name=".Categories_For_Charitie"></activity>
         <activity
             android:name=".Accounts"
             android:exported="true" />
@@ -37,7 +38,11 @@
         <activity android:name=".Charities_Profile" />
         <activity android:name=".Add_Adv" />
         <activity android:name=".Charity_Info" />
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">

@@ -15,12 +15,13 @@
 
         android:scaleType="fitXY"
         android:id="@+id/imgItem3"
-        ></ImageView>
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginLeft="8dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,7 +30,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             android:textDirection="rtl"
-            ></TextView>
+            />
 
     </LinearLayout>
 
