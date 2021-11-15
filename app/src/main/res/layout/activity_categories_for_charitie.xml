@@ -4,19 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Charity_Info"
+    tools:context=".Categories_For_Charitie"
     android:orientation="vertical">
-    <ImageView
-        android:id="@+id/InfoCharImg"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_margin="10dp"></ImageView>
-    <TextView
-        android:id="@+id/InfoChartxt"
+
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="profile"
-        android:layout_margin="10dp"></TextView>
+        android:id="@+id/recyclerView4"
+        />
+
+
 </LinearLayout>

@@ -24,17 +24,18 @@ import com.google.firebase.firestore.Query;
 import java.util.List;
 import java.util.Objects;
 
-public class Charities extends Fragment {
+
+public class Advertisement extends Fragment {
     private RecyclerView mRecyclerView;
-    ListenerRegistration CharitiesListener;
+    ListenerRegistration AdvListener;
     View v;
     FirebaseFirestore fStore;
     ListenerRegistration ItemListListener;
-    ItemAdabter itemAdapter;
-    ImageView imgpro;
+    AdvAdabter advAdabter;
+    ImageView imgadd;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        v= inflater.inflate(R.layout.fragment_charities, container, false);
+        v= inflater.inflate(R.layout.fragment_advertisement, container, false);
         FirebaseApp.initializeApp(getActivity());
         return  v;
     }
@@ -45,13 +46,13 @@ public class Charities extends Fragment {
     }
 
     private void setViews() {
-        mRecyclerView = requireView().findViewById(R.id.recyclerView1);
+        mRecyclerView = requireView().findViewById(R.id.recyclerView2);
+        imgadd = requireView().findViewById(R.id.addAdv);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        imgpro = requireView().findViewById(R.id.proAdv);
-        imgpro.setOnClickListener(new View.OnClickListener() {
+        imgadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(requireContext(), Charities_Profile.class);
+                Intent i = new Intent(getActivity(), Add_Adv.class);
                 startActivity(i);
             }
         });
@@ -60,24 +61,24 @@ public class Charities extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-       setFirebase();
+        setFirebase();
     }
     private void setFirebase() {
         FirebaseApp.initializeApp(requireActivity());
         fStore = FirebaseFirestore.getInstance();
-        Query query = fStore.collection("Charities");
+        Query query = fStore.collection("Advertisement");
         //  CollectionReference documentReference2 = fStore.collection("Book");
         ItemListListener = query.addSnapshotListener((documentSnapshots, error) -> {
             Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");
-            itemAdapter = new ItemAdabter(Objects.requireNonNull(documentSnapshots).toObjects(item.class));
-            mRecyclerView.setAdapter(itemAdapter);
-             itemAdapter.setOnItemClickListener(new ItemAdabter.ClickListener() {
+            advAdabter = new AdvAdabter(Objects.requireNonNull(documentSnapshots).toObjects(Adv_Item.class));
+            mRecyclerView.setAdapter(advAdabter);
+            advAdabter.setOnItemClickListener(new AdvAdabter.ClickListener() {
                 @Override
-              public void onItemClick(int position, View v, List<item> CharItems) {
-                    item ItemC = CharItems.get(position);
-                    if (ItemC.getCharityName() != null) {
-                        Intent intent = new Intent(getActivity(), Charity_Info.class);
-                        intent.putExtra("CharitiesInfo", ItemC.getCharityId());
+                public void onItemClick(int position, View v, List<Adv_Item> Items) {
+                    Adv_Item ItemC = Items.get(position);
+                    if (ItemC.getAdvDes() != null) {
+                        Intent intent = new Intent(getActivity(), Charity_Info.class); //تغير لاسم الاكتيفيتي الجديد تبع معلومات الاعلان
+                        intent.putExtra("", ItemC.getAdvId());
                         startActivity(intent);
 
 
@@ -86,19 +87,15 @@ public class Charities extends Fragment {
                 }
 
                 @Override
-                public void onItemLongClick(int position, View v, List<item> productItems) {
+                public void onItemLongClick(int position, View v, List<Adv_Item> productItems) {
 
                 }
             });
         });
     }
 
-
-
     public void onStop() {
         super.onStop();
-        if (CharitiesListener!=null)
-            CharitiesListener.remove();
-    }
-
+        if (AdvListener!=null)
+            AdvListener.remove();}
 }
