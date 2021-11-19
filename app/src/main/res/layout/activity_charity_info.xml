@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Charity_Info"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+   >
     <ImageView
         android:id="@+id/InfoCharImg"
         android:layout_width="match_parent"
@@ -16,7 +18,63 @@
         android:id="@+id/InfoChartxt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="14dp"
         android:text="profile"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView>
+    <TextView
+        android:id="@+id/InfoCharGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="Goal"
+        android:textDirection="rtl"
         android:layout_margin="10dp"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/phone"
+            android:id="@+id/ph"></ImageView>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/visa"
+            android:id="@+id/vi"></ImageView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location"
+            android:id="@+id/lo"></ImageView>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerView6"
+        />
+
+    <ImageView
+        android:id="@+id/addCamp"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/picture5"
+        /></RelativeLayout>
+
+
+
 </LinearLayout>

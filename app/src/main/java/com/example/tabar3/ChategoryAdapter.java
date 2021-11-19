@@ -22,18 +22,18 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder> {
+public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.FoodItemHolder> {
     @NonNull
     @NotNull
     List<Cat_Item> ItmCat;
     private Context mContext;
-    private static FoodAdapter.ClickListener clickListener;
+    private static ChategoryAdapter.ClickListener clickListener;
     FirebaseFirestore fStore;
     StorageReference storageReference;
     String typeCat;
 
-    public FoodAdapter(){}
-    public FoodAdapter(@NonNull List<Cat_Item> itmCat , String typeCat) {
+    public ChategoryAdapter(){}
+    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat , String typeCat) {
         this.ItmCat = itmCat;
         fStore = FirebaseFirestore.getInstance();
         this.typeCat = typeCat;
@@ -188,8 +188,8 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.FoodItemHolder
         }
     }
 
-    public static void setOnItemClickListener(FoodAdapter.ClickListener clickListener ) {
-       FoodAdapter.clickListener = clickListener;
+    public static void setOnItemClickListener(ChategoryAdapter.ClickListener clickListener ) {
+       ChategoryAdapter.clickListener = clickListener;
     }
 
     public interface ClickListener {
