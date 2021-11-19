@@ -77,8 +77,8 @@ public class Advertisement extends Fragment {
                 public void onItemClick(int position, View v, List<Adv_Item> Items) {
                     Adv_Item ItemC = Items.get(position);
                     if (ItemC.getAdvDes() != null) {
-                        Intent intent = new Intent(getActivity(), Charity_Info.class); //تغير لاسم الاكتيفيتي الجديد تبع معلومات الاعلان
-                        intent.putExtra("", ItemC.getAdvId());
+                        Intent intent = new Intent(getActivity(), Adv_Profile.class);
+                        intent.putExtra("AdvId1", ItemC.getAdvId());
                         startActivity(intent);
 
 

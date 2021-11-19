@@ -8,25 +8,25 @@ public class Adv_Item {
    String AdvId;
    String AdvDes;
    ArrayList<Integer> typeOfAdv;
-   String AdvNum;
+   String AdvNum,AdvName;
 
-   public Adv_Item(String AdvId, String AdvDes, ArrayList<Integer> typeOfAdv, String AdvNum) {
+   public Adv_Item(String AdvId, String AdvDes, ArrayList<Integer> typeOfAdv, String AdvNum, String AdvName) {
       this.AdvId = AdvId;
       this.AdvDes = AdvDes;
       this.typeOfAdv = typeOfAdv;
       this.AdvNum = AdvNum;
-   }
-
-   public Adv_Item(String AdvId, String AdvDes) {
-      this.AdvId = AdvId;
-      this.AdvDes = AdvDes;
-   }
-
-   public Adv_Item(String AdvDes) {
-      this.AdvDes = AdvDes;
+      this.AdvName = AdvName;
    }
 
    public Adv_Item() {
+   }
+
+   public String getAdvName() {
+      return this.AdvName;
+   }
+
+   public void setAdvName(String AdvName) {
+      this.AdvName = AdvName;
    }
 
    public String getAdvId() {

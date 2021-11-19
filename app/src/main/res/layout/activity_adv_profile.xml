@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Adv_Profile"
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
+
+    <ImageView
+        android:id="@+id/AdvImg"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        tools:srcCompat="@tools:sample/avatars"
+        android:layout_margin="10dp"></ImageView>
+    <TextView
+        android:id="@+id/AdvNa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="AdvN"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView>
+    <TextView
+        android:id="@+id/AdvN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="AdvN"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView>
+    <TextView
+        android:id="@+id/AdvD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="AdvD"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/visa"
+        android:id="@+id/vi1"
+        android:layout_gravity="center"></ImageView>
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@android:drawable/ic_delete"
+        android:id="@+id/delete1"
+        android:layout_gravity="center"></ImageView>
+
+
+</LinearLayout>
+

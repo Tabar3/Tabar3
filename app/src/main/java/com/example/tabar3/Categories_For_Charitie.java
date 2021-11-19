@@ -25,7 +25,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
     View v;
     FirebaseFirestore fStore;
     ListenerRegistration ItemListListener;
-    FoodAdapter CatAdabter;
+    ChategoryAdapter CatAdabter;
     ImageView imgadd;
 
     @Override
@@ -96,7 +96,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
             Log.d("tag", "yaaaaaaaaaaaaa raaaaaaaab");
 
 
-            CatAdabter.setOnItemClickListener(new FoodAdapter.ClickListener() {
+            CatAdabter.setOnItemClickListener(new ChategoryAdapter.ClickListener() {
                 @Override
                 public void onItemClick(int position, View v, List<Cat_Item> Items) {
                     Cat_Item ItemC = Items.get(position);
@@ -121,7 +121,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
     private void getQuery(Query query) {
         query.get().addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
-                   CatAdabter = new FoodAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class), s);
+                   CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class), s);
                     mRecyclerView.setAdapter(CatAdabter);
             }
         });

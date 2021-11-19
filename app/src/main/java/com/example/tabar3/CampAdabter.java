@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,26 +22,25 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.List;
 
-
-public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
+public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder> {
     @NonNull
     @NotNull
-    List<Adv_Item> ItmAd;
+    List<Camp_Item> ItmCam;
     private Context mContext;
-    private static AdvAdabter.ClickListener clickListener;
+    private static CampAdabter.ClickListener clickListener;
     FirebaseFirestore fStore;
     StorageReference storageReference;
 
 
-    public AdvAdabter(List<Adv_Item> Items) {
-        this.ItmAd= Items;
+    public CampAdabter(List<Camp_Item> Items) {
+        this.ItmCam= Items;
 
         fStore = FirebaseFirestore.getInstance();
     }
 
     @Override
     public int getItemCount() {
-        return ItmAd.size();
+        return ItmCam.size();
     }
 
     @Override
@@ -53,24 +51,24 @@ public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
     @SuppressLint("InflateParams")
     @NonNull
     @Override
-    public AdvItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CampAdabter.CampItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         mContext = parent.getContext();
-        View v = LayoutInflater.from(mContext).inflate(R.layout.adv_item, parent, false);
-        storageReference=FirebaseStorage.getInstance().getReference();
+        View v = LayoutInflater.from(mContext).inflate(R.layout.activity_camp_item, parent, false);
+        storageReference= FirebaseStorage.getInstance().getReference();
 
-        return new AdvItemHolder(v);
+        return new CampAdabter.CampItemHolder(v);
     }
 
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull AdvItemHolder holder, int position) {
-        Adv_Item itm = ItmAd.get(position);
-        String ItemId = itm.getAdvId();
+    public void onBindViewHolder(@NonNull CampAdabter.CampItemHolder holder, int position) {
+        Camp_Item itm = ItmCam.get(position);
+        String ItemId = itm.getCampId();
 
-       if (ItemId != null) {
+        if (ItemId != null) {
 
-            StorageReference bookReference = storageReference.child("Advertisement/"+ItemId+"/mainImage.jpg");
+            StorageReference bookReference = storageReference.child("Campaign/"+ItemId+"/mainImage.jpg");
             bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
@@ -78,10 +76,10 @@ public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
                 }
             });
 
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Advertisement").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
-                    holder.tname.setText(itm.getAdvName());
+                    holder.tname.setText(itm.getCampName());
 
 
                 } else {
@@ -98,41 +96,41 @@ public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
 
 
     }
-    public class AdvItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+    public class CampItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView tname;
         ImageView img;
 
 
-        public AdvItemHolder(@NonNull View itemView) {
+        public CampItemHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            img = itemView.findViewById(R.id.imgItem2);
-            tname = itemView.findViewById(R.id.AdvmDes);
+            img = itemView.findViewById(R.id.imgItem6);
+            tname = itemView.findViewById(R.id.CampN);
 
 
         }
 
         @Override
         public void onClick(View v) {
-            clickListener.onItemClick(getAdapterPosition(), v,ItmAd);
+            clickListener.onItemClick(getAdapterPosition(), v,ItmCam);
         }
 
         @Override
         public boolean onLongClick(View v) {
-            clickListener.onItemLongClick(getAdapterPosition(), v, ItmAd);
+            clickListener.onItemLongClick(getAdapterPosition(), v, ItmCam);
             return false;
         }
     }
 
-    public static void setOnItemClickListener(AdvAdabter.ClickListener clickListener) {
-        AdvAdabter.clickListener = clickListener;
+    public static void setOnItemClickListener(CampAdabter.ClickListener clickListener) {
+        CampAdabter.clickListener = clickListener;
     }
 
     public interface ClickListener {
-        void onItemClick(int position, View v, List<Adv_Item> Items);
+        void onItemClick(int position, View v, List<Camp_Item> Items);
 
-        void onItemLongClick(int position, View v, List<Adv_Item> Items);
+        void onItemLongClick(int position, View v, List<Camp_Item> Items);
     }
 
-    }
+}

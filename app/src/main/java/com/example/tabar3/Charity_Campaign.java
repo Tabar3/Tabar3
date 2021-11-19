@@ -3,7 +3,6 @@ package com.example.tabar3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,12 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,48 +25,31 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Add_Adv extends AppCompatActivity  {
-    EditText Des, Num,name;
-    Button add;
+public class Charity_Campaign extends AppCompatActivity {
+    EditText eName , eDes1 , eDes2;
+    Button b,mButtonChooseImage;
+    ImageView img;
     FirebaseFirestore fStore;
-    RadioButton c1, c2, c3 ,c4 ,c5;
-    ImageView img,detaImg;
     private static final int PICK_IMAGE_REQUEST = 1;
-    private Button mButtonChooseImage;
-    ArrayList<Integer> checkArr = new ArrayList();
     public Uri mImageUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
-    String AdvId;
-    TextView txtDeta;
-
+    String CampId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_adv);
-        add = findViewById(R.id.add_Adv_DB);
-        Des = findViewById(R.id.AdvDes);
-        name=findViewById(R.id.AdvName);
-        Num = findViewById(R.id.NumF);
-        c1 = findViewById(R.id.f1);
-        c2 = findViewById(R.id.f2);
-        c3 = findViewById(R.id.f3);
-        c4 = findViewById(R.id.f4);
-        c5 = findViewById(R.id.f5);
-        img = findViewById(R.id.imgBook);
+        setContentView(R.layout.activity_charity_campaign);
+        img=findViewById(R.id.imgCamp);
+        eName=findViewById(R.id.CampName);
+        eDes1=findViewById(R.id.CampDes1);
+        eDes2=findViewById(R.id.CampDes2);
+        b=findViewById(R.id.add_Camp_DB);
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        Des = findViewById(R.id.AdvDes);
-        Intent i = getIntent();
-
-
-
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,15 +58,14 @@ public class Add_Adv extends AppCompatActivity  {
             }
         });
 
-        add.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddToDB();
-                Intent i2 = new Intent(Add_Adv.this, MainActivity.class);
+              AddToDB();
+                Intent i2 = new Intent(Charity_Campaign.this, MainActivity.class);
                 startActivity(i2);
             }
         });
-
     }
 
     private void openFileChooser() {
@@ -110,48 +87,33 @@ public class Add_Adv extends AppCompatActivity  {
     }
 
 
-
     public void AddToDB() {
-
         fStore = FirebaseFirestore.getInstance();
+        CampId=fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document().getId();
 
-        if (c1.isChecked())
-            checkArr.add(1);
-        else if (c2.isChecked())
-            checkArr.add(2);
-        else if (c3.isChecked())
-            checkArr.add(3);
-        else if (c4.isChecked())
-            checkArr.add(4);
-        else if (c5.isChecked())
-            checkArr.add(5);
+        Map<String, Object> itemsCamp = new HashMap<>();
+        itemsCamp.put("campId", CampId);
+        itemsCamp.put("campName", eName.getText().toString());
+        itemsCamp.put("campDes1", eDes1.getText().toString());
+        itemsCamp.put("campDes2", eDes2.getText().toString());
 
-        AdvId = fStore.collection("Advertisement").document().getId();
-        uploadImg(mImageUri);
-        Map<String, Object> itemsAdv = new HashMap<>();
-        itemsAdv.put("AdvId", AdvId);
-        itemsAdv.put("AdvDes", Des.getText().toString());
-        itemsAdv.put("AdvName", name.getText().toString());
-        itemsAdv.put("typeOfAdv", checkArr);
-        itemsAdv.put("AdvNum", Num.getText().toString());
 
-        DocumentReference documentReference = fStore.collection("Advertisement").document(AdvId);
-        documentReference.set(itemsAdv).addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference documentReference = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(CampId);
+        documentReference.set(itemsCamp).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(Add_Adv.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                Toast.makeText(Charity_Campaign.this, "mabrooooooook", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(Add_Adv.this, "toz 3lekom", Toast.LENGTH_LONG).show();
-                Toast.makeText(Add_Adv.this, AdvId, Toast.LENGTH_LONG).show();
+                Toast.makeText(Charity_Campaign.this, "toz 3lekom", Toast.LENGTH_LONG).show();
+                Toast.makeText(Charity_Campaign.this, CampId, Toast.LENGTH_LONG).show();
                 Log.d("myTag", e.getMessage());
 
             }
         });
-
-        checkArr.clear();
+        uploadImg(mImageUri);
 
     }
 
@@ -162,7 +124,7 @@ public class Add_Adv extends AppCompatActivity  {
         pd.show();
 
         //final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("Advertisement/" + AdvId + "/mainImage.jpg");
+        StorageReference riversRef = storageReference.child("Campaign/" + CampId + "/mainImage.jpg");
         riversRef.putFile(mImageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -185,19 +147,7 @@ public class Add_Adv extends AppCompatActivity  {
 
 
     }
-    /*public void showDatePickerDialog(){
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                (DatePickerDialog.OnDateSetListener) this,
-                Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
-    }
 
 
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String date = "month/day/year: " + month + "/" + dayOfMonth + "/" + year;
-        txtDeta.setText(date);
-    }*/
+
 }

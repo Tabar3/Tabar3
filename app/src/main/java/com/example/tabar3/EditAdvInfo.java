@@ -3,7 +3,6 @@ package com.example.tabar3;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
@@ -11,14 +10,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -30,64 +26,71 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Add_Adv extends AppCompatActivity  {
-    EditText Des, Num,name;
-    Button add;
+public class EditAdvInfo extends AppCompatActivity {
+    EditText n, d,num;
     FirebaseFirestore fStore;
-    RadioButton c1, c2, c3 ,c4 ,c5;
-    ImageView img,detaImg;
+    DocumentReference dRef;
+    StorageReference storageReference;
     private static final int PICK_IMAGE_REQUEST = 1;
-    private Button mButtonChooseImage;
-    ArrayList<Integer> checkArr = new ArrayList();
-    public Uri mImageUri;
     private FirebaseStorage storage;
-    private StorageReference storageReference;
-    String AdvId;
-    TextView txtDeta;
+    String s;
+    Button button, btnImg;
+    public Uri mImageUri;
+    ImageView img1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_adv);
-        add = findViewById(R.id.add_Adv_DB);
-        Des = findViewById(R.id.AdvDes);
-        name=findViewById(R.id.AdvName);
-        Num = findViewById(R.id.NumF);
-        c1 = findViewById(R.id.f1);
-        c2 = findViewById(R.id.f2);
-        c3 = findViewById(R.id.f3);
-        c4 = findViewById(R.id.f4);
-        c5 = findViewById(R.id.f5);
-        img = findViewById(R.id.imgBook);
-        mButtonChooseImage = findViewById(R.id.button_choose_image);
+        setContentView(R.layout.activity_edit_adv_info);
+        button = findViewById(R.id.edit2);
+        n = findViewById(R.id.AdvEName);
+        d = findViewById(R.id.AdvEDes);
+        num=findViewById(R.id.AdvENum);
+        img1 = findViewById(R.id.imgAdvEdit);
+        btnImg = findViewById(R.id.Edit2_choose_image);
+        fStore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        Des = findViewById(R.id.AdvDes);
-        Intent i = getIntent();
+        Intent intent = getIntent();
+        s = intent.getStringExtra("EditAdvInfo");
 
+        dRef = fStore.collection("Advertisement").document(s);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                n.setText(documentSnapshot.getString("AdvName"));
+                d.setText(documentSnapshot.getString("AdvDes"));
 
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        AddToDB();
+                        Intent i2 = new Intent(EditAdvInfo.this, Adv_Profile.class);
+                        startActivity(i2);
+                    }
+                });
+                btnImg.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openFileChooser();
+                    }
+                });
 
-
-        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
             }
         });
+        storageReference = FirebaseStorage.getInstance().getReference();
+        if (s != null) {
+            StorageReference bookReference = storageReference.child("Advertisement/"+s+"/mainImage.jpg");
 
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AddToDB();
-                Intent i2 = new Intent(Add_Adv.this, MainActivity.class);
-                startActivity(i2);
-            }
-        });
+            bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(EditAdvInfo.this).load(uri).into(img1);
+                }
+            });
+        }
 
     }
 
@@ -104,55 +107,40 @@ public class Add_Adv extends AppCompatActivity  {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
-            img.setImageURI(mImageUri);
+            img1.setImageURI(mImageUri);
 
         }
     }
 
 
-
     public void AddToDB() {
-
         fStore = FirebaseFirestore.getInstance();
 
-        if (c1.isChecked())
-            checkArr.add(1);
-        else if (c2.isChecked())
-            checkArr.add(2);
-        else if (c3.isChecked())
-            checkArr.add(3);
-        else if (c4.isChecked())
-            checkArr.add(4);
-        else if (c5.isChecked())
-            checkArr.add(5);
-
-        AdvId = fStore.collection("Advertisement").document().getId();
-        uploadImg(mImageUri);
         Map<String, Object> itemsAdv = new HashMap<>();
-        itemsAdv.put("AdvId", AdvId);
-        itemsAdv.put("AdvDes", Des.getText().toString());
-        itemsAdv.put("AdvName", name.getText().toString());
-        itemsAdv.put("typeOfAdv", checkArr);
-        itemsAdv.put("AdvNum", Num.getText().toString());
+        itemsAdv.put("AdvId", s);
+        itemsAdv.put("AdvName", n.getText().toString());
+        itemsAdv.put("AdvDes", d.getText().toString());
+        itemsAdv.put("AdvNum", num.getText().toString());
 
-        DocumentReference documentReference = fStore.collection("Advertisement").document(AdvId);
+
+
+        DocumentReference documentReference = fStore.collection("Advertisement").document(s);
         documentReference.set(itemsAdv).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(Add_Adv.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                Toast.makeText(EditAdvInfo.this, "mabrooooooook", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(Add_Adv.this, "toz 3lekom", Toast.LENGTH_LONG).show();
-                Toast.makeText(Add_Adv.this, AdvId, Toast.LENGTH_LONG).show();
+                Toast.makeText(EditAdvInfo.this, "toz 3lekom", Toast.LENGTH_LONG).show();
+                Toast.makeText(EditAdvInfo.this, s, Toast.LENGTH_LONG).show();
                 Log.d("myTag", e.getMessage());
 
             }
         });
 
-        checkArr.clear();
-
+        uploadImg(mImageUri);
     }
 
     private void uploadImg(Uri uri) {
@@ -162,7 +150,7 @@ public class Add_Adv extends AppCompatActivity  {
         pd.show();
 
         //final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("Advertisement/" + AdvId + "/mainImage.jpg");
+        StorageReference riversRef = storageReference.child("Advertisement/"+s+"/mainImage.jpg");
         riversRef.putFile(mImageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
@@ -182,22 +170,6 @@ public class Add_Adv extends AppCompatActivity  {
                 pd.setMessage("Percentage:" + (int) progressPercent + "%");
             }
         });
-
-
-    }
-    /*public void showDatePickerDialog(){
-        DatePickerDialog datePickerDialog = new DatePickerDialog(
-                this,
-                (DatePickerDialog.OnDateSetListener) this,
-                Calendar.getInstance().get(Calendar.YEAR),
-                Calendar.getInstance().get(Calendar.MONTH),
-                Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        datePickerDialog.show();
     }
 
-
-    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        String date = "month/day/year: " + month + "/" + dayOfMonth + "/" + year;
-        txtDeta.setText(date);
-    }*/
 }
