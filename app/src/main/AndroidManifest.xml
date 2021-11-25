@@ -11,17 +11,20 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Tabar3" >
-        <activity android:name=".Edit_Camp_Info"></activity>
-        <activity android:name=".Camp_Info" />
-        <activity android:name=".EditAdvInfo" />
-        <activity android:name=".Adv_Profile" />
-        <activity android:name=".Edit_Charity_Info" />
-        <activity android:name=".Charity_Campaign" />
-        <activity android:name=".Categories_For_Charitie" />
+        android:theme="@style/Theme.Tabar3">
         <activity
-            android:name=".SignUp"
-            android:exported="true" />
+            android:name=".SettSecurity"
+            android:exported="false" />
+        <activity
+            android:name=".SettAccount"
+            android:exported="false" />
+        <activity
+            android:name=".Report"
+            android:exported="false" />
+        <activity
+            android:name=".Setting"
+            android:exported="false" />
+        <activity android:name=".Categories_For_Charitie" />
         <activity
             android:name=".Accounts"
             android:exported="true" />
@@ -30,9 +33,6 @@
             android:exported="true" />
         <activity
             android:name=".Privacy"
-            android:exported="true" />
-        <activity
-            android:name=".Setting"
             android:exported="true" />
         <activity
             android:name=".Notifications"
@@ -54,7 +54,6 @@
         <activity android:name=".Charities_Profile" />
         <activity android:name=".Add_Adv" />
         <activity android:name=".Charity_Info" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />

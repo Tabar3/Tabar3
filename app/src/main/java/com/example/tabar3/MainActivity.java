@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
@@ -92,12 +93,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }else if (id==R.id.setting){
             Intent intent = new Intent(this,Setting.class);
-            startActivity(intent);
-        }else if (id==R.id.privacy){
-            Intent intent = new Intent(this,Privacy.class);
-            startActivity(intent);
-        }else if (id==R.id.report){
-            Intent intent = new Intent(this,Reports.class);
             startActivity(intent);
         }else if (id==R.id.aboutUs){
             Intent intent = new Intent(this,AboutUs.class);
