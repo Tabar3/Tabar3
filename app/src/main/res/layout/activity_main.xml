@@ -8,110 +8,137 @@
         android:layout_height="match_parent"
         tools:openDrawer="start"
     android:layoutDirection="rtl">
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        >
+
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="wrap_content"
+            android:background="@color/white"            >
 
-            <com.google.android.material.appbar.AppBarLayout
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                android:layout_height="50dp"
+                android:background="@color/com_facebook_blue"
                 >
+            </androidx.appcompat.widget.Toolbar>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="?attr/colorPrimary"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-                </androidx.appcompat.widget.Toolbar>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-                    <Button
-                    android:layout_width="90dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <Button
+                    android:layout_width="120dp"
                     android:layout_height="50dp"
                     android:text="التبرعات"
                     android:id="@+id/Don"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/picture3"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    android:background="@drawable/b1"
                     android:onClick="third"
                     />
-                    <Button
-                        android:layout_width="90dp"
-                        android:layout_height="50dp"
-                        android:text="الجمعيات"
-                        android:id="@+id/Char"
-                        android:background="@drawable/picture3"
-                        android:onClick="one"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
-                        android:layout_weight="1"
-
-                        />
-                    <Button
-                        android:layout_width="90dp"
-                        android:layout_height="50dp"
-                        android:text="اعلانات"
-                        android:id="@+id/Adv"
-                        android:background="@drawable/picture3"
-                        android:layout_weight="1"
-                        android:textSize="20dp"
-                        android:textColor="@color/white"
-                        android:onClick="tow"
-                        />
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="الجمعيات"
+                    android:id="@+id/Char"
+                    android:background="@drawable/b1"
+                    android:onClick="one"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
 
 
-                </LinearLayout>
+                    />
+                <Button
+                    android:layout_width="120dp"
+                    android:layout_height="50dp"
+                    android:text="اعلانات"
+                    android:id="@+id/Adv"
+                    android:background="@drawable/b1"
+                    android:textSize="12dp"
+                    android:textColor="@color/black"
+                    android:onClick="tow"
+                    />
+
+            </LinearLayout>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:src="@drawable/main_page"
+                    android:id="@+id/a1"
+                    android:visibility="visible"></ImageView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تبرع"
+                    android:textSize="30dp"
+                    android:textColor="@color/com_facebook_blue"
+                    android:layout_gravity="center"
+                    android:id="@+id/a2"
+                    android:visibility="visible"></TextView>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="وهو تطبيق لعرض جميع الجمعيات الخيرية وللتبرع المالي و المادي و يمكنه مساعدتك باختيار الجمعيات التي تريد التبر ع لها او حتى يمكنك نشر تبرعك للجمعيات , و ايضا يمكن لتطبييقنا مساعدتك في معرفت احتياجات الجمعية الحالية عن طريق صفحة الاعلانات , تسعدنا زيارتك"
+                    android:textSize="12dp"
+                    android:textColor="@color/com_facebook_blue"
+                    android:paddingRight="15dp"
+                    android:layout_gravity="center"
+                    android:id="@+id/a3"
+                    android:visibility="visible"></TextView>
+            </LinearLayout>
+
 
 
         </com.google.android.material.appbar.AppBarLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity"
+            android:layout_marginTop="100dp"
+            >
+
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context=".MainActivity"
-                android:layout_marginTop="100dp"
+                android:layout_height="600dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+
                 >
 
-                <ScrollView
+                <FrameLayout
+                    android:id="@+id/fragment1"
                     android:layout_width="match_parent"
-                    android:layout_height="624dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-
-                    >
-
-                    <FrameLayout
-                        android:id="@+id/fragment1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        />
-                </ScrollView>
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-        <com.google.android.material.navigation.NavigationView
-            android:id="@+id/nav_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:itemTextColor="@color/text_color"
-            app:itemIconTint="@color/text_color"
-            app:headerLayout="@layout/header_layout"
-            app:menu="@menu/menu_layout"
-            android:background="@color/white"
-          >
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    />
+            </ScrollView>
 
 
 
-        </com.google.android.material.navigation.NavigationView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:itemTextColor="@color/text_color"
+        app:itemIconTint="@color/text_color"
+        app:headerLayout="@layout/header_layout"
+        app:menu="@menu/menu_layout"
+        android:background="@color/white"
+        ></com.google.android.material.navigation.NavigationView>
+
 
 
 
