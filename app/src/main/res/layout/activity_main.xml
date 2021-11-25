@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:openDrawer="start"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start"
     android:layoutDirection="rtl">
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -15,24 +15,15 @@
         >
 
         <com.google.android.material.appbar.AppBarLayout
-        tools:openDrawer="start"
-        android:background="@color/white"
-    >
-        <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"            >
-            android:layout_height="match_parent"
-            android:background="@color/white"
-            >
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/com_facebook_blue"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
                 >
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
@@ -40,49 +31,46 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="التبرعات"
-                    android:id="@+id/Don"
-                    android:textSize="12dp"
-                    android:textColor="@color/black"
-                    android:background="@drawable/b1"
-                    android:onClick="third"
-                    />
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="الجمعيات"
-                    android:id="@+id/Char"
-                    android:background="@drawable/b1"
-                    android:onClick="one"
-                    android:textSize="12dp"
-                    android:textColor="@color/black"
-
-
-                    />
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="اعلانات"
-                    android:id="@+id/Adv"
-                    android:background="@drawable/b1"
-                    android:textSize="12dp"
-                    android:textColor="@color/black"
-                    android:onClick="tow"
-                    />
-
-            </LinearLayout>
-                <ImageView
-                    android:background="@color/purple_200">
-                    </androidx.appcompat.widget.Toolbar>
                 <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:text="التبرعات"
+                        android:id="@+id/Don"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+                        android:background="@drawable/b1"
+                        android:onClick="third"
+                        />
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:text="الجمعيات"
+                        android:id="@+id/Char"
+                        android:background="@drawable/b1"
+                        android:onClick="one"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+
+
+                        />
+                    <Button
+                        android:layout_width="120dp"
+                        android:layout_height="50dp"
+                        android:text="اعلانات"
+                        android:id="@+id/Adv"
+                        android:background="@drawable/b1"
+                        android:textSize="12dp"
+                        android:textColor="@color/black"
+                        android:onClick="tow"
+                        />
+
+                </LinearLayout>
+                <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:src="@drawable/main_page"
@@ -125,10 +113,6 @@
                 android:layout_height="600dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
-                android:layout_height="match_parent"
-                tools:context=".MainActivity"
-                android:layout_marginTop="100dp"
-                android:background="@color/white"
                 >
 
                 <FrameLayout
@@ -138,7 +122,6 @@
                     android:layout_weight="1"
                     />
             </ScrollView>
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
