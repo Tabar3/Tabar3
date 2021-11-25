@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -23,7 +25,8 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Fragment f ;
-    Button f1,f2,f3;
+    ImageView a1;
+    TextView a2,a3;
     androidx.appcompat.widget.Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +35,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        a1=findViewById(R.id.a1);
+        a2=findViewById(R.id.a2);
+        a3=findViewById(R.id.a3);
 
         DrawerLayout drawer =  findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView =  findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
 
     }
 
@@ -110,14 +113,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void one(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");
-        replaceFragment(new Charities());
+        a1.setVisibility(View.GONE);
+        a2.setVisibility(View.GONE);
+        a3.setVisibility(View.GONE);
+       replaceFragment(new Charities());
     }
     public void tow(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 2222222222");
-        replaceFragment(new Advertisement());
+        a1.setVisibility(View.GONE);
+        a2.setVisibility(View.GONE);
+        a3.setVisibility(View.GONE);
+         replaceFragment(new Advertisement());
     }
     public void third(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 33333333333");
-        replaceFragment(new Donations());
+        a1.setVisibility(View.GONE);
+        a2.setVisibility(View.GONE);
+        a3.setVisibility(View.GONE);
+         replaceFragment(new Donations());
     }
 }

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="120dp"
     android:orientation="horizontal"
     android:layout_marginTop="10dp"
     android:layoutDirection="rtl"
-    android:background="@drawable/p1">
+    android:background="@drawable/s2">
 
     <ImageView
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="15dp"
 
@@ -20,16 +20,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginLeft="8dp">
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="270dp"
+            android:layout_height="80dp"
             android:id="@+id/charDes"
             android:text="جمعية.>"
-            android:layout_marginTop="30dp"
-            android:layout_marginRight="10dp"
             android:textDirection="rtl"
+            android:textColor="@color/black"
             />
 
     </LinearLayout>
