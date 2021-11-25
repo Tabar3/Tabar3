@@ -26,14 +26,14 @@ import java.util.Map;
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class SettAccount extends AppCompatActivity {
 
-     EditText phone,name,location ;
+   /*  EditText phone,name,location ;
      Button login ;
     FirebaseFirestore fStore;
     String AdvId;
 
-    @Override
+  /*  @Override
 
-    protected void onCreate(Bundle savedInstanceState) {
+    /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sett_account);
     }
@@ -48,9 +48,9 @@ public class SettAccount extends AppCompatActivity {
 
     }
 
-//try to use FirebaseFire... then getinst....  then getDocument then the FirebaseAuth.getUID;looooove you dalooolaty
+//try to use FirebaseFire... then getinst....  then getDocument then the FirebaseAuth.getUID;
 //Remember me <3
-        public void ChangeOnDB() {
+      /*  public void ChangeOnDB() {
         fStore = FirebaseFirestore.getInstance();
         AdvId = fStore.collection("Charities").document().getId();
         Map<String, Object> changeI = new HashMap<>();
@@ -84,5 +84,5 @@ public class SettAccount extends AppCompatActivity {
         else {
             Toast.makeText(this,"Nothing changed!",Toast.LENGTH_LONG).show();
         }
-    }
+   }*/
 }
