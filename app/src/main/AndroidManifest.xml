@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.tabar3">
+    package="com.example.tabar3" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:theme="@style/Theme.Tabar3" >
         android:theme="@style/Theme.Tabar3">
         <activity android:name=".Edit_Camp_Info"></activity>
         <activity android:name=".Camp_Info" />
@@ -19,6 +20,10 @@
         <activity android:name=".Edit_Charity_Info" />
         <activity android:name=".Camp_Item" />
         <activity android:name=".Charity_Campaign" />
+        <activity android:name=".Categories_For_Charitie" />
+        <activity
+            android:name=".SignUp"
+            android:exported="true" />
         <activity android:name=".Categories_For_Charitie" />
         <activity
             android:name=".Accounts"
@@ -40,7 +45,14 @@
             android:exported="true" />
         <activity
             android:name=".Login"
-            android:exported="true" />
+            android:exported="true"/>
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"><intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>        </activity>
         <activity android:name=".Categories" />
         <activity android:name=".Charities_Profile" />
         <activity android:name=".Add_Adv" />
@@ -50,15 +62,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

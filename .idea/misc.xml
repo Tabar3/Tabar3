@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/ic_baseline_account_box_24.xml" value="0.2462962962962963" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/ic_baseline_exit_to_app_24.xml" value="0.2703125" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.24166666666666667" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/rounded_button.xml" value="0.2703125" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/rounded_rectangle.xml" value="0.2703125" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_about_us.xml" value="0.25416666666666665" />
@@ -11,6 +13,8 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_accounts.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_sign_up2.xml" value="0.23867753623188406" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/header_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/menu/menu_layout.xml" value="0.25416666666666665" />

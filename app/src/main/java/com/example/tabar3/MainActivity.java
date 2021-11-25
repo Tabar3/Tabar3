@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Fragment f ;
@@ -73,9 +75,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.account) {
             Intent intent = new Intent(this, Accounts.class);
             startActivity(intent);
-        } else if (id==R.id.logout){
+        } else if (id==R.id.login){
+            if (FirebaseAuth.getInstance().getCurrentUser()!=null){
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                Toast.makeText(this,"Sorry,You already logged in !",Toast.LENGTH_SHORT).show();
+            }
+            else{
             Intent intent = new Intent(this,Login.class);
-            startActivity(intent);
+            startActivity(intent);}
         }else if (id==R.id.history){
             Intent intent = new Intent(this,History.class);
             startActivity(intent);
@@ -94,7 +102,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }else if (id==R.id.aboutUs){
             Intent intent = new Intent(this,AboutUs.class);
             startActivity(intent);
-        }
+        }else if (id==R.id.Logout) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(this,MainActivity.class);
+        Toast.makeText(this,"Logout succefuly",Toast.LENGTH_LONG).show();
+        startActivity(intent);
+    }
         // else if (id== R.id.setting){}
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

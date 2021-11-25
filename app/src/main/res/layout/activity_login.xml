@@ -29,10 +29,10 @@
         android:layout_marginTop="20dp"
         />
     <EditText
-        android:id="@+id/Password"
+        android:id="@+id/PasswordL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Password"
+        android:hint="Passwordd"
         android:textColorHint="@color/white"
         android:inputType="textPassword"
         />
@@ -44,6 +44,7 @@
         android:text="Login"
         android:layout_marginTop="20dp"
         android:textSize="50dp"
+        android:onClick="Login"
         android:textStyle="bold"
         android:textColor="@color/white"
         android:fontFamily="cursive"
@@ -56,9 +57,9 @@
         android:layout_marginTop="10dp"
         android:text="Not have account yet! Sign up NOW"
         android:textSize="15dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textColorHint="@color/teal_200"
-        android:onClick="signIn"
+        android:onClick="MoveToS"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         />
 

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignUp"
+    android:orientation="vertical">
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        />
+    <EditText
+        android:id="@+id/userSign"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:inputType="textEmailAddress"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="password"
+        />
+    <EditText
+        android:id="@+id/passSign"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:inputType="textPassword"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        />
+    <EditText
+        android:id="@+id/userNameS"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone Number"
+        />
+    <EditText
+        android:id="@+id/PhoneNSign"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:inputType="phone"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Location"
+        />
+    <EditText
+        android:id="@+id/LocationSign"
+        android:layout_width="match_parent"
+        android:layout_height="55sp"
+        android:inputType="text"
+        />
+    <TextView
+        android:id="@+id/AccT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Account type:"
+        android:textSize="18dp"
+        />
+    <RadioGroup
+        android:id="@+id/G1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/CharCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="جمعية"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+        <RadioButton
+            android:id="@+id/DonatCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="متبرع"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            />
+    </RadioGroup>
+    <Button
+        android:id="@+id/SignUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sign up"
+        android:onClick="signUp"
+        />
+
+
+</LinearLayout>
