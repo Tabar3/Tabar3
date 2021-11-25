@@ -133,7 +133,7 @@ For more information about our privacy practices, if you have questions, or if y
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  Amman_khalda, Amman, 11831, Jordan"
+        android:text="  Amman_khalda, Amman, 11831, Jordan."
         android:textStyle="bold"/>
 
 
