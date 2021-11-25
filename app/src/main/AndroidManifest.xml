@@ -47,7 +47,6 @@
         <activity android:name=".Charities_Profile" />
         <activity android:name=".Add_Adv" />
         <activity android:name=".Charity_Info" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
