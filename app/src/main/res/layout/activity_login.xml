@@ -32,7 +32,7 @@
         android:id="@+id/PasswordL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="Password"
+        android:hint="Passwordd"
         android:textColorHint="@color/white"
         android:inputType="textPassword"
         />
