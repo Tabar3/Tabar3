@@ -52,6 +52,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.1'
     implementation 'com.google.firebase:firebase-storage:20.0.0'
     implementation 'com.firebaseui:firebase-ui-storage:7.2.0'
+    implementation 'com.google.firebase:firebase-inappmessaging-display:20.1.1'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -7,10 +7,18 @@
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/rounded_button.xml" value="0.2703125" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/drawable/rounded_rectangle.xml" value="0.2703125" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_about_us.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_account.xml" value="0.26614583333333336" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_account.xml" value="0.33" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_accounts.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_login.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_privacy.xml" value="0.18" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_report.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_sett_account.xml" value="0.18" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_sett_security.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/activity_setting.xml" value="0.27906976744186046" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/fragment_advertisement.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/fragment_charities.xml" value="0.1" />
+        <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/fragment_donations.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/header_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/layout/item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/DELL/AndroidStudioProjects/Tabar3/app/src/main/res/menu/menu_layout.xml" value="0.25416666666666665" />

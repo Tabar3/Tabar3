@@ -12,7 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabar3">
-        <activity android:name=".Categories_For_Charitie"></activity>
+        <activity
+            android:name=".SettSecurity"
+            android:exported="false" />
+        <activity
+            android:name=".SettAccount"
+            android:exported="false" />
+        <activity
+            android:name=".Report"
+            android:exported="false" />
+        <activity
+            android:name=".Setting"
+            android:exported="false" />
+        <activity android:name=".Categories_For_Charitie" />
         <activity
             android:name=".Accounts"
             android:exported="true" />
@@ -21,9 +33,6 @@
             android:exported="true" />
         <activity
             android:name=".Privacy"
-            android:exported="true" />
-        <activity
-            android:name=".Setting"
             android:exported="true" />
         <activity
             android:name=".Notifications"
