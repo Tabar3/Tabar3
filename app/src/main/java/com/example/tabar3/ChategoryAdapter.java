@@ -170,7 +170,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             super(itemView);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
-            img = itemView.findViewById(R.id.imgItem3);
+            img = itemView.findViewById(R.id.imgItem32);
             tname = itemView.findViewById(R.id.charDes);
 
 
