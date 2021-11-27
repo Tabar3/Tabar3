@@ -8,12 +8,24 @@
     android:orientation="vertical"
     android:layoutDirection="rtl"
    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/InfoCharImg"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         tools:srcCompat="@tools:sample/avatars"
         android:layout_margin="10dp"></ImageView>
+
+        <ImageView
+            android:id="@+id/vi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/InfoCharImg"
+            android:layout_margin="4dp"
+            android:src="@drawable/edit"></ImageView>
+    </RelativeLayout>
     <TextView
         android:id="@+id/InfoChartxt"
         android:layout_width="match_parent"
@@ -46,7 +58,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/visa"
-            android:id="@+id/vi"></ImageView>
+            android:id="@+id/vii"></ImageView>
 
         <ImageView
             android:layout_width="50dp"

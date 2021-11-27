@@ -7,12 +7,33 @@
     tools:context=".Camp_Info"
     android:orientation="vertical"
     android:layoutDirection="rtl">
-    <ImageView
-        android:id="@+id/InfoCampImg"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_margin="10dp"></ImageView>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/InfoCampImg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_margin="10dp"></ImageView>
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_delete"
+            android:id="@+id/delete"
+            android:layout_alignLeft="@id/vi2"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="4dp"
+            ></ImageView>
+        <ImageView
+            android:id="@+id/vi2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/InfoCampImg"
+            android:layout_margin="4dp"
+            android:src="@drawable/edit"></ImageView>
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/txtCampN"
         android:layout_width="match_parent"
@@ -44,13 +65,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/visa"
-        android:id="@+id/vi2"
+        android:id="@+id/vii2"
         android:layout_gravity="center"></ImageView>
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@android:drawable/ic_delete"
-        android:id="@+id/delete"
-        android:layout_gravity="center"></ImageView>
+
 
 </LinearLayout>
