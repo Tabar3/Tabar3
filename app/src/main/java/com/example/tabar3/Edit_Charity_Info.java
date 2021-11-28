@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Edit_Charity_Info extends AppCompatActivity {
-    EditText n,d,l,p;
+    EditText n,d,l,p,e;
     FirebaseFirestore fStore;
     DocumentReference dRef;
     StorageReference storageReference;
@@ -49,6 +49,7 @@ public class Edit_Charity_Info extends AppCompatActivity {
         d=findViewById(R.id.charDes);
         l=findViewById(R.id.charLoc);
         p=findViewById(R.id.charPho);
+        e=findViewById(R.id.charEmail);
         img= findViewById(R.id.imgInfoEdit);
         btnImg=findViewById(R.id.Edit_choose_image);
         fStore = FirebaseFirestore.getInstance();
@@ -63,11 +64,13 @@ public class Edit_Charity_Info extends AppCompatActivity {
         d.setText(documentSnapshot.getString("charityDes"));
         l.setText(documentSnapshot.getString("charityLoc"));
         p.setText(documentSnapshot.getString("charityPhone"));
+        e.setText(documentSnapshot.getString("charityEmail"));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AddToDB();
                 Intent i2 = new Intent(Edit_Charity_Info.this, Charity_Info.class);
+                i2.putExtra("CharitiesInfo",s);
                 startActivity(i2);
             }
         });
@@ -123,7 +126,7 @@ public class Edit_Charity_Info extends AppCompatActivity {
         itemsCamp.put("charityPhone", p.getText().toString());
 
 
-        DocumentReference documentReference = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE");
+        DocumentReference documentReference = fStore.collection("Charities").document(s);
         documentReference.set(itemsCamp).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

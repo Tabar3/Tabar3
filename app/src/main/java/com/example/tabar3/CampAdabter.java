@@ -26,15 +26,18 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
     @NonNull
     @NotNull
     List<Camp_Item> ItmCam;
+    //List<item>itemCha;
+    String s;
     private Context mContext;
     private static CampAdabter.ClickListener clickListener;
     FirebaseFirestore fStore;
     StorageReference storageReference;
 
 
-    public CampAdabter(List<Camp_Item> Items) {
+    public CampAdabter(List<Camp_Item> Items,String s) {
         this.ItmCam= Items;
-
+       // this.itemCha=itemCha;
+        this.s=s;
         fStore = FirebaseFirestore.getInstance();
     }
 
@@ -65,7 +68,8 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
     public void onBindViewHolder(@NonNull CampAdabter.CampItemHolder holder, int position) {
         Camp_Item itm = ItmCam.get(position);
         String ItemId = itm.getCampId();
-
+       // item i = itemCha.get(position);
+       // String i2 = i.getCharityId();
         if (ItemId != null) {
 
             StorageReference bookReference = storageReference.child("Campaign/"+ItemId+"/mainImage.jpg");
@@ -76,7 +80,7 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
                 }
             });
 
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document(s).collection("Campaign").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getCampName());

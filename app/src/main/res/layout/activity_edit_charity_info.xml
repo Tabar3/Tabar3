@@ -63,6 +63,18 @@
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="ايميل الجمعية"
+        android:layout_marginTop="16dp"
+        ></TextView>
+    <EditText
+        android:id="@+id/charEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></EditText>
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="رابط موقع الجمعية"
         android:layout_marginTop="16dp"
         ></TextView>

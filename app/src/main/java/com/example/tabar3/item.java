@@ -4,21 +4,26 @@ import java.util.ArrayList;
 
 
 public class item {
-   String charityId,charityName,charityLoc, charityPhone ,charityDes;
+   String charityId,charityName,charityLoc, charityPhone ,charityDes,charityEmail;
 
-   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes) {
+   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail) {
       this.charityId = charityId;
       this.charityName = charityName;
       this.charityLoc = charityLoc;
       this.charityPhone = charityPhone;
       this.charityDes = charityDes;
-   }
-
-   public item(String charityName) {
-      this.charityName = charityName;
+      this.charityEmail = charityEmail;
    }
 
    public item() {
+   }
+
+   public String getCharityEmail() {
+      return charityEmail;
+   }
+
+   public void setCharityEmail(String charityEmail) {
+      this.charityEmail = charityEmail;
    }
 
    public String getCharityDes() {

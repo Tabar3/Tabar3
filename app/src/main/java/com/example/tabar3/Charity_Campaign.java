@@ -38,6 +38,7 @@ public class Charity_Campaign extends AppCompatActivity {
     private FirebaseStorage storage;
     private StorageReference storageReference;
     String CampId;
+    String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,8 @@ public class Charity_Campaign extends AppCompatActivity {
         mButtonChooseImage = findViewById(R.id.button_choose_image);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        Intent intent = getIntent();
+        s= intent.getStringExtra("CharId3");
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,7 +92,7 @@ public class Charity_Campaign extends AppCompatActivity {
 
     public void AddToDB() {
         fStore = FirebaseFirestore.getInstance();
-        CampId=fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document().getId();
+        CampId=fStore.collection("Charities").document(s).collection("Campaign").document().getId();
 
         Map<String, Object> itemsCamp = new HashMap<>();
         itemsCamp.put("campId", CampId);
@@ -98,7 +101,7 @@ public class Charity_Campaign extends AppCompatActivity {
         itemsCamp.put("campDes2", eDes2.getText().toString());
 
 
-        DocumentReference documentReference = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(CampId);
+        DocumentReference documentReference = fStore.collection("Charities").document(s).collection("Campaign").document(CampId);
         documentReference.set(itemsCamp).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
