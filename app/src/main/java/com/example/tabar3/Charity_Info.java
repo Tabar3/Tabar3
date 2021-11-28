@@ -37,6 +37,7 @@ public class Charity_Info extends AppCompatActivity {
     CampAdabter campAdabter;
     ListenerRegistration ItemListListener;
     ImageView imgadd,imgPho,imgLoc,imgVi;
+    String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,7 @@ public class Charity_Info extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String s= intent.getStringExtra("CharitiesInfo");
+        s= intent.getStringExtra("CharitiesInfo");
         dRef = fStore.collection("Charities").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
@@ -113,6 +114,7 @@ public class Charity_Info extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Charity_Info.this, Charity_Campaign.class);
+                i.putExtra("CharId3", s);
                 startActivity(i);
             }
         });
@@ -123,12 +125,11 @@ public class Charity_Info extends AppCompatActivity {
         super.onStart();
         setFirebase();
     }
-    String s;
     private void setFirebase() {
         FirebaseApp.initializeApp(this);
         fStore = FirebaseFirestore.getInstance();
         Intent i =getIntent();
-        Query query = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign");
+        Query query = fStore.collection("Charities").document(s).collection("Campaign");
         // Query query = fStore.collection("Advertisement");
         //  CollectionReference documentReference2 = fStore.collection("Book");
         ItemListListener = query.addSnapshotListener((documentSnapshots, error) -> {
@@ -140,7 +141,7 @@ public class Charity_Info extends AppCompatActivity {
                 public void onItemClick(int position, View v, List<Camp_Item> Items) {
                     Camp_Item ItemC = Items.get(position);
                     if (ItemC.getCampId() != null) {
-                        Intent intent = new Intent(Charity_Info.this, Camp_Info.class); //تغير لاسم الاكتيفيتي الجديد تبع معلومات الحملة
+                        Intent intent = new Intent(Charity_Info.this, Camp_Info.class);
                         intent.putExtra("Camp", ItemC.getCampId());
                         startActivity(intent);
 
@@ -163,7 +164,7 @@ public class Charity_Info extends AppCompatActivity {
         query.get().addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
 
-                campAdabter=new CampAdabter(Objects.requireNonNull(task.getResult()).toObjects(Camp_Item.class));
+                campAdabter=new CampAdabter(Objects.requireNonNull(task.getResult()).toObjects(Camp_Item.class),s);
                mRecyclerView.setAdapter(campAdabter);
             }
         });
