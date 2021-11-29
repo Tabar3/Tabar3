@@ -11,12 +11,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-    <ImageView
+    <com.mikhaellopez.circularimageview.CircularImageView
         android:id="@+id/InfoCharImg"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         tools:srcCompat="@tools:sample/avatars"
-        android:layout_margin="10dp"></ImageView>
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
 
         <ImageView
             android:id="@+id/vi"
@@ -24,7 +25,9 @@
             android:layout_height="30dp"
             android:layout_alignLeft="@id/InfoCharImg"
             android:layout_margin="4dp"
-            android:src="@drawable/edit"></ImageView>
+            android:src="@drawable/edit"
+            android:visibility="gone"
+            ></ImageView>
     </RelativeLayout>
     <TextView
         android:id="@+id/InfoChartxt"
@@ -84,7 +87,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
-        android:src="@drawable/picture5"
+        android:src="@drawable/plus"
+        android:visibility="gone"
         /></RelativeLayout>
 
 

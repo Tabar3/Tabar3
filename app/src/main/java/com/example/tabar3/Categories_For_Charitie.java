@@ -12,9 +12,12 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
+
+import org.w3c.dom.Comment;
 
 import java.util.List;
 import java.util.Objects;
@@ -22,12 +25,14 @@ import java.util.Objects;
 public class Categories_For_Charitie extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     ListenerRegistration AdvListener;
+    FirebaseAuth mAuth;
+    List<Cat_Item> ItmCat;
     View v;
     FirebaseFirestore fStore;
     ListenerRegistration ItemListListener;
     ChategoryAdapter CatAdabter;
     ImageView imgadd;
-
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,34 +59,36 @@ public class Categories_For_Charitie extends AppCompatActivity {
         FirebaseApp.initializeApp(this);
         fStore = FirebaseFirestore.getInstance();
         Intent i =getIntent();
+        mAuth = FirebaseAuth.getInstance();
+        id =mAuth.getCurrentUser().getUid();
+
+        
 
         Query query;
         if(i.getStringExtra("category").equals("food")){
-            query = fStore.collection("Users").document(
-                "dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory");
+            query = fStore.collection("Users").document()
+                    .collection("food_calegory");
             s="food";
 
         }
         else if(i.getStringExtra("category").equals("clo")){
-            query = fStore.collection("Users").document(
-                    "dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory");
+            query = fStore.collection("Users").document(id).collection("clothe_calegory");
             s="clo";
         }
         else if(i.getStringExtra("category").equals("tool")){
-           query = fStore.collection("Users").document(
-                    "dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory");
+           query = fStore.collection("Users").document(id).collection("tool_calegory");
             s="tool";
 
         }
         else if(i.getStringExtra("category").equals("sar")){
              query = fStore.collection("Users").document(
-                    "dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory");
+                    id).collection("serves_calegory");
             s="sar";
 
         }
         else{
              query = fStore.collection("Users").document(
-                    "dQ8ZL6YfV8qAOnv6ILYa").collection("other_calegory");
+                    id).collection("other_calegory");
             s="other";
 
 
@@ -121,7 +128,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
     private void getQuery(Query query) {
         query.get().addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
-                   CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class), s);
+                   CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class), s,id);
                     mRecyclerView.setAdapter(CatAdabter);
             }
         });

@@ -24,6 +24,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Fragment f ;
@@ -68,24 +70,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-
+    FirebaseAuth mAuth;
+    DocumentReference dRef;
+    FirebaseFirestore fStore;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
+        mAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
+        String id2 =mAuth.getCurrentUser().getUid();
+
         if (id == R.id.account) {
-            Intent intent = new Intent(this, Accounts.class);
-            startActivity(intent);
-        } else if (id==R.id.login){
-            if (FirebaseAuth.getInstance().getCurrentUser()!=null){
-                Intent intent = new Intent(this, MainActivity.class);
+        dRef = fStore.collection("Charities").document(id2);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                Intent intent = new Intent(this, Charity_Info.class);
+                intent.putExtra("CharitiesInfo", id2);
                 startActivity(intent);
-                Toast.makeText(this,"Sorry,You already logged in !",Toast.LENGTH_SHORT).show();
             }
             else{
-            Intent intent = new Intent(this,Login.class);
-            startActivity(intent);}
-        }else if (id==R.id.history){
+                Intent intent = new Intent(this, Accounts.class);
+                startActivity(intent);
+            }
+
+        });
+        } else if (id==R.id.history){
             Intent intent = new Intent(this,History.class);
             startActivity(intent);
         }else if (id==R.id.notifications){
@@ -99,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }else if (id==R.id.Logout) {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,Login.class);
         Toast.makeText(this,"Logout succefuly",Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
@@ -131,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         a1.setVisibility(View.GONE);
         a2.setVisibility(View.GONE);
         a3.setVisibility(View.GONE);
-         replaceFragment(new Advertisement());
+        replaceFragment(new Advertisement());
     }
     public void third(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 33333333333");

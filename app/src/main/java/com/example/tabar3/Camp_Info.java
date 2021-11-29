@@ -46,7 +46,8 @@ public class Camp_Info extends AppCompatActivity {
 
         Intent intent = getIntent();
         String s= intent.getStringExtra("Camp");
-        dRef = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(s);
+        String s1= intent.getStringExtra("Char");
+        dRef = fStore.collection("Charities").document(s1).collection("Campaign").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
 
@@ -65,7 +66,7 @@ public class Camp_Info extends AppCompatActivity {
                 delete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        dRef = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(s);
+                        dRef = fStore.collection("Charities").document(s1).collection("Campaign").document(s);
                         dRef.delete();
                         StorageReference bookReference = storageReference .child("Campaign/"+s+"/mainImage.jpg");
                         bookReference.delete();

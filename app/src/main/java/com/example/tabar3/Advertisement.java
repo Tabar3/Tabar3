@@ -1,6 +1,8 @@
 package com.example.tabar3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,9 +16,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
@@ -28,13 +33,17 @@ import java.util.Objects;
 public class Advertisement extends Fragment {
     private RecyclerView mRecyclerView;
     ListenerRegistration AdvListener;
+    FirebaseAuth mAuth;
+    DocumentReference dRef;
     View v;
     FirebaseFirestore fStore;
     ListenerRegistration ItemListListener;
     AdvAdabter advAdabter;
     ImageView imgadd;
-
+    item i;
+    String strtext;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         v= inflater.inflate(R.layout.fragment_advertisement, container, false);
         FirebaseApp.initializeApp(getActivity());
         return  v;
@@ -46,16 +55,36 @@ public class Advertisement extends Fragment {
     }
 
     private void setViews() {
+
         mRecyclerView = requireView().findViewById(R.id.recyclerView2);
         imgadd = requireView().findViewById(R.id.addAdv);
+        mAuth = FirebaseAuth.getInstance();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        imgadd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), Add_Adv.class);
-                startActivity(i);
+        //i=new item();
+        /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
+        String id =mAuth.getCurrentUser().getUid();
+        String type =i.getTypeOfUser();*/
+        fStore = FirebaseFirestore.getInstance();
+        String id =mAuth.getCurrentUser().getUid();
+        dRef = fStore.collection("Charities").document(id);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                imgadd.setVisibility(View.VISIBLE);
+                imgadd.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(getActivity(), Add_Adv.class);
+                        startActivity(i);
+                    }
+                });
             }
-        });
+            else
+                imgadd.setVisibility(View.GONE);
+                });
+
+
+
+
     }
 
     @Override

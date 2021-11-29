@@ -2,33 +2,30 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 <item
     android:id="@+id/account"
-    android:title="account"
+    android:title="الحساب الشخصي"
     android:icon="@drawable/ic_baseline_account_box_24"/>
 
     <item
-        android:id="@+id/login"
-        android:title="Login or Sign up"
-        android:icon="@drawable/ic_baseline_login_24"/>
-    <item
         android:id="@+id/history"
-        android:title="Your history"
+        android:title="نشوراتك"
         android:icon="@drawable/ic_baseline_history_24"
         />
     <item
         android:id="@+id/notifications"
-        android:title="Notifications"
+        android:title="الاشعارات"
         android:icon="@drawable/ic_baseline_notifications_none_24"/>
     <item
         android:id="@+id/setting"
-        android:title="Setting"
+        android:title="الاعدادات"
         android:icon="@drawable/ic_baseline_settings_24"/>
     <item
         android:id="@+id/aboutUs"
-        android:title="About Us"
+        android:title="من نحن"
         android:icon="@drawable/ic_baseline_info_24"/>
+
     <item
         android:id="@+id/Logout"
-        android:title="Logout"
+        android:title="تسجيل الخروج"
         android:icon="@drawable/ic_baseline_exit_to_app_24"/>
 
 

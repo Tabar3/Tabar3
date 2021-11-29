@@ -23,7 +23,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="@color/com_facebook_blue"
+                android:background="#005CFF"
                 >
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
@@ -110,7 +110,7 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="620dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 >
@@ -132,8 +132,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemTextColor="@color/text_color"
-        app:itemIconTint="@color/text_color"
+        app:itemTextColor="#005CFF"
+        app:itemIconTint="#005CFF"
         app:headerLayout="@layout/header_layout"
         app:menu="@menu/menu_layout"
         android:background="@color/white"

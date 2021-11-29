@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -36,9 +37,11 @@ public class Categories extends AppCompatActivity {
     EditText fe2,fe4,cloe2,desE,loc1,loc2,loc3,phone,te2,te4,se2,se4;
     RadioButton c1,c2,c3,cc,cc1,cc2;
     RadioGroup r1,r2;
+    DocumentReference dRef;
     FirebaseFirestore fStore;
     String  categotyId,radio1;
     Button add_DB,mButtonChooseImage;
+    FirebaseAuth mAuth;
     public Uri mImageUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
@@ -52,6 +55,7 @@ public class Categories extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         Var();
+        String id =mAuth.getCurrentUser().getUid();
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,6 +172,7 @@ public void Var(){
     img=findViewById(R.id.imgAddCate);
     storage = FirebaseStorage.getInstance();
     storageReference = storage.getReference();
+    mAuth = FirebaseAuth.getInstance();
 }
 
 public void food_cat_DB(){
