@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             tools:srcCompat="@tools:sample/avatars"
+            android:scaleType="centerCrop"
             android:layout_margin="10dp"></ImageView>
         <ImageView
         android:layout_width="30dp"

@@ -31,13 +31,13 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
     FirebaseFirestore fStore;
     StorageReference storageReference;
     String typeCat;
-
+    String idC;
     public ChategoryAdapter(){}
-    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat , String typeCat) {
+    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat , String typeCat,String idC) {
         this.ItmCat = itmCat;
         fStore = FirebaseFirestore.getInstance();
         this.typeCat = typeCat;
-
+        this.idC=idC;
     }
 
 
@@ -50,6 +50,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
     public int getItemViewType(int position) {
         return position;
     }
+
 
     @SuppressLint("InflateParams")
     @NonNull
@@ -80,7 +81,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
                 }
             });
             if(typeCat.equals("food")){
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("food_calegory").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getFoodDes());
@@ -93,7 +94,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             });
         }
         else if(typeCat.equals("clo")){
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("clothe_calegory").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getClotheDes());
@@ -106,7 +107,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             });
         }
         else if(typeCat.equals("tool")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("tool_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -121,7 +122,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             }
 
             else if(typeCat.equals("sar")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("serves_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -135,7 +136,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
 
             }
             else if(typeCat.equals("other")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document("dQ8ZL6YfV8qAOnv6ILYa").collection("other_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("other_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -154,6 +155,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             holder.tname.setText("nooo name");
 
         }
+
 
 
     }

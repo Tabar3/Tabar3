@@ -6,41 +6,101 @@
     tools:context=".Donations"
     android:orientation="vertical"
     android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     >
-
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="8dp"
+    android:layout_margin="5dp"
+    android:elevation="10dp"
+    >
 <Button
-    android:id="@+id/food"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="طعام"></Button>
+
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:textSize="32dp"
+    android:background="@color/white"
+    android:textColor="#005FFF"
+    android:text="طعام"
+    android:id="@+id/food"></Button>
+</androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        >
     <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="32dp"
+        android:background="@color/white"
+        android:textColor="#005FFF"
         android:id="@+id/cl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="ملابس"></Button>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        >
     <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="32dp"
+        android:background="@color/white"
+        android:textColor="#005FFF"
         android:id="@+id/tools"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="مفروشات و ادوات"></Button>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        >
     <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="32dp"
+        android:background="@color/white"
+        android:textColor="#005FFF"
         android:id="@+id/sar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="خدمات عامة"></Button>
+        android:text="خدمات عامة"></Button></androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        android:layout_margin="5dp"
+        android:elevation="10dp"
+        >
     <Button
+
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:textSize="32dp"
+        android:background="@color/white"
+        android:textColor="#005FFF"
         android:id="@+id/other"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="اخر"></Button>
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="000"
-        android:id="@+id/editT"
-        ></EditText>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/t"></TextView>
+        android:text="اخر"></Button></androidx.cardview.widget.CardView>
+    <ImageView
+        android:id="@+id/history"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/his" />
 </LinearLayout>

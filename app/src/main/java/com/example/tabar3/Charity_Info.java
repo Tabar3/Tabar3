@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -38,6 +39,8 @@ public class Charity_Info extends AppCompatActivity {
     ListenerRegistration ItemListListener;
     ImageView imgadd,imgPho,imgLoc,imgVi;
     String s;
+    FirebaseAuth mAuth;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,9 +52,8 @@ public class Charity_Info extends AppCompatActivity {
         imgPho=findViewById(R.id.ph);
         imgLoc=findViewById(R.id.lo);
         imgVi=findViewById(R.id.vi);
-
-
-
+        mAuth = FirebaseAuth.getInstance();
+        id =mAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
         s= intent.getStringExtra("CharitiesInfo");
         dRef = fStore.collection("Charities").document(s);
@@ -73,6 +75,8 @@ public class Charity_Info extends AppCompatActivity {
                     public void onClick(View v) {
                         gotoUrl(documentSnapshot.getString("charityLoc"));                    }
                 });
+                if(s.equals(id)){
+                    imgVi.setVisibility(View.VISIBLE);
                 imgVi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -81,7 +85,7 @@ public class Charity_Info extends AppCompatActivity {
                         startActivity(intent);
 
                     }
-                });
+                });}
             }
         });
         storageReference= FirebaseStorage.getInstance().getReference();
@@ -110,6 +114,8 @@ public class Charity_Info extends AppCompatActivity {
         mRecyclerView = findViewById(R.id.recyclerView6);
         imgadd = findViewById(R.id.addCamp);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        if(s.equals(id)){
+            imgadd.setVisibility(View.VISIBLE);
         imgadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,7 +123,7 @@ public class Charity_Info extends AppCompatActivity {
                 i.putExtra("CharId3", s);
                 startActivity(i);
             }
-        });
+        });}
     }
 
     @Override
@@ -128,7 +134,7 @@ public class Charity_Info extends AppCompatActivity {
     private void setFirebase() {
         FirebaseApp.initializeApp(this);
         fStore = FirebaseFirestore.getInstance();
-        Intent i =getIntent();
+
         Query query = fStore.collection("Charities").document(s).collection("Campaign");
         // Query query = fStore.collection("Advertisement");
         //  CollectionReference documentReference2 = fStore.collection("Book");
@@ -143,6 +149,7 @@ public class Charity_Info extends AppCompatActivity {
                     if (ItemC.getCampId() != null) {
                         Intent intent = new Intent(Charity_Info.this, Camp_Info.class);
                         intent.putExtra("Camp", ItemC.getCampId());
+                        intent.putExtra("Char", s);
                         startActivity(intent);
 
 

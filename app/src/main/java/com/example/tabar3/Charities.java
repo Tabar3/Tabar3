@@ -31,7 +31,7 @@ public class Charities extends Fragment {
     FirebaseFirestore fStore;
     ListenerRegistration ItemListListener;
     ItemAdabter itemAdapter;
-    ImageView imgpro;
+
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v= inflater.inflate(R.layout.fragment_charities, container, false);
@@ -47,14 +47,7 @@ public class Charities extends Fragment {
     private void setViews() {
         mRecyclerView = requireView().findViewById(R.id.recyclerView1);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        imgpro = requireView().findViewById(R.id.proAdv);
-        imgpro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(requireContext(), Charities_Profile.class);
-                startActivity(i);
-            }
-        });
+
     }
 
     @Override

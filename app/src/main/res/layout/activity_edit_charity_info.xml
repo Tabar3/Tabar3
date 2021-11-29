@@ -9,21 +9,23 @@
     android:layoutDirection="rtl">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         >
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/imgInfoEdit"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars"></ImageView>
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
 
         <Button
             android:id="@+id/Edit_choose_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/imgInfoEdit"
             android:text="اضافة صورة"
             /></RelativeLayout>
 
