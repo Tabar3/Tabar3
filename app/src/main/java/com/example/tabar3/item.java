@@ -5,6 +5,22 @@ import java.util.ArrayList;
 
 public class item {
    String charityId,charityName,charityLoc, charityPhone ,charityDes,charityEmail,typeOfUser;
+   String UserEmail,UserId,UserPhone,UserName,UserLoc;
+
+   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser, String UserEmail, String UserId, String UserPhone, String UserName, String UserLoc) {
+      this.charityId = charityId;
+      this.charityName = charityName;
+      this.charityLoc = charityLoc;
+      this.charityPhone = charityPhone;
+      this.charityDes = charityDes;
+      this.charityEmail = charityEmail;
+      this.typeOfUser = typeOfUser;
+      this.UserEmail = UserEmail;
+      this.UserId = UserId;
+      this.UserPhone = UserPhone;
+      this.UserName = UserName;
+      this.UserLoc = UserLoc;
+   }
 
    public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser) {
       this.charityId = charityId;
@@ -73,6 +89,46 @@ public class item {
 
    public void setCharityName(String charityName) {
       this.charityName = charityName;
+   }
+
+   public String getUserEmail() {
+      return UserEmail;
+   }
+
+   public void setUserEmail(String UserEmail) {
+      this.UserEmail = UserEmail;
+   }
+
+   public String getUserId() {
+      return UserId;
+   }
+
+   public void setUserId(String UserId) {
+      this.UserId = UserId;
+   }
+
+   public String getUserPhone() {
+      return UserPhone;
+   }
+
+   public void setUserPhone(String UserPhone) {
+      this.UserPhone = UserPhone;
+   }
+
+   public String getUserName() {
+      return UserName;
+   }
+
+   public void setUserName(String UserName) {
+      this.UserName = UserName;
+   }
+
+   public String getUserLoc() {
+      return UserLoc;
+   }
+
+   public void setUserLoc(String UserLoc) {
+      this.UserLoc = UserLoc;
    }
 }
 

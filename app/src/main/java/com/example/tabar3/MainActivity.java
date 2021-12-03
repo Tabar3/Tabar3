@@ -1,17 +1,14 @@
 package com.example.tabar3;
 
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -30,6 +27,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Fragment f ;
     ImageView a1;
+    DocumentReference dRef;
+    FirebaseAuth mAuth;
+    FirebaseFirestore fStore;
     TextView a2,a3;
     androidx.appcompat.widget.Toolbar toolbar;
     @Override
@@ -70,33 +70,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
-    FirebaseAuth mAuth;
-    DocumentReference dRef;
-    FirebaseFirestore fStore;
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        String id2 =mAuth.getCurrentUser().getUid();
-
+       // String id2 =mAuth.getCurrentUser().getUid();
         if (id == R.id.account) {
-        dRef = fStore.collection("Charities").document(id2);
-        dRef.get().addOnSuccessListener((documentSnapshot) -> {
-            if (documentSnapshot != null && documentSnapshot.exists()) {
-                Intent intent = new Intent(this, Charity_Info.class);
-                intent.putExtra("CharitiesInfo", id2);
+            dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
+            dRef.get().addOnSuccessListener((documentSnapshot) -> {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    Intent intent = new Intent(this, Charity_Info.class);
+                    intent.putExtra("CharitiesInfo", mAuth.getCurrentUser().getUid());
+                    startActivity(intent);
+                }
+                else{
+                    Intent intent = new Intent(this, Accounts.class);
+                    startActivity(intent);
+                }
+
+            });
+
+        } else if (id==R.id.login){
+            if (FirebaseAuth.getInstance().getCurrentUser()!=null){
+                Toast.makeText(this,"Sorry,You already logged in !",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }
             else{
-                Intent intent = new Intent(this, Accounts.class);
-                startActivity(intent);
-            }
-
-        });
-        } else if (id==R.id.history){
-            Intent intent = new Intent(this,History.class);
+            Intent intent = new Intent(this,Login.class);
+            startActivity(intent);}
+        }else if (id==R.id.history){
+            Intent intent = new Intent(this, UserHistory.class);
             startActivity(intent);
         }else if (id==R.id.notifications){
             Intent intent = new Intent(this,Notifications.class);

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
     @NonNull
     @NotNull
     List<Cat_Item> ItmCat;
+    List<item> Itm2;
     private Context mContext;
     private static ChategoryAdapter.ClickListener clickListener;
     FirebaseFirestore fStore;
@@ -33,11 +35,12 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
     String typeCat;
     String idC;
     public ChategoryAdapter(){}
-    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat , String typeCat,String idC) {
+
+    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat) {
         this.ItmCat = itmCat;
         fStore = FirebaseFirestore.getInstance();
-        this.typeCat = typeCat;
-        this.idC=idC;
+
+
     }
 
 
@@ -71,6 +74,33 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
         Cat_Item itm = ItmCat.get(position);
         String ItemId = itm.getCatId();
 
+
+        fStore.collection("Users").document(itm.getUserId()).get().addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot != null && documentSnapshot.exists()){}
+               // itm.setFoodName(documentSnapshot.getString("foodName"));
+
+        });
+
+            holder.tname.setText(itm.getDes());
+
+
+
+        StorageReference bookReference = storageReference.child("Categoty/"+ItemId+"/mainImage.jpg");
+        bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Glide.with(mContext).load(uri).into(holder.img);
+            }
+        });
+
+
+
+
+       /* Cat_Item itm = ItmCat.get(position);
+        String ItemId = itm.getCatId();
+        item item = Itm2.get(position);
+        String i=item.getUserId();
+        Toast.makeText(mContext,""+ItemId,Toast.LENGTH_LONG).show();
         if (ItemId != null) {
 
             StorageReference bookReference = storageReference.child("Categoty/"+ItemId+"/mainImage.jpg");
@@ -81,12 +111,13 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
                 }
             });
             if(typeCat.equals("food")){
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("food_calegory").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(i);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
+
+                    DocumentReference documentReference2 = FirebaseFirestore.getInstance().collection("Users").document(i).collection("food_calegory").document(ItemId);
+
                     holder.tname.setText(itm.getFoodDes());
-
-
                 } else {
                     holder.tname.setText("no name");
 
@@ -94,7 +125,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             });
         }
         else if(typeCat.equals("clo")){
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("clothe_calegory").document(ItemId);
+            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(i).collection("clothe_calegory").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getClotheDes());
@@ -107,7 +138,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             });
         }
         else if(typeCat.equals("tool")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("tool_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(i).collection("tool_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -122,7 +153,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             }
 
             else if(typeCat.equals("sar")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("serves_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(i).collection("serves_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -136,7 +167,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
 
             }
             else if(typeCat.equals("other")) {
-                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(idC).collection("other_calegory").document(ItemId);
+                DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(i).collection("other_calegory").document(ItemId);
                 documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                     if (documentSnapshot != null) {
                         holder.tname.setText(itm.getToolDes());
@@ -154,7 +185,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
         else {
             holder.tname.setText("nooo name");
 
-        }
+        }*/
 
 
 

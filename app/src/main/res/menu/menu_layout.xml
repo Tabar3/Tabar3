@@ -27,7 +27,10 @@
         android:id="@+id/Logout"
         android:title="تسجيل الخروج"
         android:icon="@drawable/ic_baseline_exit_to_app_24"/>
-
+    <item
+        android:id="@+id/Login"
+        android:title="تسجيل الدخول"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"/>
 
 
 </menu>
