@@ -2,27 +2,39 @@ package com.example.tabar3;
 
 public class Cat_Item {
 
-    String catId, foodName, foodDes, foodType, numHuman, region, street, building, phone;
-    String numclothe, clotheDes, clothesType;
-    String toolAge, toolDes, toolType;
+    String catId, foodName, foodType, numHuman, region, street, building, phone, UserId;
+    String numclothe, clothesType;
+    String toolAge, Des, toolType,typeCat;
+    Boolean booked;
 
-    public Cat_Item(){}
-    public Cat_Item(String catId, String foodName, String foodDes, String foodType, String numHuman, String region, String street, String building, String phone, String numclothe, String clotheDes, String clothesType, String toolAge, String toolDes, String toolType) {
+    public Cat_Item() {
+    }
+
+    public Cat_Item(String catId, String foodName, String foodType, String numHuman, String region, String street, String building, String phone, String userId, String numclothe, String clothesType, String toolAge, String des, String toolType, String typeCat, Boolean booked) {
         this.catId = catId;
         this.foodName = foodName;
-        this.foodDes = foodDes;
         this.foodType = foodType;
         this.numHuman = numHuman;
         this.region = region;
         this.street = street;
         this.building = building;
         this.phone = phone;
+        UserId = userId;
         this.numclothe = numclothe;
-        this.clotheDes = clotheDes;
         this.clothesType = clothesType;
         this.toolAge = toolAge;
-        this.toolDes = toolDes;
+        Des = des;
         this.toolType = toolType;
+        this.typeCat = typeCat;
+        this.booked = booked;
+    }
+
+    public String getTypeCat() {
+        return typeCat;
+    }
+
+    public void setTypeCat(String typeCat) {
+        this.typeCat = typeCat;
     }
 
     public String getCatId() {
@@ -39,14 +51,6 @@ public class Cat_Item {
 
     public void setFoodName(String foodName) {
         this.foodName = foodName;
-    }
-
-    public String getFoodDes() {
-        return foodDes;
-    }
-
-    public void setFoodDes(String foodDes) {
-        this.foodDes = foodDes;
     }
 
     public String getFoodType() {
@@ -97,20 +101,20 @@ public class Cat_Item {
         this.phone = phone;
     }
 
+    public String getUserId() {
+        return UserId;
+    }
+
+    public void setUserId(String userId) {
+        UserId = userId;
+    }
+
     public String getNumclothe() {
         return numclothe;
     }
 
     public void setNumclothe(String numclothe) {
         this.numclothe = numclothe;
-    }
-
-    public String getClotheDes() {
-        return clotheDes;
-    }
-
-    public void setClotheDes(String clotheDes) {
-        this.clotheDes = clotheDes;
     }
 
     public String getClothesType() {
@@ -129,12 +133,12 @@ public class Cat_Item {
         this.toolAge = toolAge;
     }
 
-    public String getToolDes() {
-        return toolDes;
+    public String getDes() {
+        return Des;
     }
 
-    public void setToolDes(String toolDes) {
-        this.toolDes = toolDes;
+    public void setDes(String des) {
+        Des = des;
     }
 
     public String getToolType() {
@@ -143,5 +147,13 @@ public class Cat_Item {
 
     public void setToolType(String toolType) {
         this.toolType = toolType;
+    }
+
+    public Boolean getBooked() {
+        return booked;
+    }
+
+    public void setBooked(Boolean booked) {
+        this.booked = booked;
     }
 }

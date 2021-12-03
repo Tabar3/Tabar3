@@ -48,14 +48,14 @@ public class Categories extends AppCompatActivity {
     ImageView img,detaImg;
     private static final int PICK_IMAGE_REQUEST = 1;
 
-
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         Var();
-        String id =mAuth.getCurrentUser().getUid();
+         id =mAuth.getCurrentUser().getUid();
 
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +173,7 @@ public void Var(){
     storage = FirebaseStorage.getInstance();
     storageReference = storage.getReference();
     mAuth = FirebaseAuth.getInstance();
+
 }
 
 public void food_cat_DB(){
@@ -185,23 +186,24 @@ public void food_cat_DB(){
     if(c3.isChecked())
         radio1="اخر";
 
-    categotyId = fStore.collection("Users").document(
-            "dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document().getId();
+    categotyId = fStore.collection("Users").document(id).collection("category").document().getId();
     uploadImg(mImageUri);
     Map<String,Object> itemsFood = new HashMap<>();
     itemsFood.put("catId", categotyId);
     itemsFood.put("foodName", fe2.getText().toString());
-    itemsFood.put("foodDes", desE.getText().toString());
+    itemsFood.put("Des", desE.getText().toString());
     itemsFood.put("foodType", radio1);
     itemsFood.put("numHuman", fe4.getText().toString());
     itemsFood.put("region", loc1.getText().toString());
     itemsFood.put("street", loc2.getText().toString());
     itemsFood.put("building", loc3.getText().toString());
     itemsFood.put("phone", loc3.getText().toString());
-
+    itemsFood.put("UserId", id);
+    itemsFood.put("booked", false);
+    itemsFood.put("typeCat","food_category");
 
     DocumentReference documentReference = fStore.collection("Users")
-     .document("dQ8ZL6YfV8qAOnv6ILYa").collection("food_calegory").document(categotyId);
+     .document(id).collection("category").document(categotyId);
     documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
         @Override
         public void onSuccess(Void unused) {
@@ -230,21 +232,23 @@ public void food_cat_DB(){
             radio1="صيفي و شتوي";
 
         categotyId = fStore.collection("Users").document(
-                "dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory").document().getId();
+                id).collection("category").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("catId", categotyId);
         itemsFood.put("numclothe", cloe2.getText().toString());
-        itemsFood.put("clotheDes", desE.getText().toString());
+        itemsFood.put("Des", desE.getText().toString());
         itemsFood.put("clothesType", radio1);
         itemsFood.put("region", loc1.getText().toString());
         itemsFood.put("street", loc2.getText().toString());
         itemsFood.put("building", loc3.getText().toString());
         itemsFood.put("phone", loc3.getText().toString());
-
+        itemsFood.put("UserId", id);
+        itemsFood.put("booked", false);
+        itemsFood.put("typeCat","clothe_category");
 
         DocumentReference documentReference = fStore.collection("Users")
-                .document("dQ8ZL6YfV8qAOnv6ILYa").collection("clothe_calegory").document(categotyId);
+                .document(id).collection("category").document(categotyId);
         documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -264,22 +268,24 @@ public void food_cat_DB(){
     public void tool_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
 
-        categotyId = fStore.collection("Users").document(
-                "dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory").document().getId();
+        categotyId = fStore.collection("Users").document(id).collection("category").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("catId", categotyId);
         itemsFood.put("toolAge", te4.getText().toString());
-        itemsFood.put("toolDes", desE.getText().toString());
+        itemsFood.put("Des", desE.getText().toString());
         itemsFood.put("toolType", te2.getText().toString());
         itemsFood.put("region", loc1.getText().toString());
         itemsFood.put("street", loc2.getText().toString());
         itemsFood.put("building", loc3.getText().toString());
         itemsFood.put("phone", loc3.getText().toString());
+        itemsFood.put("UserId", id);
+        itemsFood.put("booked", false);
+        itemsFood.put("typeCat","tool_category");
 
 
         DocumentReference documentReference = fStore.collection("Users")
-                .document("dQ8ZL6YfV8qAOnv6ILYa").collection("tool_calegory").document(categotyId);
+                .document("id").collection("category").document(categotyId);
         documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -300,21 +306,23 @@ public void food_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
 
         categotyId = fStore.collection("Users").document(
-                "dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory").document().getId();
+                id).collection("category").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("catId", categotyId);
         itemsFood.put("serName", se2.getText().toString());
-        itemsFood.put("serDes", desE.getText().toString());
+        itemsFood.put("Des", desE.getText().toString());
         itemsFood.put("serType", se4.getText().toString());
         itemsFood.put("region", loc1.getText().toString());
         itemsFood.put("street", loc2.getText().toString());
         itemsFood.put("building", loc3.getText().toString());
         itemsFood.put("phone", loc3.getText().toString());
-
+        itemsFood.put("UserId", id);
+        itemsFood.put("booked", false);
+        itemsFood.put("typeCat","serves_category");
 
         DocumentReference documentReference = fStore.collection("Users")
-                .document("dQ8ZL6YfV8qAOnv6ILYa").collection("serves_calegory").document(categotyId);
+                .document(id).collection("category").document(categotyId);
         documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
@@ -336,21 +344,23 @@ public void food_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
 
         categotyId = fStore.collection("Users").document(
-                "dQ8ZL6YfV8qAOnv6ILYa").collection("other_calegory").document().getId();
+                id).collection("category").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("otherId", categotyId);
         itemsFood.put("otherName", se2.getText().toString());
-        itemsFood.put("otherDes", desE.getText().toString());
+        itemsFood.put("Des", desE.getText().toString());
         itemsFood.put("otherType", se4.getText().toString());
         itemsFood.put("region", loc1.getText().toString());
         itemsFood.put("street", loc2.getText().toString());
         itemsFood.put("building", loc3.getText().toString());
         itemsFood.put("phone", loc3.getText().toString());
-
+        itemsFood.put("UserId", id);
+        itemsFood.put("booked", false);
+        itemsFood.put("typeCat","other_category");
 
         DocumentReference documentReference = fStore.collection("Users")
-                .document("dQ8ZL6YfV8qAOnv6ILYa").collection("other_calegory").document(categotyId);
+                .document(id).collection("category").document(categotyId);
         documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
