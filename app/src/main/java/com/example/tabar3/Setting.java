@@ -29,8 +29,5 @@ public class Setting extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void sec(View view) {
-        Intent intent = new Intent(this,SettSecurity.class);
-        startActivity(intent);
-    }
+
 }

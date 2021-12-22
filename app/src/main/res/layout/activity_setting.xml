@@ -27,13 +27,7 @@
         android:text="privacy an policy"
         android:onClick="pri"
         />
-    <Button
-        android:id="@+id/sec"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:text="security"
-        android:onClick="sec"
-        />
+
 
 
 </LinearLayout>
