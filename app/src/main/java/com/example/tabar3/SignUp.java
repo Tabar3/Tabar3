@@ -91,7 +91,7 @@ public class SignUp extends AppCompatActivity {
         });
     }
     public void AddToDB() {
-        Toast.makeText(SignUp.this, "khaaaaaaaaaaaara", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SignUp.this, "yes", Toast.LENGTH_SHORT).show();
         fStore = FirebaseFirestore.getInstance();
         if (ChC.isChecked()){
         CharId = FirebaseAuth.getInstance().getUid();
