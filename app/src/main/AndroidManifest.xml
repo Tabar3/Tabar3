@@ -20,9 +20,6 @@
         <activity android:name=".CharBooked" />
         <activity android:name=".Cat_Info" />
         <activity
-            android:name=".SettSecurity"
-            android:exported="false" />
-        <activity
             android:name=".SettAccount"
             android:exported="false" />
         <activity

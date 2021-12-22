@@ -83,6 +83,20 @@
         android:layout_gravity="center"
         android:visibility="gone"
         />
+    <TextView
+        android:id="@+id/userLoc"
+        android:hint="Location"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
+    <TextView
+        android:id="@+id/userPhone"
+        android:hint="Phone Number"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        />
 
 
     </LinearLayout>

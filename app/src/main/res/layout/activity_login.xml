@@ -46,6 +46,19 @@
 
         />
     <Button
+        android:id="@+id/ResetB"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:text="Forget your password? Change HERE"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/teal_200"
+        android:onClick="ResetPass"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
+    <Button
         android:id="@+id/LoginB"
         android:layout_width="200dp"
         android:layout_height="60dp"
