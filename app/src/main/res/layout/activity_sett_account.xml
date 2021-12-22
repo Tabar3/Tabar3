@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".SettAccount">
-
+    tools:context=".SettAccount"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,10 +17,10 @@
         android:textSize="30dp"
         android:id="@+id/name"/>
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="30dp"
-    android:text="تغير الموقع"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text="تغير الموقع"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -29,10 +28,10 @@
         android:textSize="30dp"
         android:id="@+id/location"/>
     <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:textSize="30dp"
-    android:text=" تغير رقم الهاتف"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:text=" تغير رقم الهاتف"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -44,7 +43,26 @@
         android:layout_height="wrap_content"
         android:text="حفظ "
         android:textSize="30dp"
-
+        android:onClick="SaveCs"
         android:id="@+id/login"
+        tools:ignore="OnClick" />
+    <EditText
+        android:id="@+id/Newmail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="  البريد الالكتروني الجديد"/>
+    <EditText
+        android:id="@+id/PasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="تأكيد كلمة المرور"
         />
+    <Button
+        android:id="@+id/ChEmail"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="حفظ البريد الالكتروني الجديد"
+        android:onClick="changE"
+        />
+
 </LinearLayout>

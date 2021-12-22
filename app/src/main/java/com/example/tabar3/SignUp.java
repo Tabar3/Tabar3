@@ -1,9 +1,11 @@
 package com.example.tabar3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -89,9 +91,8 @@ public class SignUp extends AppCompatActivity {
         });
     }
     public void AddToDB() {
-
+        Toast.makeText(SignUp.this, "yes", Toast.LENGTH_SHORT).show();
         fStore = FirebaseFirestore.getInstance();
-
         if (ChC.isChecked()){
         CharId = FirebaseAuth.getInstance().getUid();
         Map<String, Object> CharUsers = new HashMap<>();
@@ -129,23 +130,20 @@ public class SignUp extends AppCompatActivity {
             DonUsers.put("UserName", UserName.getText().toString());
             DonUsers.put("UserLoc",Location.getText().toString());
             DonUsers.put("typeOfUser","User");
-
-            DocumentReference documentReference2 = fStore.collection("Users").document(UsersId);
+            DocumentReference documentReference2=fStore.collection("Users").document(UsersId);
             documentReference2.set(DonUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp.this, "yaaaaaa rab", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
-                    Toast.makeText(SignUp.this, "toz 3lekom", Toast.LENGTH_LONG).show();
-                    Toast.makeText(SignUp .this, UsersId, Toast.LENGTH_LONG).show();
-                    Log.d("myTag", e.getMessage());
-
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(SignUp.this, "Noooooooooooooooo", Toast.LENGTH_SHORT).show();
                 }
             });
-            uploadImgUser(mImageUri);
+            //Toast.makeText(SignUp.this, "hiiiiiiiiiiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
+            //uploadImgUser(mImageUri);
         }
 
     }

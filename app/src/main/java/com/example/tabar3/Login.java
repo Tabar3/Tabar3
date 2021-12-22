@@ -1,16 +1,21 @@
     package com.example.tabar3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +26,7 @@ import com.google.firebase.auth.FirebaseUser;
         FirebaseAuth mAuth;
         EditText UserL,PassL;
         Button LoginB;
+        TextView forgetTextLink;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -29,9 +35,12 @@ import com.google.firebase.auth.FirebaseUser;
             UserL=findViewById(R.id.userNameL);
             PassL=findViewById(R.id.PasswordL);
             LoginB=findViewById(R.id.LoginB);
+            forgetTextLink=findViewById(R.id.ResetB);
+
             // [START initialize_auth]
             // Initialize Firebase Auth
             mAuth = FirebaseAuth.getInstance();
+
             // [END initialize_auth]
             if (FirebaseAuth.getInstance().getCurrentUser()!=null){
             Intent intent = new Intent(Login.this, MainActivity.class);
@@ -134,4 +143,36 @@ import com.google.firebase.auth.FirebaseUser;
                 Intent intent = new Intent(this, SignUp.class);
                 startActivity(intent);}
             }
+
+        public void ResetPass(View view) {
+            EditText resetMail= new EditText(view.getContext());
+            AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(view.getContext());
+            PasswordResetD.setTitle("Reset Password ?");
+            PasswordResetD.setMessage("Enter your email to recieve reset link");
+            PasswordResetD.setView(resetMail);
+            PasswordResetD.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                String mail=resetMail.getText().toString();
+                mAuth.sendPasswordResetEmail(mail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                   Toast.makeText(Login.this,"Reset link sent to your email",Toast.LENGTH_LONG).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Login.this,"ERROR!! Reset link is not sent"+e.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
+                }
+            });
+            PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            PasswordResetD.create().show();
         }
+    }
