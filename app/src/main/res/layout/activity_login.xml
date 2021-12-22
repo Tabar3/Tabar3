@@ -6,26 +6,33 @@
     android:layout_height="match_parent"
     tools:context=".Login"
     android:orientation="vertical"
-    android:background="@drawable/rounded_rectangle"
+    android:background="#0060FF"
 
     >
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="100dp"
         android:text="Welcome"
-        android:textColor="@color/white"
+        android:textColor="#FFFFFF"
         android:gravity="center"
         android:textSize="60dp"
 
         android:fontFamily="cursive"
         />
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/bac3"
+        ></ImageView>
     <EditText
         android:id="@+id/userNameL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="UserName"
-        android:inputType="textAutoComplete"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:inputType="textAutoComplete"
         android:layout_marginTop="20dp"
         />
     <EditText
@@ -33,31 +40,34 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Passwordd"
-        android:textColorHint="@color/white"
         android:inputType="textPassword"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+
         />
     <Button
         android:id="@+id/LoginB"
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@drawable/rounded_button"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="@drawable/a2"
         android:text="Login"
         android:layout_marginTop="20dp"
-        android:textSize="50dp"
+        android:textSize="35dp"
         android:onClick="Login"
         android:textStyle="bold"
-        android:textColor="@color/white"
+        android:textColor="#0060FF"
         android:fontFamily="cursive"
+        android:layout_gravity="center"
         />
     <Button
         android:id="@+id/signUpB"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:gravity="start"
-        android:layout_marginTop="10dp"
-        android:text="Not have account yet! Sign up NOW"
+        android:layout_marginTop="15dp"
+        android:text="Not have account yet! SIGN UP NOW"
         android:textSize="15dp"
-        android:textColor="@color/black"
+        android:textColor="#0060FF"
         android:textColorHint="@color/teal_200"
         android:onClick="MoveToS"
         style="@style/Widget.MaterialComponents.Button.TextButton"

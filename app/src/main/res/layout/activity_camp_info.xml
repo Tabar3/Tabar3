@@ -25,6 +25,7 @@
             android:layout_alignLeft="@id/vi2"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="4dp"
+            android:visibility="gone"
             ></ImageView>
         <ImageView
             android:id="@+id/vi2"
@@ -32,7 +33,8 @@
             android:layout_height="30dp"
             android:layout_alignLeft="@id/InfoCampImg"
             android:layout_margin="4dp"
-            android:src="@drawable/edit"></ImageView>
+            android:src="@drawable/edit"
+            android:visibility="gone"></ImageView>
     </RelativeLayout>
 
     <TextView

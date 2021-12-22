@@ -58,7 +58,7 @@ public class Charities extends Fragment {
     private void setFirebase() {
         FirebaseApp.initializeApp(requireActivity());
         fStore = FirebaseFirestore.getInstance();
-        Query query = fStore.collection("Charities");
+        Query query = fStore.collection("Charities").whereEqualTo("accept",true);
         //  CollectionReference documentReference2 = fStore.collection("Book");
         ItemListListener = query.addSnapshotListener((documentSnapshots, error) -> {
             Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");

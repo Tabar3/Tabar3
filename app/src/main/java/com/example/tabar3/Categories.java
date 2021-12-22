@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class Categories extends AppCompatActivity {
     TextView f1 , f3 , clo1 , t1, t3, s1, s3;
-    EditText fe2,fe4,cloe2,desE,loc1,loc2,loc3,phone,te2,te4,se2,se4;
+    EditText fe2,fe4,cloe2,desE,te2,te4,se2,se4;
     RadioButton c1,c2,c3,cc,cc1,cc2;
     RadioGroup r1,r2;
     DocumentReference dRef;
@@ -153,10 +153,6 @@ public void Var(){
     cc=findViewById(R.id.cc);
     cc1=findViewById(R.id.cc1);
     cc2=findViewById(R.id.cc2);
-    loc1=findViewById(R.id.loca1);
-    loc2=findViewById(R.id.loca2);
-    loc3=findViewById(R.id.loca3);
-    phone=findViewById(R.id.phone);
     t1=findViewById(R.id.t1);
     t3=findViewById(R.id.t3);
     te2=findViewById(R.id.te2);
@@ -190,16 +186,14 @@ public void food_cat_DB(){
     uploadImg(mImageUri);
     Map<String,Object> itemsFood = new HashMap<>();
     itemsFood.put("catId", categotyId);
-    itemsFood.put("foodName", fe2.getText().toString());
+    itemsFood.put("name", fe2.getText().toString());
     itemsFood.put("Des", desE.getText().toString());
-    itemsFood.put("foodType", radio1);
+    itemsFood.put("type", radio1);
     itemsFood.put("numHuman", fe4.getText().toString());
-    itemsFood.put("region", loc1.getText().toString());
-    itemsFood.put("street", loc2.getText().toString());
-    itemsFood.put("building", loc3.getText().toString());
-    itemsFood.put("phone", loc3.getText().toString());
     itemsFood.put("UserId", id);
     itemsFood.put("booked", false);
+    itemsFood.put("bookedName", "Non");
+    itemsFood.put("bookedId", "");
     itemsFood.put("typeCat","food_category");
 
     DocumentReference documentReference = fStore.collection("Users")
@@ -238,13 +232,11 @@ public void food_cat_DB(){
         itemsFood.put("catId", categotyId);
         itemsFood.put("numclothe", cloe2.getText().toString());
         itemsFood.put("Des", desE.getText().toString());
-        itemsFood.put("clothesType", radio1);
-        itemsFood.put("region", loc1.getText().toString());
-        itemsFood.put("street", loc2.getText().toString());
-        itemsFood.put("building", loc3.getText().toString());
-        itemsFood.put("phone", loc3.getText().toString());
+        itemsFood.put("type", radio1);
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
+        itemsFood.put("bookedName", "Non");
+        itemsFood.put("bookedId", "");
         itemsFood.put("typeCat","clothe_category");
 
         DocumentReference documentReference = fStore.collection("Users")
@@ -274,13 +266,11 @@ public void food_cat_DB(){
         itemsFood.put("catId", categotyId);
         itemsFood.put("toolAge", te4.getText().toString());
         itemsFood.put("Des", desE.getText().toString());
-        itemsFood.put("toolType", te2.getText().toString());
-        itemsFood.put("region", loc1.getText().toString());
-        itemsFood.put("street", loc2.getText().toString());
-        itemsFood.put("building", loc3.getText().toString());
-        itemsFood.put("phone", loc3.getText().toString());
+        itemsFood.put("type", te2.getText().toString());
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
+        itemsFood.put("bookedName", "Non");
+        itemsFood.put("bookedId", "");
         itemsFood.put("typeCat","tool_category");
 
 
@@ -310,15 +300,13 @@ public void food_cat_DB(){
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("catId", categotyId);
-        itemsFood.put("serName", se2.getText().toString());
+        itemsFood.put("name", se2.getText().toString());
         itemsFood.put("Des", desE.getText().toString());
-        itemsFood.put("serType", se4.getText().toString());
-        itemsFood.put("region", loc1.getText().toString());
-        itemsFood.put("street", loc2.getText().toString());
-        itemsFood.put("building", loc3.getText().toString());
-        itemsFood.put("phone", loc3.getText().toString());
+        itemsFood.put("type", se4.getText().toString());
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
+        itemsFood.put("bookedName", "Non");
+        itemsFood.put("bookedId", "");
         itemsFood.put("typeCat","serves_category");
 
         DocumentReference documentReference = fStore.collection("Users")
@@ -347,16 +335,14 @@ public void food_cat_DB(){
                 id).collection("category").document().getId();
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
-        itemsFood.put("otherId", categotyId);
-        itemsFood.put("otherName", se2.getText().toString());
+        itemsFood.put("catId", categotyId);
+        itemsFood.put("name", se2.getText().toString());
         itemsFood.put("Des", desE.getText().toString());
-        itemsFood.put("otherType", se4.getText().toString());
-        itemsFood.put("region", loc1.getText().toString());
-        itemsFood.put("street", loc2.getText().toString());
-        itemsFood.put("building", loc3.getText().toString());
-        itemsFood.put("phone", loc3.getText().toString());
+        itemsFood.put("type", se4.getText().toString());
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
+        itemsFood.put("bookedName", "Non");
+        itemsFood.put("bookedId", "");
         itemsFood.put("typeCat","other_category");
 
         DocumentReference documentReference = fStore.collection("Users")
@@ -385,10 +371,6 @@ public void food_cat (){
     fe4.setVisibility(View.VISIBLE);
     desE.setVisibility(View.VISIBLE);
     r1.setVisibility(View.VISIBLE);
-    loc1.setVisibility(View.VISIBLE);
-    loc2.setVisibility(View.VISIBLE);
-    loc3.setVisibility(View.VISIBLE);
-    phone.setVisibility(View.VISIBLE);
 
 }
     public void clo_cat (){
@@ -396,10 +378,6 @@ public void food_cat (){
         cloe2.setVisibility(View.VISIBLE);
         desE.setVisibility(View.VISIBLE);
         r2.setVisibility(View.VISIBLE);
-        loc1.setVisibility(View.VISIBLE);
-        loc2.setVisibility(View.VISIBLE);
-        loc3.setVisibility(View.VISIBLE);
-        phone.setVisibility(View.VISIBLE);
 
     }
     public void tools_cat (){
@@ -412,10 +390,6 @@ public void food_cat (){
         clo1.setVisibility(View.VISIBLE);
         cloe2.setVisibility(View.VISIBLE);
         desE.setVisibility(View.VISIBLE);
-        loc1.setVisibility(View.VISIBLE);
-        loc2.setVisibility(View.VISIBLE);
-        loc3.setVisibility(View.VISIBLE);
-        phone.setVisibility(View.VISIBLE);
 
     }
 
@@ -425,10 +399,6 @@ public void food_cat (){
         se2.setVisibility(View.VISIBLE);
         se4.setVisibility(View.VISIBLE);
         desE.setVisibility(View.VISIBLE);
-        loc1.setVisibility(View.VISIBLE);
-        loc2.setVisibility(View.VISIBLE);
-        loc3.setVisibility(View.VISIBLE);
-        phone.setVisibility(View.VISIBLE);
 
     }
     private void uploadImg(Uri uri) {

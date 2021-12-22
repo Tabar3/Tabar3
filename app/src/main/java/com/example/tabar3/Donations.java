@@ -60,21 +60,12 @@ public class Donations extends Fragment {
             @Override
             public void onClick(View v) {
 
-                dRef = fStore.collection("Users").document(id);
-                dRef.get().addOnSuccessListener((documentSnapshot) -> {
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
                         Intent i1;
                         i1 = new Intent(getActivity(),Categories.class);
                         i1.putExtra("category","food");
                         startActivity(i1);
 
-                    }
-                    else
-                    { Intent i1;
-                        i1 = new Intent(getActivity(),Categories_For_Charitie.class);
-                        i1.putExtra("category","food");
-                        startActivity(i1);}
-                });
+
 
         }
     });
@@ -83,45 +74,21 @@ public class Donations extends Fragment {
             @Override
             public void onClick(View v) {
 
-                dRef = fStore.collection("Users").document(id);
-                dRef.get().addOnSuccessListener((documentSnapshot) -> {
 
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
                         Intent i1;
                         i1 = new Intent(getActivity(),Categories.class);
                         i1.putExtra("category","clo");
                         startActivity(i1);
-
-                    }
-                    else
-                    { Intent i1;
-                        i1 = new Intent(getActivity(),Categories_For_Charitie.class);
-                        i1.putExtra("category","clo");
-                        startActivity(i1);}
-                });
-
             }
         });
         btnT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                dRef = fStore.collection("Users").document(id);
-                dRef.get().addOnSuccessListener((documentSnapshot) -> {
-
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                        Intent i1;
+                         Intent i1;
                         i1 = new Intent(getActivity(),Categories.class);
                         i1.putExtra("category","tool");
                         startActivity(i1);
 
-                    }
-                    else
-                    { Intent i1;
-                        i1 = new Intent(getActivity(),Categories_For_Charitie.class);
-                        i1.putExtra("category","tool");
-                        startActivity(i1);}
-                });
 
             }
         });
@@ -129,23 +96,11 @@ public class Donations extends Fragment {
         btnS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                dRef = fStore.collection("Users").document(id);
-                dRef.get().addOnSuccessListener((documentSnapshot) -> {
-
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
-                        Intent i1;
+                         Intent i1;
                         i1 = new Intent(getActivity(),Categories.class);
                         i1.putExtra("category","sar");
                         startActivity(i1);
 
-                    }
-                    else
-                    { Intent i1;
-                        i1 = new Intent(getActivity(),Categories_For_Charitie.class);
-                        i1.putExtra("category","sar");
-                        startActivity(i1);}
-                });
 
             }
 
@@ -153,22 +108,11 @@ public class Donations extends Fragment {
         btnO.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dRef = fStore.collection("Users").document(id);
-                dRef.get().addOnSuccessListener((documentSnapshot) -> {
-
-                    if (documentSnapshot != null && documentSnapshot.exists()) {
                         Intent i1;
                         i1 = new Intent(getActivity(),Categories.class);
                         i1.putExtra("category","other");
                         startActivity(i1);
 
-                    }
-                    else
-                    { Intent i1;
-                        i1 = new Intent(getActivity(),Categories_For_Charitie.class);
-                        i1.putExtra("category","other");
-                        startActivity(i1);}
-                });
 
             }
         });

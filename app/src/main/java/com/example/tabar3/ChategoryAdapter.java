@@ -33,13 +33,13 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
     FirebaseFirestore fStore;
     StorageReference storageReference;
     String typeCat;
-    String idC;
+    String s;
     public ChategoryAdapter(){}
 
-    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat) {
+    public ChategoryAdapter(@NonNull List<Cat_Item> itmCat,String s) {
         this.ItmCat = itmCat;
         fStore = FirebaseFirestore.getInstance();
-
+        this.s=s;
 
     }
 
@@ -74,13 +74,20 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
         Cat_Item itm = ItmCat.get(position);
         String ItemId = itm.getCatId();
 
-
+        if(s.equals("U")){
         fStore.collection("Users").document(itm.getUserId()).get().addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot != null && documentSnapshot.exists()){}
                // itm.setFoodName(documentSnapshot.getString("foodName"));
 
-        });
+        });}
+        if(s.equals("C")) {
+            fStore.collection("Charities").document(itm.getUserId()).get().addOnSuccessListener(documentSnapshot -> {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                }
+                // itm.setFoodName(documentSnapshot.getString("foodName"));
 
+            });
+        }
             holder.tname.setText(itm.getDes());
 
 

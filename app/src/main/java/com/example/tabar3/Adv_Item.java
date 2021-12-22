@@ -5,44 +5,46 @@ import java.util.ArrayList;
 
 public class Adv_Item {
 
-   String AdvId;
-   String AdvDes;
+   String advId, charId;
+   String advDes;
    ArrayList<Integer> typeOfAdv;
-   String AdvNum,AdvName;
-
-   public Adv_Item(String AdvId, String AdvDes, ArrayList<Integer> typeOfAdv, String AdvNum, String AdvName) {
-      this.AdvId = AdvId;
-      this.AdvDes = AdvDes;
-      this.typeOfAdv = typeOfAdv;
-      this.AdvNum = AdvNum;
-      this.AdvName = AdvName;
-   }
+   String advNum, advName;
 
    public Adv_Item() {
+
    }
 
-   public String getAdvName() {
-      return this.AdvName;
-   }
-
-   public void setAdvName(String AdvName) {
-      this.AdvName = AdvName;
+   public Adv_Item(String advId, String charId, String advDes, ArrayList<Integer> typeOfAdv, String advNum, String advName) {
+      this.advId = advId;
+      this.charId = charId;
+      this.advDes = advDes;
+      this.typeOfAdv = typeOfAdv;
+      this.advNum = advNum;
+      this.advName = advName;
    }
 
    public String getAdvId() {
-      return AdvId;
+      return advId;
    }
 
-   public void setAdvId(String AdvId) {
-      this.AdvId = AdvId;
+   public void setAdvId(String advId) {
+      this.advId = advId;
+   }
+
+   public String getCharId() {
+      return charId;
+   }
+
+   public void setCharId(String charId) {
+      this.charId = charId;
    }
 
    public String getAdvDes() {
-      return AdvDes;
+      return advDes;
    }
 
-   public void setAdvDes(String AdvDes) {
-      this.AdvDes = AdvDes;
+   public void setAdvDes(String advDes) {
+      this.advDes = advDes;
    }
 
    public ArrayList<Integer> getTypeOfAdv() {
@@ -54,10 +56,18 @@ public class Adv_Item {
    }
 
    public String getAdvNum() {
-      return AdvNum;
+      return advNum;
    }
 
-   public void setAdvNum(String AdvNum) {
-      this.AdvNum = AdvNum;
+   public void setAdvNum(String advNum) {
+      this.advNum = advNum;
+   }
+
+   public String getAdvName() {
+      return advName;
+   }
+
+   public void setAdvName(String advName) {
+      this.advName = advName;
    }
 }

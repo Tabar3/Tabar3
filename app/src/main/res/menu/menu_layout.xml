@@ -7,7 +7,12 @@
 
     <item
         android:id="@+id/history"
-        android:title="نشوراتك"
+        android:title="منشوراتك"
+        android:icon="@drawable/ic_baseline_history_24"
+        />
+    <item
+        android:id="@+id/booked"
+        android:title="حجزاتك"
         android:icon="@drawable/ic_baseline_history_24"
         />
     <item

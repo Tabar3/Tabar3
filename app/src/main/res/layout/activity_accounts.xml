@@ -7,25 +7,82 @@
     tools:context=".Accounts"
     android:orientation="vertical"
     >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        />
+    android:layoutDirection="rtl"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/InfoCharImg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
+
+        <ImageView
+            android:id="@+id/vi"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignLeft="@id/InfoCharImg"
+            android:layout_margin="4dp"
+            android:src="@drawable/edit"
+            android:visibility="gone"
+            ></ImageView>
+    </RelativeLayout>
     <TextView
-        android:id="@+id/userN"
-        android:hint="User name"
-        android:gravity="center"
+        android:id="@+id/InfoChartxt"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="75dp"
-        />
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="profile"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView>
     <TextView
-        android:id="@+id/userInfo"
-        android:hint="User info"
-        android:gravity="center"
+        android:id="@+id/InfoCharGoal"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="Goal"
+        android:textDirection="rtl"
+        android:layout_margin="10dp"></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="20dp"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/phone"
+            android:id="@+id/ph"></ImageView>
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/visa"
+            android:id="@+id/vii"></ImageView>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location"
+            android:id="@+id/lo"></ImageView>
+    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="قبول المستخدم"
+        android:id="@+id/UserAcc"
+        android:background="@drawable/a2"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="3dp"
+        android:textSize="16dp"
+        android:textColor="#0060FF"
+        android:layout_gravity="center"
+        android:visibility="gone"
         />
 
 
-</LinearLayout>
+    </LinearLayout>

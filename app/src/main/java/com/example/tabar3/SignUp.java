@@ -101,7 +101,8 @@ public class SignUp extends AppCompatActivity {
         CharUsers.put("charityName", UserName.getText().toString());
         CharUsers.put("charityLoc",Location.getText().toString());
         CharUsers.put("charityDes",CharId);
-            CharUsers.put("typeOfUser","Char");
+        CharUsers.put("typeOfUser","Char");
+        CharUsers.put("accept",false);
 
         DocumentReference documentReference = fStore.collection("Charities").document(CharId);
         documentReference.set(CharUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -129,6 +130,7 @@ public class SignUp extends AppCompatActivity {
             DonUsers.put("UserName", UserName.getText().toString());
             DonUsers.put("UserLoc",Location.getText().toString());
             DonUsers.put("typeOfUser","User");
+            DonUsers.put("accept",false);
 
             DocumentReference documentReference2 = fStore.collection("Users").document(UsersId);
             documentReference2.set(DonUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -262,7 +264,7 @@ public class SignUp extends AppCompatActivity {
         pd.show();
 
         //final String randomKey = UUID.randomUUID().toString();
-        StorageReference riversRef = storageReference.child("User/" + CharId + "/mainImage.jpg");
+        StorageReference riversRef = storageReference.child("User/" + UsersId + "/mainImage.jpg");
         riversRef.putFile(mImageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {

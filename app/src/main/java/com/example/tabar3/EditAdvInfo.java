@@ -40,7 +40,7 @@ public class EditAdvInfo extends AppCompatActivity {
     Button button, btnImg;
     public Uri mImageUri;
     ImageView img1;
-
+    int x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +55,14 @@ public class EditAdvInfo extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         Intent intent = getIntent();
+        x=0;
         s = intent.getStringExtra("EditAdvInfo");
 
         dRef = fStore.collection("Advertisement").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
-                n.setText(documentSnapshot.getString("AdvName"));
-                d.setText(documentSnapshot.getString("AdvDes"));
+                n.setText(documentSnapshot.getString("advName"));
+                d.setText(documentSnapshot.getString("advDes"));
 
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -75,6 +76,7 @@ public class EditAdvInfo extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         openFileChooser();
+                        x=1;
                     }
                 });
 
@@ -116,16 +118,9 @@ public class EditAdvInfo extends AppCompatActivity {
     public void AddToDB() {
         fStore = FirebaseFirestore.getInstance();
 
-        Map<String, Object> itemsAdv = new HashMap<>();
-        itemsAdv.put("AdvId", s);
-        itemsAdv.put("AdvName", n.getText().toString());
-        itemsAdv.put("AdvDes", d.getText().toString());
-        itemsAdv.put("AdvNum", num.getText().toString());
-
-
-
         DocumentReference documentReference = fStore.collection("Advertisement").document(s);
-        documentReference.set(itemsAdv).addOnSuccessListener(new OnSuccessListener<Void>() {
+        documentReference.update("advId",s,"advDes", d.getText().toString()
+                ,"advName", n.getText().toString(),"advNum", num.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(EditAdvInfo.this, "mabrooooooook", Toast.LENGTH_LONG).show();
@@ -140,7 +135,9 @@ public class EditAdvInfo extends AppCompatActivity {
             }
         });
 
-        uploadImg(mImageUri);
+        if(x==1){
+            uploadImg(mImageUri); }
+
     }
 
     private void uploadImg(Uri uri) {

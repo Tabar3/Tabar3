@@ -6,8 +6,9 @@ import java.util.ArrayList;
 public class item {
    String charityId,charityName,charityLoc, charityPhone ,charityDes,charityEmail,typeOfUser;
    String UserEmail,UserId,UserPhone,UserName,UserLoc;
+   Boolean accept;
 
-   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser, String UserEmail, String UserId, String UserPhone, String UserName, String UserLoc) {
+   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser, String UserEmail, String UserId, String UserPhone, String UserName, String UserLoc , Boolean accept) {
       this.charityId = charityId;
       this.charityName = charityName;
       this.charityLoc = charityLoc;
@@ -20,6 +21,15 @@ public class item {
       this.UserPhone = UserPhone;
       this.UserName = UserName;
       this.UserLoc = UserLoc;
+      this.accept=accept;
+   }
+
+   public Boolean getAccept() {
+      return accept;
+   }
+
+   public void setAccept(Boolean accept) {
+      this.accept = accept;
    }
 
    public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser) {

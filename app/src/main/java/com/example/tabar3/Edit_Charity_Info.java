@@ -40,6 +40,7 @@ public class Edit_Charity_Info extends AppCompatActivity {
     Button button,btnImg;
     public Uri mImageUri;
     ImageView img;
+    int x;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +56,7 @@ public class Edit_Charity_Info extends AppCompatActivity {
         fStore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+        x=0;
         Intent intent = getIntent();
          s= intent.getStringExtra("EditCharitiesInfo");
         dRef = fStore.collection("Charities").document(s);
@@ -78,6 +80,7 @@ public class Edit_Charity_Info extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openFileChooser();
+                x=1;
             }
         });
 
@@ -118,16 +121,11 @@ public class Edit_Charity_Info extends AppCompatActivity {
     public void AddToDB() {
         fStore = FirebaseFirestore.getInstance();
 
-        Map<String, Object> itemsCamp = new HashMap<>();
-        itemsCamp.put("charityId", s);
-        itemsCamp.put("charityName", n.getText().toString());
-        itemsCamp.put("charityDes", d.getText().toString());
-        itemsCamp.put("charityLoc", l.getText().toString());
-        itemsCamp.put("charityPhone", p.getText().toString());
-
-
         DocumentReference documentReference = fStore.collection("Charities").document(s);
-        documentReference.set(itemsCamp).addOnSuccessListener(new OnSuccessListener<Void>() {
+        documentReference.update("charityName", n.getText().toString(),
+                "charityDes", d.getText().toString(),
+                "charityLoc", l.getText().toString(),
+                "charityPhone", p.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(Edit_Charity_Info.this, "mabrooooooook", Toast.LENGTH_LONG).show();
@@ -142,7 +140,9 @@ public class Edit_Charity_Info extends AppCompatActivity {
             }
         });
 
-        uploadImg(mImageUri);
+        if(x==1){
+            uploadImg(mImageUri); }
+
     }
 
     private void uploadImg(Uri uri) {

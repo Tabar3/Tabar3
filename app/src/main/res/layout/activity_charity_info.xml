@@ -89,7 +89,21 @@
         android:layout_marginBottom="16dp"
         android:src="@drawable/plus"
         android:visibility="gone"
-        /></RelativeLayout>
+        />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="قبول الجمعية"
+            android:id="@+id/charAcc"
+            android:background="@drawable/a2"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="3dp"
+            android:textSize="16dp"
+            android:textColor="#0060FF"
+            android:layout_gravity="center"
+            android:visibility="gone"
+            />
+    </RelativeLayout>
 
 
 

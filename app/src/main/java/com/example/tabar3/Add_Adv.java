@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -49,6 +50,8 @@ public class Add_Adv extends AppCompatActivity  {
     private StorageReference storageReference;
     String AdvId;
     TextView txtDeta;
+    String id;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +72,8 @@ public class Add_Adv extends AppCompatActivity  {
         storageReference = storage.getReference();
         Des = findViewById(R.id.AdvDes);
         Intent i = getIntent();
-
+        mAuth = FirebaseAuth.getInstance();
+        id =mAuth.getCurrentUser().getUid();
 
 
 
@@ -115,6 +119,7 @@ public class Add_Adv extends AppCompatActivity  {
 
         fStore = FirebaseFirestore.getInstance();
 
+
         if (c1.isChecked())
             checkArr.add(1);
         else if (c2.isChecked())
@@ -129,11 +134,12 @@ public class Add_Adv extends AppCompatActivity  {
         AdvId = fStore.collection("Advertisement").document().getId();
         uploadImg(mImageUri);
         Map<String, Object> itemsAdv = new HashMap<>();
-        itemsAdv.put("AdvId", AdvId);
-        itemsAdv.put("AdvDes", Des.getText().toString());
-        itemsAdv.put("AdvName", name.getText().toString());
+        itemsAdv.put("advId", AdvId);
+        itemsAdv.put("charId", id);
+        itemsAdv.put("advDes", Des.getText().toString());
+        itemsAdv.put("advName", name.getText().toString());
         itemsAdv.put("typeOfAdv", checkArr);
-        itemsAdv.put("AdvNum", Num.getText().toString());
+        itemsAdv.put("advNum", Num.getText().toString());
 
         DocumentReference documentReference = fStore.collection("Advertisement").document(AdvId);
         documentReference.set(itemsAdv).addOnSuccessListener(new OnSuccessListener<Void>() {

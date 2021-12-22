@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.annotations.NotNull;
@@ -43,8 +44,9 @@ public class Edit_Camp_Info extends AppCompatActivity {
     String s;
     Button button, btnImg;
     public Uri mImageUri;
-    ImageView img2;
-
+    ImageView img2;int x;
+    FirebaseAuth mAuth;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,9 +61,12 @@ public class Edit_Camp_Info extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         Intent intent = getIntent();
-        s = intent.getStringExtra("EditCampInfo");
+        mAuth = FirebaseAuth.getInstance();
+        id =mAuth.getCurrentUser().getUid();
 
-        dRef = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(s);
+        s = intent.getStringExtra("EditCampInfo");
+        x=0;
+        dRef = fStore.collection("Charities").document(id).collection("Campaign").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
                 na.setText(documentSnapshot.getString("campName"));
@@ -72,6 +77,8 @@ public class Edit_Camp_Info extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         openFileChooser();
+                        x=1;
+
                     }
                 });
                 button.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +87,7 @@ public class Edit_Camp_Info extends AppCompatActivity {
                         AddToDB();
                         Intent i2 = new Intent(Edit_Camp_Info.this, Camp_Info.class);
                        i2.putExtra("Camp", s);
+                        i2.putExtra("Char", id);
                         startActivity(i2);
                     }
                 });
@@ -122,16 +130,10 @@ public class Edit_Camp_Info extends AppCompatActivity {
 
     public void AddToDB() {
         fStore = FirebaseFirestore.getInstance();
-        Map<String, Object> itemsCamp = new HashMap<>();
 
-        itemsCamp.put("campId", s);
-        itemsCamp.put("campName", na.getText().toString());
-        itemsCamp.put("campDes1", d1.getText().toString());
-        itemsCamp.put("campDes2", d2.getText().toString());
-
-
-        DocumentReference documentReference = fStore.collection("Charities").document("KhAq43bEv0ZEdD2DyWRE").collection("Campaign").document(s);
-        documentReference.set(itemsCamp).addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference documentReference = fStore.collection("Charities").document(id).collection("Campaign").document(s);
+        documentReference.update("campId", s,"campName", na.getText().toString()
+        ,"campDes1", d1.getText().toString(),"campDes2", d2.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(Edit_Camp_Info.this, "mabrooooooook", Toast.LENGTH_LONG).show();
@@ -145,8 +147,8 @@ public class Edit_Camp_Info extends AppCompatActivity {
 
             }
         });
-
-        uploadImg(mImageUri);
+        if(x==1){
+        uploadImg(mImageUri); }
 
     }
 

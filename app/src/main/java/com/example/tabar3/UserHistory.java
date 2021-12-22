@@ -88,8 +88,9 @@ public class UserHistory extends AppCompatActivity {
                 public void onItemClick(int position, View v, List<Cat_Item> Items) {
                     Cat_Item ItemC = Items.get(position);
                     if (ItemC.getDes() != null) {
-                        Intent intent = new Intent(UserHistory.this, Categories.class); //تغير لاسم الاكتيفيتي الجديد تبع معلومات الاعلان
-                        intent.putExtra("", ItemC.getCatId());
+                        Intent intent = new Intent(UserHistory.this, Cat_Info.class); //تغير لاسم الاكتيفيتي الجديد تبع معلومات الاعلان
+                        intent.putExtra("CatId", ItemC.getCatId());
+                        intent.putExtra("UserId", ItemC.getUserId());
                         startActivity(intent);
 
 
@@ -111,7 +112,7 @@ public class UserHistory extends AppCompatActivity {
         query.get().addOnCompleteListener(task -> {
             if (task.isSuccessful() && task.getResult() != null) {
 
-                CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class));
+                CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class),"U");
                 mRecyclerView.setAdapter(CatAdabter);
             }
         });

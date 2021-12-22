@@ -23,7 +23,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:background="#005CFF"
+                android:background="#0060FF"
                 >
             </androidx.appcompat.widget.Toolbar>
             <LinearLayout
@@ -35,41 +35,104 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
-                android:gravity="center">
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="التبرعات"
-                    android:id="@+id/Don"
-                    android:textSize="12dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/b1"
-                    android:onClick="third"
-                    />
-                <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="الجمعيات"
-                    android:id="@+id/Char"
-                    android:background="@drawable/b1"
-                    android:onClick="one"
-                    android:textSize="12dp"
-                    android:textColor="@color/white"
+                android:layout_margin="2dp"
+                >
 
-
-                    />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <Button
+                        android:layout_width="75dp"
+                        android:layout_height="70dp"
+                        android:id="@+id/Don"
+                        android:layout_weight="1"
+                        android:background="@drawable/dn2"
+                        android:onClick="third"
+                        android:layout_gravity="center"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تبرع من هنا"
+                        android:textSize="16dp"
+                        android:textColor="#0060FF"
+                        android:layout_gravity="center"
+                        ></TextView></LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <Button
+                        android:layout_width="75dp"
+                        android:layout_height="70dp"
+                        android:id="@+id/Don2"
+                        android:layout_weight="1"
+                        android:background="@drawable/d2"
+                        android:onClick="third2"
+                        android:layout_gravity="center"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تبرعات"
+                        android:textSize="16dp"
+                        android:textColor="#0060FF"
+                        android:layout_gravity="center"
+                        ></TextView></LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <Button
+                        android:layout_width="75dp"
+                        android:layout_height="70dp"
+                        android:id="@+id/Char"
+                        android:layout_weight="1"
+                        android:background="@drawable/ch2"
+                        android:onClick="one"
+                        android:layout_gravity="center"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="الجمعيات"
+                        android:textSize="16dp"
+                        android:textColor="#0060FF"
+                        android:layout_gravity="center"
+                        ></TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
                 <Button
-                    android:layout_width="120dp"
-                    android:layout_height="50dp"
-                    android:text="اعلانات"
+                    android:layout_width="75dp"
+                    android:layout_height="70dp"
                     android:id="@+id/Adv"
-                    android:background="@drawable/b1"
-                    android:textSize="12dp"
-                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:background="@drawable/ad2"
                     android:onClick="tow"
+                    android:layout_gravity="center"
                     />
-
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="اعلانات"
+                        android:textSize="16dp"
+                        android:textColor="#0060FF"
+                        android:layout_gravity="center"
+                        ></TextView>
             </LinearLayout>
+            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
@@ -81,7 +144,7 @@
                     android:layout_height="wrap_content"
                     android:text="تبرع"
                     android:textSize="30dp"
-                    android:textColor="@color/com_facebook_blue"
+                    android:textColor="#0060FF"
                     android:layout_gravity="center"
                     android:id="@+id/a2"
                     android:visibility="visible"></TextView>
@@ -90,11 +153,36 @@
                     android:layout_height="wrap_content"
                     android:text=".وهو تطبيق لعرض جميع الجمعيات الخيرية وللتبرع المالي و المادي و يمكنه مساعدتك باختيار الجمعيات التي تريد التبر ع لها او حتى يمكنك نشر تبرعك للجمعيات , و ايضا يمكن لتطبييقنا مساعدتك في معرفت احتياجات الجمعية الحالية عن طريق صفحة الاعلانات , تسعدنا زيارتك"
                     android:textSize="12dp"
-                    android:textColor="@color/com_facebook_blue"
+                    android:textColor="#0060FF"
                     android:paddingRight="15dp"
                     android:layout_gravity="center"
                     android:id="@+id/a3"
                     android:visibility="visible"></TextView>
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:text="قبول الجمعيات"
+                    android:id="@+id/charAcc"
+                    android:background="@drawable/a2"
+                    android:textSize="16dp"
+                    android:textColor="#0060FF"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    />
+                <Button
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:text="قبول المستخدمين"
+                    android:id="@+id/userAcc"
+                    android:background="@drawable/a2"
+                    android:textSize="16dp"
+                    android:textColor="#0060FF"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    />
+
+            </LinearLayout>
+
             </LinearLayout>
 
 
@@ -105,12 +193,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".MainActivity"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             >
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="620dp"
+                android:layout_height="590dp"
                 app:layout_constraintBottom_toBottomOf="parent"
 
                 >
@@ -127,20 +215,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:itemTextColor="#005CFF"
-        app:itemIconTint="#005CFF"
+        app:itemTextColor="#0060FF"
+        app:itemIconTint="#0060FF"
         app:headerLayout="@layout/header_layout"
         app:menu="@menu/menu_layout"
         android:background="@color/white"
         ></com.google.android.material.navigation.NavigationView>
-
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

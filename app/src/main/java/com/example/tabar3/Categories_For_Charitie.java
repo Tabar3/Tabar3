@@ -50,10 +50,12 @@ public class Categories_For_Charitie extends AppCompatActivity {
         CitemList=new ArrayList<>();
         itemList=new ArrayList<>();
         FirebaseApp.initializeApp(this);
+
         fStore = FirebaseFirestore.getInstance();
         setViews();
         setFirebase();
         //setProduct();
+
 
     }
 
@@ -70,6 +72,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
         setFirebase();
     }
     String s;
+    item UserItems;
     private void setFirebase() {
         FirebaseApp.initializeApp(this);
         fStore = FirebaseFirestore.getInstance();
@@ -83,7 +86,7 @@ public class Categories_For_Charitie extends AppCompatActivity {
             if (task.isSuccessful() && task.getResult() != null && task.getResult().size() != 0) {
 
                 itemList = task.getResult().toObjects(item.class);
-                item UserItems = itemList.get(0);
+                UserItems = itemList.get(0);
                 Log.d("tag",itemList.size()+"");
         Query query;
                 if(i.getStringExtra("category").equals("food")){
@@ -155,8 +158,8 @@ public class Categories_For_Charitie extends AppCompatActivity {
     private void getQuery2(Query query) {
         query.get().addOnCompleteListener((task) -> {
             if (task.isSuccessful()) {
-                   CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class));
-                    mRecyclerView.setAdapter(CatAdabter);
+                   //CatAdabter = new ChategoryAdapter(Objects.requireNonNull(task.getResult()).toObjects(Cat_Item.class));
+                   // mRecyclerView.setAdapter(CatAdabter);
             }
         });
     }
@@ -234,16 +237,17 @@ public class Categories_For_Charitie extends AppCompatActivity {
                     getQuery(query2);
                 } else if(a==itemList.size()) {
                     Collections.shuffle(CitemList);
-                    CatAdabter = new ChategoryAdapter(CitemList);
+                    CatAdabter = new ChategoryAdapter(CitemList,"U");
+
                     mRecyclerView.setAdapter(CatAdabter);
                     CatAdabter.setOnItemClickListener(new ChategoryAdapter.ClickListener() {
                         @Override
                         public void onItemClick(int position, View v, List<Cat_Item> productItems) {
                             Cat_Item productItems1 = productItems.get(position);
-                            Intent intent = new Intent(mContext, MainActivity.class);
-                            //intent.putExtra("storeId", productItems1.getStoreId());
-                            //intent.putExtra("productId", productItems1.getId());
-                            intent.putExtra("", productItems1.getCatId());
+                            Intent intent = new Intent(Categories_For_Charitie.this,Cat_Info.class);
+                            intent.putExtra("CatId", productItems1.getCatId());
+                            intent.putExtra("UserId", productItems1.getUserId());
+
                             startActivity(intent);
                         }
 

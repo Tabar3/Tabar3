@@ -1,5 +1,6 @@
 package com.example.tabar3;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,14 +10,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.annotations.NotNull;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -41,6 +45,7 @@ public class Charity_Info extends AppCompatActivity {
     String s;
     FirebaseAuth mAuth;
     String id;
+    Button chA;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +56,7 @@ public class Charity_Info extends AppCompatActivity {
         imgInfo =findViewById(R.id.InfoCharImg);
         imgPho=findViewById(R.id.ph);
         imgLoc=findViewById(R.id.lo);
+        chA=findViewById(R.id.charAcc);
         imgVi=findViewById(R.id.vi);
         mAuth = FirebaseAuth.getInstance();
         id =mAuth.getCurrentUser().getUid();
@@ -61,7 +67,35 @@ public class Charity_Info extends AppCompatActivity {
             if (documentSnapshot != null && documentSnapshot.exists()) {
                 txtName.setText(documentSnapshot.getString("charityName"));
                 txtDes.setText(documentSnapshot.getString("charityDes"));
+                dRef = fStore.collection("Admin").document(id);
+                dRef.get().addOnSuccessListener((documentSnapshot5) -> {
+                    if (documentSnapshot5 != null && documentSnapshot5.exists()) {
+                        if(!(documentSnapshot.getBoolean("accept"))){
+                        chA.setVisibility(View.VISIBLE);}
 
+                    }});
+                chA.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        fStore = FirebaseFirestore.getInstance();
+
+                        DocumentReference documentReference = fStore.collection("Charities").document(s);
+                        documentReference.update("accept", true).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(Charity_Info.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull @NotNull Exception e) {
+                                Toast.makeText(Charity_Info.this, "toz 3lekom", Toast.LENGTH_LONG).show();
+                                Toast.makeText(Charity_Info.this,s, Toast.LENGTH_LONG).show();
+                                Log.d("myTag", e.getMessage());
+
+                            }
+                        });
+                    }
+                });
                 imgPho.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

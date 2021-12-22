@@ -5,18 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#0060FF"
+    android:layoutDirection="rtl">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/imgChar"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars"></ImageView>
+            tools:srcCompat="@tools:sample/avatars"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            ></com.mikhaellopez.circularimageview.CircularImageView>
 
         <Button
             android:id="@+id/button_choose_image"
@@ -24,98 +36,146 @@
             android:layout_height="wrap_content"
             android:text="اضافة صورة"
             /></RelativeLayout>
-
     <TextView
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Email"
+        android:text="البريد الالكتروني"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginTop="10dp"
         />
     <EditText
         android:id="@+id/userSign"
         android:layout_width="match_parent"
         android:layout_height="55sp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:inputType="textEmailAddress"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="password"
+        android:text="كلمة المرور"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginRight="3dp"
         />
     <EditText
         android:id="@+id/passSign"
         android:layout_width="match_parent"
         android:layout_height="55sp"
         android:inputType="textPassword"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="User Name"
+        android:text="اسم المستخدم"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginRight="3dp"
         />
     <EditText
         android:id="@+id/userNameS"
         android:layout_width="match_parent"
-        android:layout_height="55sp"/>
+        android:layout_height="55sp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Phone Number"
+        android:text="رقم الهاتف"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginRight="3dp"
         />
     <EditText
         android:id="@+id/PhoneNSign"
         android:layout_width="match_parent"
         android:layout_height="55sp"
         android:inputType="phone"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Location"
+        android:text="الموقع (رابط)"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:layout_marginRight="3dp"
         />
     <EditText
         android:id="@+id/LocationSign"
         android:layout_width="match_parent"
         android:layout_height="55sp"
         android:inputType="text"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
         />
-    <TextView
-        android:id="@+id/AccT"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Account type:"
-        android:textSize="18dp"
-        />
-    <RadioGroup
-        android:id="@+id/G1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <RadioButton
-            android:id="@+id/CharCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="جمعية"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            />
-        <RadioButton
-            android:id="@+id/DonatCheck"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:text="متبرع"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            />
-    </RadioGroup>
+            <TextView
+                android:id="@+id/AccT"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="هل انت :"
+                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:layout_marginRight="3dp"/>
+            <RadioGroup
+                android:id="@+id/G1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+
+                >
+
+                <RadioButton
+                    android:id="@+id/CharCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="جمعية"
+                    android:textSize="22dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+
+                    />
+                <RadioButton
+                    android:id="@+id/DonatCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="50dp"
+                    android:text="مستخدم"
+                    android:textSize="22dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    />
+            </RadioGroup>
+
+
+
+
+
+
     <Button
         android:id="@+id/SignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:background="@drawable/a2"
+        android:layout_marginTop="20dp"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="#0060FF"
+        android:fontFamily="cursive"
+        android:layout_gravity="center"
         android:text="sign up"
         android:onClick="signUp"
         />
 
-
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

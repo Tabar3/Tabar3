@@ -2,39 +2,42 @@ package com.example.tabar3;
 
 public class Cat_Item {
 
-    String catId, foodName, foodType, numHuman, region, street, building, phone, UserId;
-    String numclothe, clothesType;
-    String toolAge, Des, toolType,typeCat;
+    String catId, name, type, numHuman, UserId;
+    String numclothe,toolAge, Des,typeCat,bookedName,bookedId;
     Boolean booked;
 
     public Cat_Item() {
     }
 
-    public Cat_Item(String catId, String foodName, String foodType, String numHuman, String region, String street, String building, String phone, String userId, String numclothe, String clothesType, String toolAge, String des, String toolType, String typeCat, Boolean booked) {
+    public Cat_Item(String catId, String name, String type, String numHuman, String UserId, String numclothe, String toolAge, String Des, String typeCat, Boolean booked,String bookedName,String bookedId) {
         this.catId = catId;
-        this.foodName = foodName;
-        this.foodType = foodType;
+        this.name = name;
+        this.type = type;
         this.numHuman = numHuman;
-        this.region = region;
-        this.street = street;
-        this.building = building;
-        this.phone = phone;
-        UserId = userId;
+        this.UserId = UserId;
         this.numclothe = numclothe;
-        this.clothesType = clothesType;
         this.toolAge = toolAge;
-        Des = des;
-        this.toolType = toolType;
+        this.Des = Des;
         this.typeCat = typeCat;
         this.booked = booked;
+        this.bookedName=bookedName;
+        this.bookedId=bookedId;
     }
 
-    public String getTypeCat() {
-        return typeCat;
+    public String getBookedId() {
+        return bookedId;
     }
 
-    public void setTypeCat(String typeCat) {
-        this.typeCat = typeCat;
+    public void setBookedId(String bookedId) {
+        this.bookedId = bookedId;
+    }
+
+    public String getBookedName() {
+        return bookedName;
+    }
+
+    public void setBookedName(String bookedName) {
+        this.bookedName = bookedName;
     }
 
     public String getCatId() {
@@ -45,20 +48,20 @@ public class Cat_Item {
         this.catId = catId;
     }
 
-    public String getFoodName() {
-        return foodName;
+    public String getName() {
+        return name;
     }
 
-    public void setFoodName(String foodName) {
-        this.foodName = foodName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getFoodType() {
-        return foodType;
+    public String getType() {
+        return type;
     }
 
-    public void setFoodType(String foodType) {
-        this.foodType = foodType;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getNumHuman() {
@@ -69,44 +72,12 @@ public class Cat_Item {
         this.numHuman = numHuman;
     }
 
-    public String getRegion() {
-        return region;
-    }
-
-    public void setRegion(String region) {
-        this.region = region;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(String building) {
-        this.building = building;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
     public String getUserId() {
         return UserId;
     }
 
-    public void setUserId(String userId) {
-        UserId = userId;
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
     }
 
     public String getNumclothe() {
@@ -115,14 +86,6 @@ public class Cat_Item {
 
     public void setNumclothe(String numclothe) {
         this.numclothe = numclothe;
-    }
-
-    public String getClothesType() {
-        return clothesType;
-    }
-
-    public void setClothesType(String clothesType) {
-        this.clothesType = clothesType;
     }
 
     public String getToolAge() {
@@ -137,16 +100,16 @@ public class Cat_Item {
         return Des;
     }
 
-    public void setDes(String des) {
-        Des = des;
+    public void setDes(String Des) {
+        this.Des = Des;
     }
 
-    public String getToolType() {
-        return toolType;
+    public String getTypeCat() {
+        return typeCat;
     }
 
-    public void setToolType(String toolType) {
-        this.toolType = toolType;
+    public void setTypeCat(String typeCat) {
+        this.typeCat = typeCat;
     }
 
     public Boolean getBooked() {

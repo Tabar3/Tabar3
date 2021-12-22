@@ -69,36 +69,57 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         item itm = ItmA.get(position);
         String ItemId = itm.getCharityId();
-
+        String ItemUId = itm.getUserId();
        if (ItemId != null) {
-            StorageReference bookReference = storageReference.child("Charities/"+ItemId+"/mainImage.jpg");
-            bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Glide.with(mContext).load(uri).into(holder.img);
-                }
-            });
+               StorageReference bookReference = storageReference.child("Charities/" + ItemId + "/mainImage.jpg");
+               bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                   @Override
+                   public void onSuccess(Uri uri) {
+                       Glide.with(mContext).load(uri).into(holder.img);
+                   }
+               });
 
-            DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document(ItemId);
-            documentReference.get().addOnSuccessListener((documentSnapshot) -> {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
-                    holder.tname.setText(itm.getCharityName());
-
-
-                } else {
-                    holder.tname.setText("no name");
-
-                }
-            });
-        }
-
-        else {
-            holder.tname.setText("nooo name");
-
-        }
+               DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Charities").document(ItemId);
+               documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                   if (documentSnapshot != null && documentSnapshot.exists()) {
+                       holder.tname.setText(itm.getCharityName());
 
 
-    }
+                   } else {
+                       holder.tname.setText("no name");
+
+                   }
+               });
+           } else if(ItemUId !=null){
+               StorageReference bookReference = storageReference.child("User/" + ItemUId + "/mainImage.jpg");
+               bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                   @Override
+                   public void onSuccess(Uri uri) {
+                       Glide.with(mContext).load(uri).into(holder.img);
+                   }
+               });
+
+               DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Users").document(ItemUId);
+               documentReference.get().addOnSuccessListener((documentSnapshot) -> {
+                   if (documentSnapshot != null && documentSnapshot.exists()) {
+                       holder.tname.setText(itm.getUserName());
+
+
+                   } else {
+                       holder.tname.setText("no name");
+
+                   }
+               });
+
+           }
+           else {
+               holder.tname.setText("nooo name");
+
+           }
+
+       }
+
+
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         TextView tname;
         ImageView img;

@@ -55,20 +55,16 @@ public class Advertisement extends Fragment {
     }
 
     private void setViews() {
-
-        mRecyclerView = requireView().findViewById(R.id.recyclerView2);
-        imgadd = requireView().findViewById(R.id.addAdv);
-        mAuth = FirebaseAuth.getInstance();
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        //i=new item();
-        /*SharedPreferences sharedPref = getActivity().getPreferences(Context.MODE_PRIVATE);
-        String id =mAuth.getCurrentUser().getUid();
-        String type =i.getTypeOfUser();*/
         fStore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        imgadd = requireView().findViewById(R.id.addAdv);
+        mRecyclerView = requireView().findViewById(R.id.recyclerView2);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         String id =mAuth.getCurrentUser().getUid();
         dRef = fStore.collection("Charities").document(id);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
+                if(documentSnapshot.getBoolean("accept")){
                 imgadd.setVisibility(View.VISIBLE);
                 imgadd.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -77,7 +73,7 @@ public class Advertisement extends Fragment {
                         startActivity(i);
                     }
                 });
-            }
+            }}
             else
                 imgadd.setVisibility(View.GONE);
                 });

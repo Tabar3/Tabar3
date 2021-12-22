@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
@@ -32,6 +33,8 @@ public class Camp_Info extends AppCompatActivity {
     CampAdabter campAdabter;
     ListenerRegistration ItemListListener;
     ImageView imgVi;
+    FirebaseAuth mAuth;
+    String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +46,8 @@ public class Camp_Info extends AppCompatActivity {
         imgInfo=findViewById(R.id.InfoCampImg);
         imgVi=findViewById(R.id.vi2);
         fStore = FirebaseFirestore.getInstance();
-
+        mAuth = FirebaseAuth.getInstance();
+        id =mAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
         String s= intent.getStringExtra("Camp");
         String s1= intent.getStringExtra("Char");
@@ -54,6 +58,26 @@ public class Camp_Info extends AppCompatActivity {
                 txtCN.setText(documentSnapshot.getString("campName"));
                 txtCD1.setText(documentSnapshot.getString("campDes1"));
                 txtCD2.setText(documentSnapshot.getString("campDes2"));
+                dRef = fStore.collection("Admin").document(id);
+                dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+                    if (documentSnapshot2 != null && documentSnapshot2.exists()) {
+                        delete.setVisibility(View.VISIBLE);
+                        delete.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dRef = fStore.collection("Charities").document(s1).collection("Campaign").document(s);
+                                dRef.delete();
+                                StorageReference bookReference = storageReference .child("Campaign/"+s+"/mainImage.jpg");
+                                bookReference.delete();
+                                Intent intent = new Intent(Camp_Info.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        });
+                    }});
+                if(s1.equals(id))
+                {
+                    imgVi.setVisibility(View.VISIBLE);
+                    delete.setVisibility(View.VISIBLE);
                 imgVi.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -73,7 +97,7 @@ public class Camp_Info extends AppCompatActivity {
                         Intent intent = new Intent(Camp_Info.this, MainActivity.class);
                         startActivity(intent);
                     }
-                });
+                });}
 
             }});
 
