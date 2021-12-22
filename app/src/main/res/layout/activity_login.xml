@@ -23,8 +23,8 @@
         android:id="@+id/userNameL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="UserName"
-        android:inputType="textAutoComplete"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/white"
         android:layout_marginTop="20dp"
         />
@@ -35,6 +35,19 @@
         android:hint="Passwordd"
         android:textColorHint="@color/white"
         android:inputType="textPassword"
+        />
+    <Button
+        android:id="@+id/ResetB"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="start"
+        android:layout_marginTop="10dp"
+        android:text="Forget your password? Change HERE"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/teal_200"
+        android:onClick="ResetPass"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
         />
     <Button
         android:id="@+id/LoginB"
