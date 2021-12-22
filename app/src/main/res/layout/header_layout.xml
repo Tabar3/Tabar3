@@ -14,7 +14,8 @@
         android:src="@drawable/test"
         />
     <TextView
-        android:text="account info"
+        android:id="@+id/HeaderUN"
+        android:hint="Account"
         android:textColor="@color/text_color"
         android:paddingTop="60dp"
         android:layout_width="match_parent"

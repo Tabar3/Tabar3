@@ -1,5 +1,4 @@
 package com.example.tabar3;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,17 +21,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
-
 @RequiresApi(api = Build.VERSION_CODES.N)
 public class SettAccount extends AppCompatActivity {
-
    /*  EditText phone,name,location ;
-     Button login ;
+     Button login;
     FirebaseFirestore fStore;
     String AdvId;
-
   /*  @Override
-
     /*protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sett_account);
@@ -42,7 +37,6 @@ public class SettAccount extends AppCompatActivity {
         name = findViewById(R.id.name);
         location = findViewById(R.id.location);
         phone = findViewById(R.id.phone);
-
         login = findViewById(R.id.login);
 
 
