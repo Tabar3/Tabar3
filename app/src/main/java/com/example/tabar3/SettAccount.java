@@ -27,6 +27,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+@RequiresApi(api = Build.VERSION_CODES.N)
+public class SettAccount extends AppCompatActivity {
+   /*  EditText phone,name,location ;
+     Button login;
+    FirebaseFirestore fStore;
+    String AdvId;
+  /*  @Override
+    /*protected void onCreate(Bundle savedInstanceState) {
+=======
 
 public class SettAccount extends AppCompatActivity {
     FirebaseFirestore fStore;
@@ -35,6 +44,7 @@ public class SettAccount extends AppCompatActivity {
     EditText Name,Location,PhoneN,NewEmail,PasCon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sett_account);
     fStore=FirebaseFirestore.getInstance();
@@ -46,6 +56,14 @@ public class SettAccount extends AppCompatActivity {
     PasCon=findViewById(R.id.PasswordConfirm);
     NewEmail=findViewById(R.id.Newmail);
     }
+
+
+    private void getViews() {
+        name = findViewById(R.id.name);
+        location = findViewById(R.id.location);
+        phone = findViewById(R.id.phone);
+        login = findViewById(R.id.login);
+
 
     public void SaveCs(View view) {
        if (FirebaseAuth.getInstance().getCurrentUser()==null){
@@ -64,6 +82,7 @@ public class SettAccount extends AppCompatActivity {
         }
     if (String.valueOf(PhoneN.getText()).isEmpty()&&String.valueOf(Location.getText()).isEmpty()&&String.valueOf(Name.getText()).isEmpty())
     {
+
 
         Toast.makeText(this, "لم يتم تحديث البيانات,الحقول فارغة", Toast.LENGTH_SHORT).show();
     }

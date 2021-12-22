@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item
-    android:id="@+id/account"
-    android:title="الحساب الشخصي"
-    android:icon="@drawable/ic_baseline_account_box_24"/>
 
     <item
+        android:id="@+id/account"
+        android:title="الحساب الشخصي"
+        android:icon="@drawable/ic_baseline_account_box_24"/>
+    <item
+        android:id="@+id/Login"
+        android:title="تسجيل الدخول"
+        android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+    <item
         android:id="@+id/history"
-        android:title="نشوراتك"
+        android:title="منشوراتك"
         android:icon="@drawable/ic_baseline_history_24"
         />
     <item
@@ -27,10 +31,7 @@
         android:id="@+id/Logout"
         android:title="تسجيل الخروج"
         android:icon="@drawable/ic_baseline_exit_to_app_24"/>
-    <item
-        android:id="@+id/Login"
-        android:title="تسجيل الدخول"
-        android:icon="@drawable/ic_baseline_exit_to_app_24"/>
+
 
 
 </menu>
