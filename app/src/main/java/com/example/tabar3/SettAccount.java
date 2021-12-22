@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -28,15 +29,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.HashMap;
 import java.util.Map;
 @RequiresApi(api = Build.VERSION_CODES.N)
-public class SettAccount extends AppCompatActivity {
-   /*  EditText phone,name,location ;
-     Button login;
-    FirebaseFirestore fStore;
-    String AdvId;
-  /*  @Override
-    /*protected void onCreate(Bundle savedInstanceState) {
-=======
-
 public class SettAccount extends AppCompatActivity {
     FirebaseFirestore fStore;
     FirebaseAuth mAuth;
@@ -57,12 +49,6 @@ public class SettAccount extends AppCompatActivity {
     NewEmail=findViewById(R.id.Newmail);
     }
 
-
-    private void getViews() {
-        name = findViewById(R.id.name);
-        location = findViewById(R.id.location);
-        phone = findViewById(R.id.phone);
-        login = findViewById(R.id.login);
 
 
     public void SaveCs(View view) {
