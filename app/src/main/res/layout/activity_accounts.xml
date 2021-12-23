@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Accounts"
     android:orientation="vertical"
-    >
     android:layoutDirection="rtl"
     >
     <RelativeLayout
@@ -19,7 +18,6 @@
             tools:srcCompat="@tools:sample/avatars"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
-
         <ImageView
             android:id="@+id/vi"
             android:layout_width="30dp"
@@ -82,20 +80,6 @@
         android:textColor="#0060FF"
         android:layout_gravity="center"
         android:visibility="gone"
-        />
-    <TextView
-        android:id="@+id/userLoc"
-        android:hint="Location"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        />
-    <TextView
-        android:id="@+id/userPhone"
-        android:hint="Phone Number"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
         />
 
 

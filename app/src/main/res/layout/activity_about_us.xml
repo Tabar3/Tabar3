@@ -6,18 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".AboutUs"
     android:orientation="vertical"
+    android:background="@color/white"
     >
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        />
-    <TextView
-        android:id="@+id/userN"
-        android:hint="User name"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="75dp"
-        />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/main_page"
+            android:id="@+id/a1"
+            android:visibility="visible"
+            android:layout_marginTop="5dp"></ImageView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تبرع"
+            android:textSize="30dp"
+            android:textColor="#0060FF"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:id="@+id/a2"
+            android:visibility="visible"></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="هو تطبيق لعرض جميع الجمعيات الخيرية وللتبرع المالي و المادي و يمكنه مساعدتك باختيار الجمعيات التي تريد التبر ع لها او حتى يمكنك نشر تبرعك للجمعيات , و ايضا يمكن لتطبييقنا مساعدتك في معرفت احتياجات الجمعية الحالية عن طريق صفحة الاعلانات , تسعدنا زيارتك"
+            android:textSize="16dp"
+            android:layout_margin="20dp"
+            android:textColor="#0060FF"
+            android:layout_gravity="center"
+            android:id="@+id/a3"
+            android:visibility="visible"></TextView>
+
 
 </LinearLayout>

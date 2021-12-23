@@ -72,6 +72,14 @@ public class Cat_Info extends AppCompatActivity {
                 dRef2.get().addOnSuccessListener((documentSnapshot3) -> {
                     if (documentSnapshot3 != null && documentSnapshot3.exists()) {
                         txtCD2.setText(documentSnapshot3.getString("UserName"));
+                        txtCD2.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Intent intent = new Intent(Cat_Info.this, Accounts.class);
+                                intent.putExtra("UserInfo",documentSnapshot3.getString("UserId"));
+                                startActivity(intent);
+                            }
+                        });
 
                     }});
                 dRef = fStore.collection("Admin").document(id);
@@ -122,6 +130,9 @@ public class Cat_Info extends AppCompatActivity {
                 dR3 = fStore.collection("Charities").document(id);
                 dR3.get().addOnSuccessListener((documentSnapshot3) -> {
                     if (documentSnapshot3 != null && documentSnapshot3.exists()) {
+                        if(documentSnapshot.getString("show").equals("2")){
+                            booked.setVisibility(View.GONE);
+                        }
                         booked.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -188,7 +199,9 @@ public class Cat_Info extends AppCompatActivity {
 
                     }
                 else {
-
+                        if(documentSnapshot.getString("show").equals("1")){
+                            booked.setVisibility(View.GONE);
+                        }
                         booked.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -282,6 +295,17 @@ public class Cat_Info extends AppCompatActivity {
                 }
             });
         }
-
+        dRef2=fStore.collection("Users").document(s2);
+        dRef2.get().addOnSuccessListener((documentSnapshot3) -> {
+            if (documentSnapshot3 != null && documentSnapshot3.exists()) {
+                img.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Cat_Info.this, Accounts.class);
+                        intent.putExtra("UserInfo", documentSnapshot3.getString("UserId"));
+                        startActivity(intent);
+                    }});}
+                });
+            
     }
 }

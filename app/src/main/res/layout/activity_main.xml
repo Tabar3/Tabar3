@@ -42,7 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_weight="1">
+                  >
                     <Button
                         android:layout_width="75dp"
                         android:layout_height="70dp"
@@ -53,6 +53,7 @@
                         android:layout_gravity="center"
                         />
                     <TextView
+                        android:id="@+id/dd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="تبرع من هنا"
@@ -129,59 +130,7 @@
                         ></TextView>
             </LinearLayout>
             </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:src="@drawable/main_page"
-                    android:id="@+id/a1"
-                    android:visibility="visible"></ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="تبرع"
-                    android:textSize="30dp"
-                    android:textColor="#0060FF"
-                    android:layout_gravity="center"
-                    android:id="@+id/a2"
-                    android:visibility="visible"></TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=".وهو تطبيق لعرض جميع الجمعيات الخيرية وللتبرع المالي و المادي و يمكنه مساعدتك باختيار الجمعيات التي تريد التبر ع لها او حتى يمكنك نشر تبرعك للجمعيات , و ايضا يمكن لتطبييقنا مساعدتك في معرفت احتياجات الجمعية الحالية عن طريق صفحة الاعلانات , تسعدنا زيارتك"
-                    android:textSize="12dp"
-                    android:textColor="#0060FF"
-                    android:paddingRight="15dp"
-                    android:layout_gravity="center"
-                    android:id="@+id/a3"
-                    android:visibility="visible"></TextView>
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:text="قبول الجمعيات"
-                    android:id="@+id/charAcc"
-                    android:background="@drawable/a2"
-                    android:textSize="16dp"
-                    android:textColor="#0060FF"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    />
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="40dp"
-                    android:text="قبول المستخدمين"
-                    android:id="@+id/userAcc"
-                    android:background="@drawable/a2"
-                    android:textSize="16dp"
-                    android:textColor="#0060FF"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    />
 
-            </LinearLayout>
 
             </LinearLayout>
 

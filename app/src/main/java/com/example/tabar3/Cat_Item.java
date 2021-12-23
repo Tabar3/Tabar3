@@ -1,15 +1,17 @@
 package com.example.tabar3;
 
+
 public class Cat_Item {
 
     String catId, name, type, numHuman, UserId;
     String numclothe,toolAge, Des,typeCat,bookedName,bookedId;
     Boolean booked;
+    String show;
 
     public Cat_Item() {
     }
 
-    public Cat_Item(String catId, String name, String type, String numHuman, String UserId, String numclothe, String toolAge, String Des, String typeCat, Boolean booked,String bookedName,String bookedId) {
+    public Cat_Item(String catId, String name, String type, String numHuman, String UserId, String numclothe, String toolAge, String Des, String typeCat, Boolean booked,String bookedName,String bookedId,String show) {
         this.catId = catId;
         this.name = name;
         this.type = type;
@@ -18,10 +20,19 @@ public class Cat_Item {
         this.numclothe = numclothe;
         this.toolAge = toolAge;
         this.Des = Des;
+        this.show=show;
         this.typeCat = typeCat;
         this.booked = booked;
         this.bookedName=bookedName;
         this.bookedId=bookedId;
+    }
+
+    public String getShow() {
+        return show;
+    }
+
+    public void setShow(String show) {
+        this.show = show;
     }
 
     public String getBookedId() {

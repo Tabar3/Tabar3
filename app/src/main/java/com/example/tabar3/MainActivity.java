@@ -50,16 +50,14 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     Fragment f ;
-    ImageView a1;
     DocumentReference dRef;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
-
     FirebaseUser user;
-    TextView a2,a3,HeaderUN;
+    TextView HeaderUN,dd;
     LinearLayout l1;
     androidx.appcompat.widget.Toolbar toolbar;
-    Button c,a,d2,d,chA,usA;
+    Button c,a,d2,d;
     String id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,19 +66,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        a1=findViewById(R.id.a1);
-        a2=findViewById(R.id.a2);
-        a3=findViewById(R.id.a3);
         d=findViewById(R.id.Don);
         c=findViewById(R.id.Char);
         a=findViewById(R.id.Adv);
         d2=findViewById(R.id.Don2);
-        chA=findViewById(R.id.charAcc);
-        usA=findViewById(R.id.userAcc);
+        dd=findViewById(R.id.dd);
+
         mAuth=FirebaseAuth.getInstance();
         user=mAuth.getCurrentUser();
         fStore=FirebaseFirestore.getInstance();
         FirebaseUser user=mAuth.getCurrentUser();
+        color();
+        c.setBackground(getDrawable(R.drawable.ch1));
+        replaceFragment(new Charities());
         if (user!=null){
         if (!user.isEmailVerified()){
             AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(MainActivity.this);
@@ -128,39 +126,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     d.setVisibility(View.GONE);
+                    dd.setVisibility(View.GONE);
 
                 }});
             dRef = fStore.collection("Users").document(id);
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     if(!(documentSnapshot.getBoolean("accept"))){
-                    d.setVisibility(View.GONE);}
+                    d.setVisibility(View.GONE);
+                        dd.setVisibility(View.GONE);
+                    }
 
                 }});
             dRef = fStore.collection("Admin").document(id);
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     d.setVisibility(View.GONE);
-                    chA.setVisibility(View.VISIBLE);
-                    usA.setVisibility(View.VISIBLE);
+                    dd.setVisibility(View.GONE);
+
                 }});
 
-        chA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, charAcc.class);
-                startActivity(intent);
-
-            }
-        });
-        usA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, UserAcc.class);
-                startActivity(intent);
-
-            }
-        });
 
                 }
             });
@@ -251,23 +236,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
        // String id2 =mAuth.getCurrentUser().getUid();
+
         if (id == R.id.account) {
-            Intent intent = new Intent(this, Accounts.class);
-            startActivity(intent);
-            /*dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
+            dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
                     Intent intent = new Intent(this, Charity_Info.class);
                     intent.putExtra("CharitiesInfo", mAuth.getCurrentUser().getUid());
                     startActivity(intent);
                 }
-                else{
-                    Intent intent = new Intent(this, Accounts.class);
-                    intent.putExtra("UserInfo", mAuth.getCurrentUser().getUid());
-                    startActivity(intent);
+                else {
+                    dRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
+                    dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+                        if (documentSnapshot2 != null && documentSnapshot2.exists()) {
+                            Intent intent = new Intent(this, Accounts.class);
+                            intent.putExtra("UserInfo", mAuth.getCurrentUser().getUid());
+                            startActivity(intent);
+                        }
+                        else{
+
+                            Intent intent = new Intent(this, Admin.class);
+                            startActivity(intent);
+                        }});
+
                 }
 
-            });*/
+            });
 
         } else if (id==R.id.Login){
             if (FirebaseAuth.getInstance().getCurrentUser()!=null){
@@ -306,10 +300,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
 
             });}
-        else if (id==R.id.notifications){
-            Intent intent = new Intent(this,Notifications.class);
-            startActivity(intent);
-        }else if (id==R.id.setting){
+        else if (id==R.id.setting){
             Intent intent = new Intent(this,Setting.class);
             startActivity(intent);
         }else if (id==R.id.aboutUs){
@@ -317,7 +308,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }else if (id==R.id.Logout) {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this,Login.class);
         Toast.makeText(this,"Logout succefuly",Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
@@ -339,64 +330,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void one(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab");
-        a1.setVisibility(View.GONE);
-        a2.setVisibility(View.GONE);
-        a3.setVisibility(View.GONE);
-        chA.setVisibility(View.GONE);
-        usA.setVisibility(View.GONE);
         color();
         c.setBackground(getDrawable(R.drawable.ch1));
-        c.setTextColor(Color.parseColor("#FFFFFF"));
        replaceFragment(new Charities());
        //Fragment selectedFragment = new Charities();
 
     }
     public void tow(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 2222222222");
-        a1.setVisibility(View.GONE);
-        a2.setVisibility(View.GONE);
-        a3.setVisibility(View.GONE);
-        chA.setVisibility(View.GONE);
-        usA.setVisibility(View.GONE);
         color();
         a.setBackground(getDrawable(R.drawable.ad1));
-        a.setTextColor(Color.parseColor("#FFFFFF"));
         replaceFragment(new Advertisement());
     }
     public void third(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 33333333333");
-        a1.setVisibility(View.GONE);
-        a2.setVisibility(View.GONE);
-        a3.setVisibility(View.GONE);
-        chA.setVisibility(View.GONE);
-        usA.setVisibility(View.GONE);
         color();
         d.setBackground(getDrawable(R.drawable.dn1));
-        d.setTextColor(Color.parseColor("#FFFFFF"));
          replaceFragment(new Donations());
     }
     public void third2(View view) {
         Log.d("tag","yaaaaaaaaaaaaa raaaaaaaab 333333333332");
-        a1.setVisibility(View.GONE);
-        a2.setVisibility(View.GONE);
-        a3.setVisibility(View.GONE);
-        chA.setVisibility(View.GONE);
-        usA.setVisibility(View.GONE);
+
         color();
         d2.setBackground(getDrawable(R.drawable.d1));
-        d2.setTextColor(Color.parseColor("#FFFFFF"));
         replaceFragment(new Don());
     }
 
     private void color(){
         a.setBackground(getDrawable(R.drawable.ad2));
-        //a.setTextColor(Color.parseColor("#0060FF"));
         c.setBackground(getDrawable(R.drawable.ch2));
-        c.setTextColor(Color.parseColor("#0060FF"));
         d.setBackground(getDrawable(R.drawable.dn2));
-        d.setTextColor(Color.parseColor("#0060FF"));
         d2.setBackground(getDrawable(R.drawable.d2));
-        d2.setTextColor(Color.parseColor("#0060FF"));
 
 
     }

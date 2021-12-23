@@ -10,21 +10,30 @@
         android:id="@+id/acc"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="Account"
+        android:background="@drawable/a2"
+        android:layout_margin="5dp"
+        android:textColor="#0060FF"
+        android:text="اعدادات الحساب"
         android:onClick="acc"
         />
     <Button
         android:id="@+id/rep"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="report a bug"
+        android:background="@drawable/a2"
+        android:layout_margin="5dp"
+        android:textColor="#0060FF"
+        android:text="الابلاغ عن الخطأ"
         android:onClick="rep"
         />
     <Button
         android:id="@+id/pri"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="privacy an policy"
+        android:background="@drawable/a2"
+        android:layout_margin="5dp"
+        android:textColor="#0060FF"
+        android:text="السياسة و الخصوصية"
         android:onClick="pri"
         />
 

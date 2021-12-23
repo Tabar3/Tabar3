@@ -207,6 +207,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"></EditText>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="لمن تدير ان يظهر تبرعك"
+            android:layout_marginTop="16dp"
+            ></TextView>
+        <RadioGroup
+            android:id="@+id/r5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            >
+            <RadioButton
+                android:id="@+id/ch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="الجمعيات"
+                ></RadioButton>
+            <RadioButton
+                android:id="@+id/us"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:text="المستخدمين"
+                ></RadioButton>
+        </RadioGroup>
 
     <Button
         android:id="@+id/add_Cate_DB"
@@ -217,5 +245,6 @@
         android:text="اضافة"
         ></Button>
 </LinearLayout>
+
     </ScrollView>
 </LinearLayout>

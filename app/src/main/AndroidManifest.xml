@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Tabar3">
-        <activity android:name=".UserAcc"></activity>
+        <activity android:name=".Admin"></activity>
+        <activity android:name=".Edit_User_Info" />
+        <activity android:name=".UserAcc" />
         <activity android:name=".charAcc" />
         <activity android:name=".Edit_Cat_Info" />
         <activity android:name=".Adv2" />

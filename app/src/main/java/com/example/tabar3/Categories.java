@@ -29,15 +29,17 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Categories extends AppCompatActivity {
     TextView f1 , f3 , clo1 , t1, t3, s1, s3;
     EditText fe2,fe4,cloe2,desE,te2,te4,se2,se4;
-    RadioButton c1,c2,c3,cc,cc1,cc2;
-    RadioGroup r1,r2;
+    RadioButton c1,c2,c3,cc,cc1,cc2,ch,us;
+    RadioGroup r1,r2,r5;
     DocumentReference dRef;
+    String arr;
     FirebaseFirestore fStore;
     String  categotyId,radio1;
     Button add_DB,mButtonChooseImage;
@@ -163,6 +165,9 @@ public void Var(){
     se4=findViewById(R.id.se4);
     r1=findViewById(R.id.r1);
     r2=findViewById(R.id.r2);
+    r5=findViewById(R.id.r5);
+    ch=findViewById(R.id.ch);
+    us=findViewById(R.id.us);
     add_DB = findViewById(R.id.add_Cate_DB);
     mButtonChooseImage = findViewById(R.id.button_choose_image);
     img=findViewById(R.id.imgAddCate);
@@ -181,6 +186,12 @@ public void food_cat_DB(){
         radio1="جاهز";
     if(c3.isChecked())
         radio1="اخر";
+    if(ch.isChecked() && us.isChecked())
+        arr="3";
+    else if(us.isChecked())
+        arr="2";
+    else if (ch.isChecked())
+        arr="1";
 
     categotyId = fStore.collection("Users").document(id).collection("category").document().getId();
     uploadImg(mImageUri);
@@ -189,12 +200,14 @@ public void food_cat_DB(){
     itemsFood.put("name", fe2.getText().toString());
     itemsFood.put("Des", desE.getText().toString());
     itemsFood.put("type", radio1);
+    itemsFood.put("show", arr);
     itemsFood.put("numHuman", fe4.getText().toString());
     itemsFood.put("UserId", id);
     itemsFood.put("booked", false);
     itemsFood.put("bookedName", "Non");
     itemsFood.put("bookedId", "");
     itemsFood.put("typeCat","food_category");
+
 
     DocumentReference documentReference = fStore.collection("Users")
      .document(id).collection("category").document(categotyId);
@@ -213,6 +226,7 @@ public void food_cat_DB(){
         }
     });
     radio1="";
+    arr="";
 }
 
     public void clo_cat_DB(){

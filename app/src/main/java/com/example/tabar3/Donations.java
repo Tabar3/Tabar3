@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.FirebaseApp;
@@ -29,7 +30,8 @@ public class Donations extends Fragment {
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     View v;
-    Button btnF , btnC , btnT , btnS , btnO;
+    Button btnF , btnC , btnT , btnS , btnO  ;
+    ImageView his;
 
     @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class Donations extends Fragment {
             btnT=getView().findViewById(R.id.tools);
             btnS=getView().findViewById(R.id.sar);
             btnO=getView().findViewById(R.id.other);
+            his=getView().findViewById(R.id.history);
 
             setViews();
            // setFirebase();
@@ -55,7 +58,14 @@ public class Donations extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         String id =mAuth.getCurrentUser().getUid();
-
+        his.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i1;
+                i1 = new Intent(getActivity(),UserHistory.class);
+                startActivity(i1);
+            }
+        });
         btnF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

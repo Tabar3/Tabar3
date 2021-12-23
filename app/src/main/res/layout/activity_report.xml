@@ -11,13 +11,19 @@
         android:id="@+id/btn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:text="في حال حدوث خطأ الرجاء التواصل مع الادمن من خلال الايميل بالنقر على الزر في الاسفل " />
-
+        android:text="في حال حدوث خطأ الرجاء التواصل مع الادمن من خلال الايميل بالنقر على الزر في الاسفل "
+    android:layout_margin="5dp"
+    android:textColor="#0060FF"
+        android:textSize="24dp"
+    />
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="EMAIL"
+        android:background="@drawable/a2"
+        android:layout_margin="5dp"
+        android:textColor="#0060FF"
+        android:text="البريد الالكتروني"
         android:onClick="bte"
 
         />
