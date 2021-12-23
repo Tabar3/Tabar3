@@ -231,6 +231,12 @@ public void food_cat_DB(){
 
     public void clo_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
+        if(ch.isChecked() && us.isChecked())
+            arr="3";
+        else if(us.isChecked())
+            arr="2";
+        else if (ch.isChecked())
+            arr="1";
 
         if(cc1.isChecked())
             radio1="صيفي";
@@ -251,6 +257,7 @@ public void food_cat_DB(){
         itemsFood.put("booked", false);
         itemsFood.put("bookedName", "Non");
         itemsFood.put("bookedId", "");
+        itemsFood.put("show", arr);
         itemsFood.put("typeCat","clothe_category");
 
         DocumentReference documentReference = fStore.collection("Users")
@@ -270,9 +277,17 @@ public void food_cat_DB(){
             }
         });
         radio1="";
+        arr="";
     }
     public void tool_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
+        if(ch.isChecked() && us.isChecked())
+            arr="3";
+        else if(us.isChecked())
+            arr="2";
+        else if (ch.isChecked())
+            arr="1";
+
 
         categotyId = fStore.collection("Users").document(id).collection("category").document().getId();
         uploadImg(mImageUri);
@@ -285,6 +300,7 @@ public void food_cat_DB(){
         itemsFood.put("booked", false);
         itemsFood.put("bookedName", "Non");
         itemsFood.put("bookedId", "");
+        itemsFood.put("show", arr);
         itemsFood.put("typeCat","tool_category");
 
 
@@ -304,10 +320,17 @@ public void food_cat_DB(){
 
             }
         });
+        arr="";
 
     }
     public void ser_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
+        if(ch.isChecked() && us.isChecked())
+            arr="3";
+        else if(us.isChecked())
+            arr="2";
+        else if (ch.isChecked())
+            arr="1";
 
         categotyId = fStore.collection("Users").document(
                 id).collection("category").document().getId();
@@ -320,6 +343,7 @@ public void food_cat_DB(){
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
         itemsFood.put("bookedName", "Non");
+        itemsFood.put("show", arr);
         itemsFood.put("bookedId", "");
         itemsFood.put("typeCat","serves_category");
 
@@ -339,11 +363,17 @@ public void food_cat_DB(){
 
             }
         });
-
+        arr="";
     }
 
     public void other_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
+        if(ch.isChecked() && us.isChecked())
+            arr="3";
+        else if(us.isChecked())
+            arr="2";
+        else if (ch.isChecked())
+            arr="1";
 
         categotyId = fStore.collection("Users").document(
                 id).collection("category").document().getId();
@@ -357,6 +387,7 @@ public void food_cat_DB(){
         itemsFood.put("booked", false);
         itemsFood.put("bookedName", "Non");
         itemsFood.put("bookedId", "");
+        itemsFood.put("show", arr);
         itemsFood.put("typeCat","other_category");
 
         DocumentReference documentReference = fStore.collection("Users")
@@ -375,7 +406,7 @@ public void food_cat_DB(){
 
             }
         });
-
+        arr="";
     }
 
 public void food_cat (){
