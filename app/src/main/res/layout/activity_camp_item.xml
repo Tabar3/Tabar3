@@ -37,10 +37,10 @@
             android:orientation="vertical"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:layout_marginRight="10dp">>
+            android:layout_marginRight="10dp">
             <TextView
                 android:layout_width="270dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:id="@+id/CampN"
                 android:text="جمعية.>"
                 android:textSize="18dp"
@@ -52,6 +52,7 @@
                 android:layout_height="55dp"
                 android:id="@+id/CampD"
                 android:text="جمعية.>"
+                android:layout_marginTop="2dp"
                 android:textDirection="rtl"
                 android:textColor="#005FFF"
                 ></TextView>

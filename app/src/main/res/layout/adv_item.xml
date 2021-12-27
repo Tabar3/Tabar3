@@ -9,7 +9,6 @@
     android:background="@drawable/boarder"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="6dp"
-    android:layout_margin="5dp"
     android:elevation="10dp"
     >
 
@@ -40,7 +39,7 @@
         android:layout_marginRight="10dp">
         <TextView
             android:layout_width="270dp"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:id="@+id/AdvmName"
             android:text="جمعية.>"
             android:textDirection="rtl"
@@ -53,17 +52,23 @@
             android:id="@+id/AdvmDes"
             android:text="جمعية.>"
             android:textDirection="rtl"
+            android:layout_marginTop="2dp"
             android:textColor="#005FFF"
             ></TextView>
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="20dp"
-            android:id="@+id/charN"
-            android:text="جمعية.>"
-            android:textDirection="rtl"
-            android:textColor="#005FFF"
-            android:layout_marginRight="200dp"
-            ></TextView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layoutDirection="ltr"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:id="@+id/charN"
+                android:text="جمعية"
+                android:textColor="#005FFF"
+                ></TextView>
+        </LinearLayout>
 
     </LinearLayout>
 
