@@ -4,21 +4,20 @@ package com.example.tabar3;
 public class Cat_Item {
 
     String catId, name, type, numHuman, UserId;
-    String numclothe,toolAge, Des,typeCat,bookedName,bookedId;
+    String numclothe, Des,typeCat,bookedName,bookedId;
     Boolean booked;
     String show;
 
     public Cat_Item() {
     }
 
-    public Cat_Item(String catId, String name, String type, String numHuman, String UserId, String numclothe, String toolAge, String Des, String typeCat, Boolean booked,String bookedName,String bookedId,String show) {
+    public Cat_Item(String catId, String name, String type, String numHuman, String UserId, String numclothe, String Des, String typeCat, Boolean booked,String bookedName,String bookedId,String show) {
         this.catId = catId;
         this.name = name;
         this.type = type;
         this.numHuman = numHuman;
         this.UserId = UserId;
         this.numclothe = numclothe;
-        this.toolAge = toolAge;
         this.Des = Des;
         this.show=show;
         this.typeCat = typeCat;
@@ -99,13 +98,6 @@ public class Cat_Item {
         this.numclothe = numclothe;
     }
 
-    public String getToolAge() {
-        return toolAge;
-    }
-
-    public void setToolAge(String toolAge) {
-        this.toolAge = toolAge;
-    }
 
     public String getDes() {
         return Des;

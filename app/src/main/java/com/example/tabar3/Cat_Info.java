@@ -103,6 +103,27 @@ public class Cat_Info extends AppCompatActivity {
                     t.setVisibility(View.VISIBLE);
                     t1.setVisibility(View.VISIBLE);
                     t1.setText(documentSnapshot.getString("bookedName"));
+                    if (documentSnapshot.getBoolean("booked")){
+                    dRef = fStore.collection("Users").document(documentSnapshot.getString("bookedId"));
+                    dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+                        if (documentSnapshot2 != null && documentSnapshot2.exists()) {
+                            t1.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    Intent intent = new Intent(Cat_Info.this, Accounts.class);
+                                    intent.putExtra("UserInfo",documentSnapshot.getString("bookedId"));
+                                    startActivity(intent);
+                                }
+                            });
+
+
+                        }else
+                        {
+                            Intent intent2 = new Intent(Cat_Info.this, Charity_Info.class);
+                            intent2.putExtra("CharitiesInfo",documentSnapshot.getString("bookedId"));
+                            startActivity(intent2);
+
+                        }});}
                     imgVi.setVisibility(View.VISIBLE);
                 imgVi.setOnClickListener(new View.OnClickListener() {
                     @Override

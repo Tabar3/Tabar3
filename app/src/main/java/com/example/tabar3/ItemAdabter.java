@@ -83,8 +83,8 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
                documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                    if (documentSnapshot != null && documentSnapshot.exists()) {
                        holder.tname.setText(itm.getCharityName());
-
-
+                       holder.tDes.setText(itm.getCharityDes());
+                       holder.tD.setText(itm.getCharityDate());
                    } else {
                        holder.tname.setText("no name");
 
@@ -103,7 +103,8 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
                documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                    if (documentSnapshot != null && documentSnapshot.exists()) {
                        holder.tname.setText(itm.getUserName());
-
+                       holder.tDes.setText(itm.getUserPhone());
+                       holder.tD.setVisibility(View.GONE);
 
                    } else {
                        holder.tname.setText("no name");
@@ -121,7 +122,7 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
 
 
     public class ItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView tname;
+        TextView tname,tDes,tD;
         ImageView img;
 
 
@@ -131,7 +132,8 @@ public class ItemAdabter extends RecyclerView.Adapter<ItemAdabter.ItemHolder> {
             itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.imgItem);
             tname = itemView.findViewById(R.id.itemName);
-
+            tDes = itemView.findViewById(R.id.itemDes);
+            tD = itemView.findViewById(R.id.itemDeta);
 
         }
 

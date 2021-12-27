@@ -6,21 +6,29 @@ import java.util.ArrayList;
 public class Adv_Item {
 
    String advId, charId;
-   String advDes;
-   ArrayList<Integer> typeOfAdv;
+   String advDes,charName, typeOfAdv;
    String advNum, advName;
 
    public Adv_Item() {
 
    }
 
-   public Adv_Item(String advId, String charId, String advDes, ArrayList<Integer> typeOfAdv, String advNum, String advName) {
+   public Adv_Item(String advId, String charId, String advDes, String typeOfAdv, String advNum, String advName,String charName) {
       this.advId = advId;
       this.charId = charId;
       this.advDes = advDes;
       this.typeOfAdv = typeOfAdv;
       this.advNum = advNum;
       this.advName = advName;
+      this.charName=charName;
+   }
+
+   public String getCharName() {
+      return charName;
+   }
+
+   public void setCharName(String charName) {
+      this.charName = charName;
    }
 
    public String getAdvId() {
@@ -47,11 +55,11 @@ public class Adv_Item {
       this.advDes = advDes;
    }
 
-   public ArrayList<Integer> getTypeOfAdv() {
+   public String getTypeOfAdv() {
       return typeOfAdv;
    }
 
-   public void setTypeOfAdv(ArrayList<Integer> typeOfAdv) {
+   public void setTypeOfAdv(String typeOfAdv) {
       this.typeOfAdv = typeOfAdv;
    }
 

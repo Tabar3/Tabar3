@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Login"
     android:orientation="vertical"
-    android:background="@drawable/aaa"
+    android:background="@color/white"
 
 
     >
@@ -21,6 +21,14 @@
         android:fontFamily="cursive"
         />
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="120dp"
+        android:src="@drawable/log"
+        android:layout_gravity="center"
+></ImageView>
+
+
     <EditText
         android:id="@+id/userNameL"
         android:layout_width="match_parent"
@@ -28,32 +36,24 @@
         android:hint="UserName"
         android:textColorHint="#0060FF"
         android:textColor="#0060FF"
+        android:outlineSpotShadowColor="#0060FF"
         android:inputType="textAutoComplete"
-        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+
         />
     <EditText
         android:id="@+id/PasswordL"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="Password"
+        android:outlineAmbientShadowColor="#0060FF"
         android:inputType="textPassword"
         android:textColorHint="#0060FF"
         android:textColor="#0060FF"
+        android:layout_margin="10dp"
 
         />
-    <Button
-        android:id="@+id/ResetB"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:gravity="start"
-        android:layout_marginTop="10dp"
-        android:text="Forget your password? Change HERE"
-        android:textSize="15dp"
-        android:textColor="#0060FF"
-        android:textColorHint="@color/teal_200"
-        android:onClick="ResetPass"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        />
+
     <Button
         android:id="@+id/LoginB"
         android:layout_width="200dp"
@@ -71,16 +71,28 @@
     <Button
         android:id="@+id/signUpB"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:gravity="start"
         android:layout_marginTop="15dp"
         android:text="Not have account yet! SIGN UP NOW"
         android:textSize="15dp"
         android:textColor="#0060FF"
         android:layout_gravity="center"
-        android:textColorHint="@color/teal_200"
+        android:textColorHint="#0060FF"
         android:onClick="MoveToS"
         style="@style/Widget.MaterialComponents.Button.TextButton"
         />
-
+    <Button
+        android:id="@+id/ResetB"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:text="Forget your password? Change HERE"
+        android:textSize="15dp"
+        android:textColor="#00C9FF"
+        android:textColorHint="@color/teal_200"
+        android:onClick="ResetPass"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        />
 </LinearLayout>

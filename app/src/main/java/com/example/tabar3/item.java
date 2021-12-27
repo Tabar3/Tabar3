@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class item {
    String charityId,charityName,charityLoc, charityPhone ,charityDes,charityEmail,typeOfUser;
-   String UserEmail,UserId,UserPhone,UserName,UserLoc;
+   String UserEmail,UserId,UserPhone,UserName,UserLoc,charityDate,charityGoal;
    Boolean accept;
 
-   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser, String UserEmail, String UserId, String UserPhone, String UserName, String UserLoc , Boolean accept) {
+   public item(String charityId, String charityName, String charityLoc, String charityPhone, String charityDes, String charityEmail, String typeOfUser, String UserEmail, String UserId, String UserPhone, String UserName, String UserLoc , Boolean accept,String charityDate,String charityGoal) {
       this.charityId = charityId;
       this.charityName = charityName;
       this.charityLoc = charityLoc;
@@ -17,11 +17,29 @@ public class item {
       this.charityEmail = charityEmail;
       this.typeOfUser = typeOfUser;
       this.UserEmail = UserEmail;
+      this.charityGoal=charityGoal;
       this.UserId = UserId;
       this.UserPhone = UserPhone;
       this.UserName = UserName;
       this.UserLoc = UserLoc;
       this.accept=accept;
+      this.charityDate=charityDate;
+   }
+
+   public String getCharityGoal() {
+      return charityGoal;
+   }
+
+   public void setCharityGoal(String charityGoal) {
+      this.charityGoal = charityGoal;
+   }
+
+   public String getCharityDate() {
+      return charityDate;
+   }
+
+   public void setCharityDate(String charityDate) {
+      this.charityDate = charityDate;
    }
 
    public Boolean getAccept() {

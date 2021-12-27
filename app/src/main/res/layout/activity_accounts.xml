@@ -28,23 +28,33 @@
             android:visibility="gone"
             ></ImageView>
     </RelativeLayout>
-    <TextView
-        android:id="@+id/InfoChartxt"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
-    <TextView
-        android:id="@+id/InfoCharGoal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="Goal"
-        android:textDirection="rtl"
-        android:layout_margin="10dp"></TextView>
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم المستخدم :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/InfoChartxt"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

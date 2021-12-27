@@ -81,25 +81,26 @@ public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
             DocumentReference documentReference = FirebaseFirestore.getInstance().collection("Advertisement").document(ItemId);
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
-                    holder.tname.setText(itm.getAdvName());
-
+                    holder.tDes.setText(itm.getAdvDes());
+                    holder.tN.setText(itm.getAdvName());
+                    holder.tchN.setText(itm.getCharName());
 
                 } else {
-                    holder.tname.setText("no name");
+                    holder.tDes.setText("no name");
 
                 }
             });
         }
 
         else {
-            holder.tname.setText("nooo name");
+            holder.tDes.setText("nooo name");
 
         }
 
 
     }
     public class AdvItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView tname;
+        TextView tDes,tN,tchN;
         ImageView img;
 
 
@@ -108,8 +109,9 @@ public class AdvAdabter extends RecyclerView.Adapter<AdvAdabter.AdvItemHolder> {
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.imgItem2);
-            tname = itemView.findViewById(R.id.AdvmDes);
-
+            tDes = itemView.findViewById(R.id.AdvmDes);
+            tN=itemView.findViewById(R.id.AdvmName);
+            tchN=itemView.findViewById(R.id.charN);
 
         }
 

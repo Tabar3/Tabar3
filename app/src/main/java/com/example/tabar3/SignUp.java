@@ -101,7 +101,9 @@ public class SignUp extends AppCompatActivity {
         CharUsers.put("charityPhone", PhoneN.getText().toString());
         CharUsers.put("charityName", UserName.getText().toString());
         CharUsers.put("charityLoc",Location.getText().toString());
-        CharUsers.put("charityDes",CharId);
+        CharUsers.put("charityDes","");
+        CharUsers.put("charityDate","");
+        CharUsers.put("charityGoal","");
         CharUsers.put("typeOfUser","Char");
         CharUsers.put("accept",false);
 

@@ -43,72 +43,103 @@
         android:layout_above="@+id/button_upload"
         android:layout_alignParentStart="true"
         />
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="اسم الجمعية"
-        android:layout_marginTop="16dp"
-        ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="اسم الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
     <EditText
         android:id="@+id/charName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="وصف الجمعية"
-        android:layout_marginTop="16dp"
-        ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="وصف الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
     <EditText
         android:id="@+id/charDes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
-    <TextView
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="هدف الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
+            <EditText
+                android:id="@+id/charG"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="تاريخ تأسيس الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
+            <EditText
+                android:id="@+id/charD"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></EditText>
 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ايميل الجمعية"
-        android:layout_marginTop="16dp"
-        ></TextView>
-    <EditText
-        android:id="@+id/charEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        ></EditText>
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="رابط موقع الجمعية"
-        android:layout_marginTop="16dp"
-        ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="رابط موقع الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
     <EditText
         android:id="@+id/charLoc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
-    <TextView
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="رقم هاتف الجمعية"
-        android:layout_marginTop="16dp"
-        ></TextView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:text="رقم هاتف الجمعية:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
+                ></TextView>
     <EditText
         android:id="@+id/charPho"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="تعديل البيانات"
-    android:id="@+id/edit1"></Button>
+
+            <Button
+                android:id="@+id/edit1"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:background="@drawable/a2"
+                android:text="تعديل البيانات"
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:textColor="#0060FF"
+                ></Button>
 
         </LinearLayout>
     </ScrollView>

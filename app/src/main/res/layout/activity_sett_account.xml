@@ -10,54 +10,57 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16dp"
         android:text="تغير اسم المستخدم"
         android:textColor="#0060FF"
-        android:layout_marginRight="5dp"/>
+       />
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:textSize="18dp"
         android:id="@+id/name"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16dp"
         android:text="تغير الموقع"
-        android:textColor="#0060FF"
-        android:layout_marginRight="5dp"/>
+        android:textColor="#0060FF" />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:textSize="18dp"
         android:id="@+id/location"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16dp"
         android:text=" تغير رقم الهاتف"
         android:textColor="#0060FF"
-        android:layout_marginRight="5dp"/>
+        />
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:textSize="18dp"
         android:id="@+id/phone"
         />
     <Button
 
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
         android:background="@drawable/a2"
         android:layout_margin="5dp"
         android:textColor="#0060FF"
+        android:layout_gravity="center"
         android:text="حفظ "
-        android:textSize="30dp"
+        android:textSize="18dp"
         android:onClick="SaveCs"
 
         android:id="@+id/login"
@@ -65,26 +68,27 @@
     <EditText
         android:id="@+id/Newmail"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:textColorHint="#0060FF"
         android:layout_margin="5dp"
         android:hint="البريد الالكتروني الجديد"/>
     <EditText
         android:id="@+id/PasswordConfirm"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:textColorHint="#0060FF"
         android:layout_margin="5dp"
         android:hint="تأكيد كلمة المرور"
         />
     <Button
         android:id="@+id/ChEmail"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
         android:text="حفظ البريد الالكتروني الجديد"
         android:textColor="#0060FF"
         android:background="@drawable/a2"
-        android:textSize="24dp"
+        android:textSize="18dp"
         android:onClick="changE"
         android:layout_margin="5dp"
         />

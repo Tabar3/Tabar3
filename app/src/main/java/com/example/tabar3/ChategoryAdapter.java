@@ -89,7 +89,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             });
         }
             holder.tname.setText(itm.getDes());
-
+            holder.tT.setText(itm.getTypeCat());
 
 
         StorageReference bookReference = storageReference.child("Categoty/"+ItemId+"/mainImage.jpg");
@@ -202,7 +202,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
 
 
     public class FoodItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView tname;
+        TextView tname,tT;
         ImageView img;
 
 
@@ -212,7 +212,7 @@ public class ChategoryAdapter extends RecyclerView.Adapter<ChategoryAdapter.Food
             itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.imgItem32);
             tname = itemView.findViewById(R.id.charDes);
-
+            tT = itemView.findViewById(R.id.charT);
 
         }
 

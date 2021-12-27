@@ -22,13 +22,6 @@
 
 
 
-        <ImageView
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:id="@+id/imgItem"
-            android:scaleType="centerCrop"
-
-            />
 
 
         <LinearLayout
@@ -36,39 +29,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp">>
             <TextView
                 android:layout_width="270dp"
-                android:layout_height="20dp"
-                android:id="@+id/itemName"
-                android:text="جمعية.>"
-                android:textSize="18dp"
-                android:textDirection="rtl"
-                android:textColor="#005FFF"
-                ></TextView>
-            <TextView
-                android:layout_width="270dp"
-                android:layout_height="40dp"
-                android:id="@+id/itemDes"
+                android:layout_height="30dp"
+                android:id="@+id/moDes"
                 android:text="جمعية.>"
                 android:textDirection="rtl"
                 android:textColor="#005FFF"
+                android:layout_marginRight="3dp"
                 ></TextView>
             <TextView
-                android:layout_width="100dp"
-                android:layout_height="20dp"
-                android:id="@+id/itemDeta"
-                android:text="0/00/0000"
+                android:layout_width="270dp"
+                android:layout_height="30dp"
+                android:id="@+id/monum"
+                android:text="جمعية.>"
                 android:textDirection="rtl"
                 android:textColor="#005FFF"
-                android:layout_marginRight="200dp"
                 ></TextView>
 
         </LinearLayout>
 
     </LinearLayout>
-
-
 </androidx.cardview.widget.CardView>
-

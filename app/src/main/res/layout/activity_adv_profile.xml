@@ -11,13 +11,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/AdvImg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             tools:srcCompat="@tools:sample/avatars"
-            android:scaleType="centerCrop"
-            android:layout_margin="10dp"></ImageView>
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
         <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -37,34 +37,140 @@
             android:visibility="gone"
             android:src="@drawable/edit"></ImageView>
     </RelativeLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="عنوان الاعلان :"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        android:textColor="#005FFF"
+        ></TextView>
     <TextView
         android:id="@+id/AdvNa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="AdvN"
+        android:textSize="16dp"
+        android:text="اسم"
         android:layout_margin="10dp"
         android:textDirection="rtl"
+        android:textColor="#005FFF"
         ></TextView>
-    <TextView
-        android:id="@+id/AdvN"
+
+</LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="AdvN"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
-    <TextView
-        android:id="@+id/AdvD"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="تفاصيل الاعلان :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/AdvD"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="AdvD"
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="AdvD"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="العدد المطلوب :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/AdvN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text=""
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم الجمعية :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+    <TextView
+        android:id="@+id/AdvchN"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:text="chN"
+        android:textColor="#005FFF"
         android:layout_margin="10dp"
         android:textDirection="rtl"
-        ></TextView>
+        ></TextView></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="النوع :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+    <TextView
+        android:id="@+id/AdvT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="advT"
+        android:textColor="#005FFF"
+        android:layout_margin="10dp"
+        android:textDirection="rtl"
+        ></TextView></LinearLayout>
+
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"

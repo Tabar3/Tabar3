@@ -10,13 +10,13 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/InfoCatImg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars"
-            android:layout_margin="10dp"></ImageView>
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"> </com.mikhaellopez.circularimageview.CircularImageView>
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -36,25 +36,60 @@
             android:visibility="gone"
             android:src="@drawable/edit"></ImageView>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
-    <TextView
-        android:id="@+id/txtCatN"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم الصنف :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCatN"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
-    <TextView
-        android:id="@+id/txtCatD1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="وصف الصنف :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCatD1"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -63,15 +98,26 @@
         android:layout_marginLeft="10dp"
         android:layoutDirection="rtl"
         >
-    <TextView
-        android:id="@+id/txtCatD2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_gravity="center"
-        android:textDirection="rtl"
-        ></TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم المتبرع :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCatD2"
+            android:layout_width="wrap_content"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView>
+
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/InfoUImg"
             android:layout_gravity="center"
@@ -97,13 +143,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#005FFF"
         android:text="حجز من قبل : "
         android:id="@+id/t"
+        android:layout_margin="10dp"
         android:visibility="gone"
         ></TextView>
         <TextView
@@ -112,6 +160,7 @@
             android:textColor="#005FFF"
             android:text=""
             android:id="@+id/t1"
+            android:layout_margin="10dp"
             android:visibility="gone"
             ></TextView>
 </LinearLayout>

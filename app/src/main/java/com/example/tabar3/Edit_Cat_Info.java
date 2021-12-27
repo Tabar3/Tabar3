@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class Edit_Cat_Info extends AppCompatActivity {
     TextView f1 , f3 , clo1 , t1, t3, s1, s3;
-    EditText fe2,fe4,cloe2,desE,te2,te4,se2,se4;
+    EditText fe2,fe4,cloe2,desE,te4,se2,se4;
     RadioButton c1,c2,c3,cc,cc1,cc2;
     RadioGroup r1,r2;
     DocumentReference dRef;
@@ -177,9 +177,7 @@ public class Edit_Cat_Info extends AppCompatActivity {
         cc1=findViewById(R.id.cc1);
         cc2=findViewById(R.id.cc2);
         t1=findViewById(R.id.t1);
-        t3=findViewById(R.id.t3);
-        te2=findViewById(R.id.te2);
-        te4=findViewById(R.id.te4);
+
         s1=findViewById(R.id.s1);
         s3=findViewById(R.id.s3);
         se2=findViewById(R.id.se2);
@@ -270,8 +268,8 @@ public class Edit_Cat_Info extends AppCompatActivity {
 
         DocumentReference documentReference = fStore.collection("Users")
                 .document(s2).collection("category").document(s);
-        documentReference.update("toolAge", te4.getText().toString(),"Des", desE.getText().toString(),
-                "type", te2.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+        documentReference.update("toolAge", te4.getText().toString(),"Des", desE.getText().toString()
+               ).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 Toast.makeText(Edit_Cat_Info.this, "mabrooooooook", Toast.LENGTH_LONG).show();
@@ -359,7 +357,6 @@ public class Edit_Cat_Info extends AppCompatActivity {
         fe2.setVisibility(View.VISIBLE);
         t1.setVisibility(View.VISIBLE);
         t3.setVisibility(View.VISIBLE);
-        te2.setVisibility(View.VISIBLE);
         te4.setVisibility(View.VISIBLE);
         clo1.setVisibility(View.VISIBLE);
         cloe2.setVisibility(View.VISIBLE);

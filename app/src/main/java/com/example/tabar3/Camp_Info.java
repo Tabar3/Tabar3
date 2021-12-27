@@ -22,7 +22,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class Camp_Info extends AppCompatActivity {
-    TextView txtCN,txtCD1,txtCD2;
+    TextView txtCN,txtCD1,txtCD2,campchN;
     FirebaseFirestore fStore;
     DocumentReference dRef;
     StorageReference storageReference;
@@ -42,6 +42,7 @@ public class Camp_Info extends AppCompatActivity {
         txtCN=findViewById(R.id.txtCampN);
         txtCD1=findViewById(R.id.txtCampD1);
         txtCD2=findViewById(R.id.txtCampD2);
+        campchN=findViewById(R.id.campchN);
         delete = findViewById(R.id.delete);
         imgInfo=findViewById(R.id.InfoCampImg);
         imgVi=findViewById(R.id.vi2);
@@ -51,6 +52,7 @@ public class Camp_Info extends AppCompatActivity {
         Intent intent = getIntent();
         String s= intent.getStringExtra("Camp");
         String s1= intent.getStringExtra("Char");
+        String s2=intent.getStringExtra("CharN");
         dRef = fStore.collection("Charities").document(s1).collection("Campaign").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
@@ -58,6 +60,8 @@ public class Camp_Info extends AppCompatActivity {
                 txtCN.setText(documentSnapshot.getString("campName"));
                 txtCD1.setText(documentSnapshot.getString("campDes1"));
                 txtCD2.setText(documentSnapshot.getString("campDes2"));
+                campchN.setText(s2);
+
                 dRef = fStore.collection("Admin").document(id);
                 dRef.get().addOnSuccessListener((documentSnapshot2) -> {
                     if (documentSnapshot2 != null && documentSnapshot2.exists()) {

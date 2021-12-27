@@ -44,11 +44,13 @@
                 android:layout_alignParentStart="true"
                 />
             <TextView
-
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="اسم المستخدم"
-                android:layout_marginTop="16dp"
+                android:textSize="16dp"
+                android:text="اسم المستخدم:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
                 ></TextView>
             <EditText
                 android:id="@+id/charName"
@@ -57,11 +59,13 @@
                 ></EditText>
 
             <TextView
-
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="رابط موقع المستخدم"
-                android:layout_marginTop="16dp"
+                android:textSize="16dp"
+                android:text="رابط موقع المستخدم:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
                 ></TextView>
             <EditText
                 android:id="@+id/charLoc"
@@ -69,23 +73,32 @@
                 android:layout_height="wrap_content"
                 ></EditText>
             <TextView
-
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="رقم هاتف المستخدم"
-                android:layout_marginTop="16dp"
+                android:textSize="16dp"
+                android:text="رقم هاتف المستخدم:"
+                android:layout_margin="10dp"
+                android:textDirection="rtl"
+                android:textColor="#005FFF"
                 ></TextView>
             <EditText
                 android:id="@+id/charPho"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 ></EditText>
+
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:id="@+id/edit1"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:background="@drawable/a2"
                 android:text="تعديل البيانات"
-                android:id="@+id/edit1"></Button>
+                android:textSize="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:textColor="#0060FF"
+                ></Button>
+
 
         </LinearLayout>
     </ScrollView>

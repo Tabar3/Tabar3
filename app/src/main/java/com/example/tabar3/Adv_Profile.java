@@ -19,7 +19,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class Adv_Profile extends AppCompatActivity {
     ImageView img,imgVi,delete1;
-    TextView txtN,txtD,textna;
+    TextView txtN,txtD,textna,tchN,tT;
     FirebaseFirestore fStore;
     DocumentReference dRef;
     StorageReference storageReference;
@@ -36,6 +36,8 @@ public class Adv_Profile extends AppCompatActivity {
         textna=findViewById(R.id.AdvNa);
         imgVi=findViewById(R.id.vi1);
         delete1=findViewById(R.id.delete1);
+        tchN=findViewById(R.id.AdvchN);
+        tT=findViewById(R.id.AdvT);
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         id =mAuth.getCurrentUser().getUid();
@@ -49,6 +51,8 @@ public class Adv_Profile extends AppCompatActivity {
                 textna.setText(documentSnapshot.getString("advName"));
                 txtN.setText(documentSnapshot.getString("advNum"));
                 txtD.setText(documentSnapshot.getString("advDes"));
+                tT.setText(documentSnapshot.getString("typeOfAdv"));
+                tchN.setText(documentSnapshot.getString("charName"));
 
                 dRef = fStore.collection("Admin").document(id);
                 dRef.get().addOnSuccessListener((documentSnapshot2) -> {

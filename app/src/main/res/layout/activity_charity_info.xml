@@ -29,23 +29,112 @@
             android:visibility="gone"
             ></ImageView>
     </RelativeLayout>
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
+
     <TextView
-        android:id="@+id/InfoChartxt"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
+        android:textSize="16dp"
+        android:text="اسم الجمعية :"
         android:layout_margin="10dp"
         android:textDirection="rtl"
+        android:textColor="#005FFF"
         ></TextView>
-    <TextView
-        android:id="@+id/InfoCharGoal"
+        <TextView
+            android:id="@+id/InfoChartxt"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="Goal"
-        android:textDirection="rtl"
-        android:layout_margin="10dp"></TextView>
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="وصف الجمعية :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/InfoCharGoal"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="هدف الجمعية :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/InfoCharG"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="تاريخ تأسيس الجمعية :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/InfoCharDate"
+            android:layout_width="match_parent"
+            android:textColor="#005FFF"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="profile"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -69,9 +158,19 @@
             android:src="@drawable/location"
             android:id="@+id/lo"></ImageView>
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="حملات الجمعية :"
+        android:textDirection="rtl"
+        android:layout_marginRight="10dp"
+        android:textColor="#005FFF"
+        ></TextView>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

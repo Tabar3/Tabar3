@@ -71,6 +71,7 @@ public class Charities extends Fragment {
                     if (ItemC.getCharityName() != null) {
                         Intent intent = new Intent(getActivity(), Charity_Info.class);
                         intent.putExtra("CharitiesInfo", ItemC.getCharityId());
+                        intent.putExtra("CharN",ItemC.getCharityName());
                         startActivity(intent);
 
 

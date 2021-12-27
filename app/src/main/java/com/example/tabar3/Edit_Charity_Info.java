@@ -30,7 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Edit_Charity_Info extends AppCompatActivity {
-    EditText n,d,l,p,e;
+    EditText n,d,l,p,g,da;
     FirebaseFirestore fStore;
     DocumentReference dRef;
     StorageReference storageReference;
@@ -50,7 +50,8 @@ public class Edit_Charity_Info extends AppCompatActivity {
         d=findViewById(R.id.charDes);
         l=findViewById(R.id.charLoc);
         p=findViewById(R.id.charPho);
-        e=findViewById(R.id.charEmail);
+        g=findViewById(R.id.charG);
+        da=findViewById(R.id.charD);
         img= findViewById(R.id.imgInfoEdit);
         btnImg=findViewById(R.id.Edit_choose_image);
         fStore = FirebaseFirestore.getInstance();
@@ -66,7 +67,8 @@ public class Edit_Charity_Info extends AppCompatActivity {
         d.setText(documentSnapshot.getString("charityDes"));
         l.setText(documentSnapshot.getString("charityLoc"));
         p.setText(documentSnapshot.getString("charityPhone"));
-        e.setText(documentSnapshot.getString("charityEmail"));
+        g.setText(documentSnapshot.getString("charityGoal"));
+        da.setText(documentSnapshot.getString("charityDate"));
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +127,8 @@ public class Edit_Charity_Info extends AppCompatActivity {
         documentReference.update("charityName", n.getText().toString(),
                 "charityDes", d.getText().toString(),
                 "charityLoc", l.getText().toString(),
+                "charityDate",da.getText().toString(),
+                "charityGoal",g.getText().toString(),
                 "charityPhone", p.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

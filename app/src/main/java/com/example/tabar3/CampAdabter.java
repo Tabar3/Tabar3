@@ -84,7 +84,7 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
             documentReference.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null) {
                     holder.tname.setText(itm.getCampName());
-
+                    holder.tD.setText(itm.getCampDes1());
 
                 } else {
                     holder.tname.setText("no name");
@@ -101,7 +101,7 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
 
     }
     public class CampItemHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
-        TextView tname;
+        TextView tname,tD;
         ImageView img;
 
 
@@ -111,6 +111,7 @@ public class CampAdabter extends RecyclerView.Adapter<CampAdabter.CampItemHolder
             itemView.setOnLongClickListener(this);
             img = itemView.findViewById(R.id.imgItem6);
             tname = itemView.findViewById(R.id.CampN);
+            tD = itemView.findViewById(R.id.CampD);
 
 
         }

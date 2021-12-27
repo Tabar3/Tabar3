@@ -39,12 +39,13 @@ import java.util.Map;
 public class Add_Adv extends AppCompatActivity  {
     EditText Des, Num,name;
     Button add;
+    DocumentReference dRef;
     FirebaseFirestore fStore;
     RadioButton c1, c2, c3 ,c4 ,c5;
     ImageView img,detaImg;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Button mButtonChooseImage;
-    ArrayList<Integer> checkArr = new ArrayList();
+    String checkArr ;
     public Uri mImageUri;
     private FirebaseStorage storage;
     private StorageReference storageReference;
@@ -119,23 +120,28 @@ public class Add_Adv extends AppCompatActivity  {
 
         fStore = FirebaseFirestore.getInstance();
 
+        dRef = fStore.collection("Charities").document(id);
+        dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+            if (documentSnapshot2 != null && documentSnapshot2.exists()) {
 
         if (c1.isChecked())
-            checkArr.add(1);
+            checkArr="طعام";
         else if (c2.isChecked())
-            checkArr.add(2);
+            checkArr="ملابس";
         else if (c3.isChecked())
-            checkArr.add(3);
+            checkArr="مفروشات و ادوات";
         else if (c4.isChecked())
-            checkArr.add(4);
+            checkArr="خدمات عامة";
         else if (c5.isChecked())
-            checkArr.add(5);
+            checkArr="اخرى";
+
 
         AdvId = fStore.collection("Advertisement").document().getId();
         uploadImg(mImageUri);
         Map<String, Object> itemsAdv = new HashMap<>();
         itemsAdv.put("advId", AdvId);
         itemsAdv.put("charId", id);
+        itemsAdv.put("charName", documentSnapshot2.getString("charityName"));
         itemsAdv.put("advDes", Des.getText().toString());
         itemsAdv.put("advName", name.getText().toString());
         itemsAdv.put("typeOfAdv", checkArr);
@@ -156,8 +162,9 @@ public class Add_Adv extends AppCompatActivity  {
 
             }
         });
+                checkArr="";
 
-        checkArr.clear();
+            }});
 
     }
 

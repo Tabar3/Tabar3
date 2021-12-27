@@ -10,13 +10,14 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <ImageView
+        <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/InfoCampImg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars"
-            android:layout_margin="10dp"></ImageView>
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
+
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -36,34 +37,111 @@
             android:src="@drawable/edit"
             android:visibility="gone"></ImageView>
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
 
-    <TextView
-        android:id="@+id/txtCampN"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم الحملة :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCampN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="AdvD"
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
-    <TextView
-        android:id="@+id/txtCampD1"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="وصف الحملة :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCampD1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="AdvD"
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
-    <TextView
-        android:id="@+id/txtCampD2"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="تفاصيل الحملة :"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/txtCampD2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="AdvD"
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14dp"
-        android:text="profile"
-        android:layout_margin="10dp"
-        android:textDirection="rtl"
-        ></TextView>
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="اسم الجمعية:"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            android:textColor="#005FFF"
+            ></TextView>
+        <TextView
+            android:id="@+id/campchN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:text="AdvD"
+            android:textColor="#005FFF"
+            android:layout_margin="10dp"
+            android:textDirection="rtl"
+            ></TextView></LinearLayout>
+
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"

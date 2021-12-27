@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Charity_Info extends AppCompatActivity {
-    TextView txtName,txtDes;
+    TextView txtName,txtDes,Date,tGoal;
     FirebaseFirestore fStore;
     DocumentReference dRef;
     StorageReference storageReference;
@@ -41,8 +41,8 @@ public class Charity_Info extends AppCompatActivity {
     ListenerRegistration AdvListener;
     CampAdabter campAdabter;
     ListenerRegistration ItemListListener;
-    ImageView imgadd,imgPho,imgLoc,imgVi;
-    String s;
+    ImageView imgadd,imgPho,imgLoc,imgVi,imgvii;
+    String s,s2;
     FirebaseAuth mAuth;
     String id;
     Button chA;
@@ -58,15 +58,21 @@ public class Charity_Info extends AppCompatActivity {
         imgLoc=findViewById(R.id.lo);
         chA=findViewById(R.id.charAcc);
         imgVi=findViewById(R.id.vi);
+        imgvii=findViewById(R.id.vii);
+        Date=findViewById(R.id.InfoCharDate);
+        tGoal=findViewById(R.id.InfoCharG);
         mAuth = FirebaseAuth.getInstance();
         id =mAuth.getCurrentUser().getUid();
         Intent intent = getIntent();
         s= intent.getStringExtra("CharitiesInfo");
+        s2=intent.getStringExtra("CharN");
         dRef = fStore.collection("Charities").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
                 txtName.setText(documentSnapshot.getString("charityName"));
                 txtDes.setText(documentSnapshot.getString("charityDes"));
+                Date.setText(documentSnapshot.getString("charityDate"));
+                tGoal.setText(documentSnapshot.getString("charityGoal"));
                 dRef = fStore.collection("Admin").document(id);
                 dRef.get().addOnSuccessListener((documentSnapshot5) -> {
                     if (documentSnapshot5 != null && documentSnapshot5.exists()) {
@@ -120,6 +126,15 @@ public class Charity_Info extends AppCompatActivity {
 
                     }
                 });}
+                imgvii.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Charity_Info.this, tabar3Ch.class);
+                        intent.putExtra("CharId", s);
+                        startActivity(intent);
+
+                    }
+                });
             }
         });
         storageReference= FirebaseStorage.getInstance().getReference();
@@ -184,6 +199,7 @@ public class Charity_Info extends AppCompatActivity {
                         Intent intent = new Intent(Charity_Info.this, Camp_Info.class);
                         intent.putExtra("Camp", ItemC.getCampId());
                         intent.putExtra("Char", s);
+                        intent.putExtra("CharN", s2);
                         startActivity(intent);
 
 

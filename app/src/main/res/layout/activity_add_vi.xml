@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Add_vi"
+    android:orientation="vertical"
+    android:layoutDirection="rtl">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="هنا يمكنك اضافة حسابات البنوك و المحافظ ليتمكن المستخدمين من التبرع المادي"
+        android:textSize="18dp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginRight="10dp">
+<CheckBox
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="بنك"
+    android:textSize="18dp"
+    android:id="@+id/ch1"
+    >
+</CheckBox>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="محفظة"
+        android:layout_marginRight="3dp"
+        android:textSize="18dp"
+        android:id="@+id/ch2"
+        >
+    </CheckBox>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="اسم البنك / المحفظة"
+        android:textSize="14dp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/moN"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"></EditText>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="رقم البنك / المحفظة"
+        android:textSize="14dp"
+        android:layout_margin="10dp"
+        ></TextView>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/moNu"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"></EditText>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/addv"
+        android:text="حفظ"
+        android:layout_margin="10dp">
+
+    </Button>
+</LinearLayout>

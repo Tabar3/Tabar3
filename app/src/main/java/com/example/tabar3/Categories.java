@@ -34,9 +34,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Categories extends AppCompatActivity {
-    TextView f1 , f3 , clo1 , t1, t3, s1, s3;
-    EditText fe2,fe4,cloe2,desE,te2,te4,se2,se4;
-    RadioButton c1,c2,c3,cc,cc1,cc2,ch,us;
+    TextView f1 , f3 , clo1 , s1, s3;
+    EditText fe2,fe4,cloe2,desE,se2,se4;
+    RadioButton c1,c2,c3,cc,cc1,cc2,ch,us,uc;
     RadioGroup r1,r2,r5;
     DocumentReference dRef;
     String arr;
@@ -155,10 +155,6 @@ public void Var(){
     cc=findViewById(R.id.cc);
     cc1=findViewById(R.id.cc1);
     cc2=findViewById(R.id.cc2);
-    t1=findViewById(R.id.t1);
-    t3=findViewById(R.id.t3);
-    te2=findViewById(R.id.te2);
-    te4=findViewById(R.id.te4);
     s1=findViewById(R.id.s1);
     s3=findViewById(R.id.s3);
     se2=findViewById(R.id.se2);
@@ -168,6 +164,7 @@ public void Var(){
     r5=findViewById(R.id.r5);
     ch=findViewById(R.id.ch);
     us=findViewById(R.id.us);
+    uc=findViewById(R.id.uc);
     add_DB = findViewById(R.id.add_Cate_DB);
     mButtonChooseImage = findViewById(R.id.button_choose_image);
     img=findViewById(R.id.imgAddCate);
@@ -186,7 +183,7 @@ public void food_cat_DB(){
         radio1="جاهز";
     if(c3.isChecked())
         radio1="اخر";
-    if(ch.isChecked() && us.isChecked())
+    if(uc.isChecked())
         arr="3";
     else if(us.isChecked())
         arr="2";
@@ -231,7 +228,7 @@ public void food_cat_DB(){
 
     public void clo_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
-        if(ch.isChecked() && us.isChecked())
+        if(uc.isChecked())
             arr="3";
         else if(us.isChecked())
             arr="2";
@@ -281,7 +278,7 @@ public void food_cat_DB(){
     }
     public void tool_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
-        if(ch.isChecked() && us.isChecked())
+        if(uc.isChecked())
             arr="3";
         else if(us.isChecked())
             arr="2";
@@ -293,9 +290,7 @@ public void food_cat_DB(){
         uploadImg(mImageUri);
         Map<String,Object> itemsFood = new HashMap<>();
         itemsFood.put("catId", categotyId);
-        itemsFood.put("toolAge", te4.getText().toString());
         itemsFood.put("Des", desE.getText().toString());
-        itemsFood.put("type", te2.getText().toString());
         itemsFood.put("UserId", id);
         itemsFood.put("booked", false);
         itemsFood.put("bookedName", "Non");
@@ -325,7 +320,7 @@ public void food_cat_DB(){
     }
     public void ser_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
-        if(ch.isChecked() && us.isChecked())
+        if(uc.isChecked())
             arr="3";
         else if(us.isChecked())
             arr="2";
@@ -368,7 +363,7 @@ public void food_cat_DB(){
 
     public void other_cat_DB(){
         fStore = FirebaseFirestore.getInstance();
-        if(ch.isChecked() && us.isChecked())
+        if(uc.isChecked())
             arr="3";
         else if(us.isChecked())
             arr="2";
@@ -428,10 +423,6 @@ public void food_cat (){
     public void tools_cat (){
         f1.setVisibility(View.VISIBLE);
         fe2.setVisibility(View.VISIBLE);
-        t1.setVisibility(View.VISIBLE);
-        t3.setVisibility(View.VISIBLE);
-        te2.setVisibility(View.VISIBLE);
-        te4.setVisibility(View.VISIBLE);
         clo1.setVisibility(View.VISIBLE);
         cloe2.setVisibility(View.VISIBLE);
         desE.setVisibility(View.VISIBLE);
