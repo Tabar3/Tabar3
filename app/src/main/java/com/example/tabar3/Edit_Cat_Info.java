@@ -1,10 +1,13 @@
 package com.example.tabar3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -56,6 +59,11 @@ public class Edit_Cat_Info extends AppCompatActivity {
         setContentView(R.layout.activity_edit_cat_info);
         Var();
         fStore=FirebaseFirestore.getInstance();
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#0060FF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         Intent i = getIntent();
         x=0;
         s = i.getStringExtra("EditCatInfo");

@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:background="@color/teal_700"
-    android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#0060FF"
+    android:layout_height="150dp"
     android:orientation="horizontal"
 
     >
 
-    <ImageView
-        android:layout_width="150dp"
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/UserIM"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:src="@drawable/test"
-        />
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:paddingBottom="3dp"
+        tools:srcCompat="@tools:sample/avatars"
+        >
+    </com.mikhaellopez.circularimageview.CircularImageView>
+
     <TextView
         android:id="@+id/HeaderUN"
-        android:hint="Account"
-        android:textColor="@color/text_color"
-        android:paddingTop="60dp"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="casual"
+        android:hint="Account"
+        android:paddingTop="60dp"
+        android:textColor="@color/text_color"
         android:textSize="20dp"
-        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
         />
 </LinearLayout>

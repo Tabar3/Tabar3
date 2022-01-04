@@ -20,19 +20,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-        <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/imgInfoEdit"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            tools:srcCompat="@tools:sample/avatars"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/imgInfoEdit"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/ic_baseline_person_24"></com.mikhaellopez.circularimageview.CircularImageView>
 
         <Button
             android:id="@+id/Edit_choose_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="اضافة صورة"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/plus"
             /></RelativeLayout>
 
     <ProgressBar
@@ -128,6 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
+<<<<<<< HEAD
 
             <Button
                 android:id="@+id/edit1"
@@ -140,6 +145,17 @@
                 android:layout_marginTop="16dp"
                 android:textColor="#0060FF"
                 ></Button>
+=======
+<Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:text="تعديل البيانات"
+    android:textColor="@color/white"
+    android:textStyle="bold"
+    android:background="#0060FF"
+    android:id="@+id/edit1"></Button>
+>>>>>>> Alaa
 
         </LinearLayout>
     </ScrollView>
