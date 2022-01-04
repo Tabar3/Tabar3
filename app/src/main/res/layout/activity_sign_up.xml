@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".SignUp"
     android:orientation="vertical"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    >
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -21,17 +22,16 @@
 
         <ImageView
             android:id="@+id/imgChar"
-            android:layout_width="match_parent"
+            android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_gravity="center"
-            tools:srcCompat="@tools:sample/avatars"></ImageView>
-
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="131dp"
+            android:background="@drawable/ic_baseline_person_24"/>
         <Button
             android:id="@+id/button_choose_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="اضافة صورة"
-            /></RelativeLayout>
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/plus" /></RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"

@@ -11,13 +11,17 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/InfoCharImg"
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            tools:srcCompat="@tools:sample/avatars"
             android:layout_centerHorizontal="true"
-            android:layout_margin="10dp"></com.mikhaellopez.circularimageview.CircularImageView>
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            tools:srcCompat="@tools:sample/avatars"></com.mikhaellopez.circularimageview.CircularImageView>
         <ImageView
             android:id="@+id/vi"
             android:layout_width="30dp"

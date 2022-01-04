@@ -21,16 +21,18 @@
 
                 <ImageView
                     android:id="@+id/imgAddCate"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_gravity="center"
-                    tools:srcCompat="@tools:sample/avatars"></ImageView>
+                    android:layout_marginEnd="129dp"
+                    android:background="@drawable/ic_baseline_person_24"></ImageView>
 
                 <Button
                     android:id="@+id/button_choose_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="اضافة صورة"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/plus"
                     /></RelativeLayout>
 
             <ProgressBar
@@ -215,6 +217,9 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="اضافة"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:background="#0060FF"
                 ></Button>
         </LinearLayout>
     </ScrollView>

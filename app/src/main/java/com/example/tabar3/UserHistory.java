@@ -1,11 +1,14 @@
 package com.example.tabar3;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,6 +50,12 @@ public class UserHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_history);
         FirebaseApp.initializeApp(this);
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#0060FF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         CitemList = new ArrayList<>();
         itemList = new ArrayList<>();
         FirebaseApp.initializeApp(this);
