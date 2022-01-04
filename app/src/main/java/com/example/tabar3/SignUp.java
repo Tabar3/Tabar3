@@ -128,13 +128,7 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
-        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImgChar(mImageUri);
-            }
-        });
-
+            uploadImgChar(mImageUri);
 
 
 
@@ -163,13 +157,8 @@ public class SignUp extends AppCompatActivity {
                 }
             });
             //Toast.makeText(SignUp.this, "hiiiiiiiiiiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
-            mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    uploadImgUser(mImageUri);
-                }
-            });
 
+            uploadImgUser(mImageUri);
 
         }
 
