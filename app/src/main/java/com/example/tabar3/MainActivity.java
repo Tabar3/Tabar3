@@ -34,6 +34,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,6 +46,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Random;
 
@@ -54,8 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
     FirebaseUser user;
+    private  FirebaseStorage storage;
+    private StorageReference reference;
     TextView HeaderUN,dd;
-    LinearLayout l1;
+    Uri imageUri;
     androidx.appcompat.widget.Toolbar toolbar;
     Button c,a,d2,d;
     String id;
@@ -71,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         a=findViewById(R.id.Adv);
         d2=findViewById(R.id.Don2);
         dd=findViewById(R.id.dd);
-
+        storage=FirebaseStorage.getInstance();
+        reference=storage.getReference();
         mAuth=FirebaseAuth.getInstance();
         user=mAuth.getCurrentUser();
         fStore=FirebaseFirestore.getInstance();
@@ -160,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView =  findViewById(R.id.nav_view);
         View header=navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.HeaderUN);
+        ImageView img=(ImageView) header.findViewById(R.id.UserIM);
+
+
         navigationView.setNavigationItemSelectedListener(this);
 //////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
         if (FirebaseAuth.getInstance().getCurrentUser()==null){
@@ -176,6 +185,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         if (document != null) {
                             if (user.getUid().toString().equals(document.getString("UserId"))) {
                                 username.setText(document.getString("UserName"));
+                                StorageReference storageRef =reference.child(("User/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
+                                storageRef.getDownloadUrl()
+                                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                            @Override
+                                            public void onSuccess(Uri uri) {
+                                                Glide.with(MainActivity.this).load(uri).into(img);
+        //                                        Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             } else {
                                 DocumentReference docRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
                                 docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -186,6 +209,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             if (document != null) {
                                                 if (user.getUid().toString().equals(document.getString("charityId"))) {
                                                     username.setText(document.getString("charityName"));
+                                                    StorageReference storageRef =reference.child(("Charities/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
+                                                    storageRef.getDownloadUrl()
+                                                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                                @Override
+                                                                public void onSuccess(Uri uri) {
+                                                                    Glide.with(MainActivity.this).load(uri).into(img);
+                                                          //          Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
                                                 }
                                             } else {
                                                 Log.d("LOGGER", "No such document");
@@ -238,31 +275,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
        // String id2 =mAuth.getCurrentUser().getUid();
 
         if (id == R.id.account) {
-            dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
-            dRef.get().addOnSuccessListener((documentSnapshot) -> {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
-                    Intent intent = new Intent(this, Charity_Info.class);
-                    intent.putExtra("CharitiesInfo", mAuth.getCurrentUser().getUid());
-                    startActivity(intent);
-                }
-                else {
-                    dRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
-                    dRef.get().addOnSuccessListener((documentSnapshot2) -> {
-                        if (documentSnapshot2 != null && documentSnapshot2.exists()) {
-                            Intent intent = new Intent(this, Accounts.class);
-                            intent.putExtra("UserInfo", mAuth.getCurrentUser().getUid());
-                            startActivity(intent);
-                        }
-                        else{
+            if (mAuth.getCurrentUser()==null){
+                Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
+            }else {
+                dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
+                dRef.get().addOnSuccessListener((documentSnapshot) -> {
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+                        Intent intent = new Intent(this, Charity_Info.class);
+                        intent.putExtra("CharitiesInfo", mAuth.getCurrentUser().getUid());
+                        startActivity(intent);
+                    } else {
+                        dRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
+                        dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+                            if (documentSnapshot2 != null && documentSnapshot2.exists()) {
+                                Intent intent = new Intent(this, Accounts.class);
+                                intent.putExtra("UserInfo", mAuth.getCurrentUser().getUid());
+                                startActivity(intent);
+                            } else {
 
-                            Intent intent = new Intent(this, Admin.class);
-                            startActivity(intent);
-                        }});
+                                Intent intent = new Intent(this, Admin.class);
+                                startActivity(intent);
+                            }
+                        });
 
-                }
+                    }
 
-            });
-
+                });
+            }
         } else if (id==R.id.Login){
             if (FirebaseAuth.getInstance().getCurrentUser()!=null){
                 Toast.makeText(this,"Sorry,You already logged in !",Toast.LENGTH_SHORT).show();
@@ -273,6 +313,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this,Login.class);
             startActivity(intent);}
         }else if (id==R.id.history){
+            if (mAuth.getCurrentUser()==null){
+            Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+        }else {
             dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
@@ -287,7 +331,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
 
 
-        }else if (id==R.id.booked){
+        }}else if (id==R.id.booked){
+            if (mAuth.getCurrentUser()==null){
+                Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
+            }else {
             dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
                 if (documentSnapshot != null && documentSnapshot.exists()) {
@@ -299,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     startActivity(intent);
                 }
 
-            });}
+            });}}
         else if (id==R.id.setting){
             Intent intent = new Intent(this,Setting.class);
             startActivity(intent);

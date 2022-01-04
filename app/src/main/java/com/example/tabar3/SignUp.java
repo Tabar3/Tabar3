@@ -1,12 +1,15 @@
 package com.example.tabar3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -76,6 +79,11 @@ public class SignUp extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         mAuth = FirebaseAuth.getInstance();
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#0060FF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         if(mAuth.getCurrentUser() != null){
             Toast.makeText(this,"You already have account",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, MainActivity.class);
@@ -120,7 +128,16 @@ public class SignUp extends AppCompatActivity {
 
             }
         });
-            uploadImgChar(mImageUri);
+        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImgChar(mImageUri);
+            }
+        });
+
+
+
+
         }
         if (DonC.isChecked()){
             UsersId = FirebaseAuth.getInstance().getUid();
@@ -146,7 +163,14 @@ public class SignUp extends AppCompatActivity {
                 }
             });
             //Toast.makeText(SignUp.this, "hiiiiiiiiiiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
-            //uploadImgUser(mImageUri);
+            mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    uploadImgUser(mImageUri);
+                }
+            });
+
+
         }
 
     }
@@ -288,4 +312,8 @@ public class SignUp extends AppCompatActivity {
 
 
     }
+
+
+
+
 }

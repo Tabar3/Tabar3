@@ -1,10 +1,13 @@
 package com.example.tabar3;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +44,11 @@ public class Edit_User_Info extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+        ColorDrawable colorDrawable
+                = new ColorDrawable(Color.parseColor("#0060FF"));
+        actionBar.setBackgroundDrawable(colorDrawable);
         setContentView(R.layout.activity_edit_user_info);
         button=findViewById(R.id.edit1);
         n=findViewById(R.id.charName);
