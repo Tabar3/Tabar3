@@ -173,9 +173,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
         if (FirebaseAuth.getInstance().getCurrentUser()==null){
             Random r=new Random();
-            username.setText("Guest"+r.nextInt(100));
+            username.setText("Guest"+r.nextInt(1000));
+            img.setBackgroundResource(R.drawable.ic_baseline_person_24);
         }else {
+            onResume();
+        }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        NavigationView navigationView =  findViewById(R.id.nav_view);
+        View header=navigationView.getHeaderView(0);
+        TextView username = (TextView) header.findViewById(R.id.HeaderUN);
+        ImageView img=(ImageView) header.findViewById(R.id.UserIM);
+
+
+        navigationView.setNavigationItemSelectedListener(this);
+//////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
             DocumentReference docRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -191,12 +207,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             @Override
                                             public void onSuccess(Uri uri) {
                                                 Glide.with(MainActivity.this).load(uri).into(img);
-        //                                        Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
+                                                //                                        Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
                                             }
                                         }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(MainActivity.this, "Failed to download user profile image", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             } else {
@@ -215,12 +231,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                                                 @Override
                                                                 public void onSuccess(Uri uri) {
                                                                     Glide.with(MainActivity.this).load(uri).into(img);
-                                                          //          Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
+                                                                    //          Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
                                                                 }
                                                             }).addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
+                                                            //Toast.makeText(MainActivity.this, "Failed to download charity profile image", Toast.LENGTH_SHORT).show();
                                                         }
                                                     });
                                                 }
@@ -243,11 +259,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
 
         }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    }
+
+
     /*private void setSupportActionBar(Toolbar toolbar) {
 
-    }*/
+        }*/
     private void SetUsername(){
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String userNamePref = preferences.getString("HeaderUN", "DEFAULT");
