@@ -167,8 +167,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View header=navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.HeaderUN);
         ImageView img=(ImageView) header.findViewById(R.id.UserIM);
-
-
         navigationView.setNavigationItemSelectedListener(this);
 //////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
         if (FirebaseAuth.getInstance().getCurrentUser()==null){
@@ -180,18 +178,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
-
     @Override
     protected void onResume() {
         super.onResume();
-        NavigationView navigationView =  findViewById(R.id.nav_view);
-        View header=navigationView.getHeaderView(0);
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.HeaderUN);
-        ImageView img=(ImageView) header.findViewById(R.id.UserIM);
+        ImageView img = (ImageView) header.findViewById(R.id.UserIM);
 
 
         navigationView.setNavigationItemSelectedListener(this);
 //////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            Random r = new Random();
+            username.setText("Guest" + r.nextInt(1000));
+            img.setBackgroundResource(R.drawable.ic_baseline_person_24);
+        } else {
+
             DocumentReference docRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -201,7 +205,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         if (document != null) {
                             if (user.getUid().toString().equals(document.getString("UserId"))) {
                                 username.setText(document.getString("UserName"));
-                                StorageReference storageRef =reference.child(("User/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
+                                StorageReference storageRef = reference.child(("User/" + mAuth.getCurrentUser().getUid() + "/mainImage.jpg"));
                                 storageRef.getDownloadUrl()
                                         .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                             @Override
@@ -225,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                             if (document != null) {
                                                 if (user.getUid().toString().equals(document.getString("charityId"))) {
                                                     username.setText(document.getString("charityName"));
-                                                    StorageReference storageRef =reference.child(("Charities/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
+                                                    StorageReference storageRef = reference.child(("Charities/" + mAuth.getCurrentUser().getUid() + "/mainImage.jpg"));
                                                     storageRef.getDownloadUrl()
                                                             .addOnSuccessListener(new OnSuccessListener<Uri>() {
                                                                 @Override
@@ -260,7 +264,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
 
-
+    }
     /*private void setSupportActionBar(Toolbar toolbar) {
 
         }*/
@@ -372,7 +376,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             startActivity(intent);
         }else if (id==R.id.Logout) {
         FirebaseAuth.getInstance().signOut();
-        Intent intent = new Intent(this,Login.class);
+        Intent intent = new Intent(this,MainActivity.class);
         Toast.makeText(this,"Logout succefuly",Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
@@ -428,4 +432,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
 }
