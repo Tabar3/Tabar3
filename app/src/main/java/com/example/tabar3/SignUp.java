@@ -117,7 +117,7 @@ public class SignUp extends AppCompatActivity {
         documentReference.set(CharUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+               // Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -148,7 +148,7 @@ public class SignUp extends AppCompatActivity {
             documentReference2.set(DonUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(SignUp.this, "yaaaaaa rab", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(SignUp.this, "yaaaaaa rab", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
