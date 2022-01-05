@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DocumentReference dRef;
     FirebaseAuth mAuth;
     FirebaseFirestore fStore;
+    StorageReference storageReference;
     FirebaseUser user;
     private  FirebaseStorage storage;
     private StorageReference reference;
@@ -71,180 +72,113 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        d=findViewById(R.id.Don);
-        c=findViewById(R.id.Char);
-        a=findViewById(R.id.Adv);
-        d2=findViewById(R.id.Don2);
-        dd=findViewById(R.id.dd);
-        storage=FirebaseStorage.getInstance();
-        reference=storage.getReference();
-        mAuth=FirebaseAuth.getInstance();
-        user=mAuth.getCurrentUser();
-        fStore=FirebaseFirestore.getInstance();
-        FirebaseUser user=mAuth.getCurrentUser();
+        d = findViewById(R.id.Don);
+        c = findViewById(R.id.Char);
+        a = findViewById(R.id.Adv);
+        d2 = findViewById(R.id.Don2);
+        dd = findViewById(R.id.dd);
+        storage = FirebaseStorage.getInstance();
+        reference = storage.getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        fStore = FirebaseFirestore.getInstance();
         color();
         c.setBackground(getDrawable(R.drawable.ch1));
         replaceFragment(new Charities());
-        if (user!=null){
-        if (!user.isEmailVerified()){
-            AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(MainActivity.this);
-            PasswordResetD.setTitle("verify account ");
-            PasswordResetD.setMessage("Verify account now?");
-            PasswordResetD.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    /*Intent sendemail=new Intent(Intent.ACTION_MAIN);
-                    sendemail.addCategory(Intent.CATEGORY_APP_EMAIL);
-                    startActivity(sendemail);*/
-                    FirebaseUser FUser=mAuth.getCurrentUser();
-                    FUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
-                            Toast.makeText(MainActivity.this,"verification email sent",Toast.LENGTH_LONG).show();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.d("tag","OnFailer:Email not sent"+e.getMessage());
-                        }
-                    });
-                    Intent intent=new Intent(Intent.ACTION_VIEW,Uri.parse("https://mail.google.com/"));
-                    startActivity(intent);
-                }
-            });
-            PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
 
+        try {
+            id = mAuth.getCurrentUser().getUid();
+        } catch (Exception e) {
 
+            id = "null";
+        }
+        dRef = fStore.collection("Charities").document(id);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                d.setVisibility(View.GONE);
+                dd.setVisibility(View.GONE);
 
-        fStore = FirebaseFirestore.getInstance();
-            mAuth = FirebaseAuth.getInstance();
-           try {
-               id =mAuth.getCurrentUser().getUid();
-           }
-           catch (Exception e)
-           {
-
-               id ="null";
-           }
-            dRef = fStore.collection("Charities").document(id);
-            dRef.get().addOnSuccessListener((documentSnapshot) -> {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
+            }
+        });
+        dRef = fStore.collection("Users").document(id);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                if (!(documentSnapshot.getBoolean("accept"))) {
                     d.setVisibility(View.GONE);
                     dd.setVisibility(View.GONE);
-
-                }});
-            dRef = fStore.collection("Users").document(id);
-            dRef.get().addOnSuccessListener((documentSnapshot) -> {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
-                    if(!(documentSnapshot.getBoolean("accept"))){
-                    d.setVisibility(View.GONE);
-                        dd.setVisibility(View.GONE);
-                    }
-
-                }});
-            dRef = fStore.collection("Admin").document(id);
-            dRef.get().addOnSuccessListener((documentSnapshot) -> {
-                if (documentSnapshot != null && documentSnapshot.exists()) {
-                    d.setVisibility(View.GONE);
-                    dd.setVisibility(View.GONE);
-
-                }});
-
-
                 }
-            });
-            PasswordResetD.create().show();
-        }}
-        DrawerLayout drawer =  findViewById(R.id.drawer_layout);
+
+            }
+        });
+        dRef = fStore.collection("Admin").document(id);
+        dRef.get().addOnSuccessListener((documentSnapshot) -> {
+            if (documentSnapshot != null && documentSnapshot.exists()) {
+                d.setVisibility(View.GONE);
+                dd.setVisibility(View.GONE);
+
+            }
+        });
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView =  findViewById(R.id.nav_view);
-        View header=navigationView.getHeaderView(0);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View header = navigationView.getHeaderView(0);
         TextView username = (TextView) header.findViewById(R.id.HeaderUN);
-        ImageView img=(ImageView) header.findViewById(R.id.UserIM);
+        ImageView img = (ImageView) header.findViewById(R.id.UserIM);
 
 
         navigationView.setNavigationItemSelectedListener(this);
 //////////////////////////////////////////////////////لوضع الاسم والصورة على الheader في الnavigation menu
-        if (FirebaseAuth.getInstance().getCurrentUser()==null){
-            Random r=new Random();
-            username.setText("Guest"+r.nextInt(100));
-        }else {
 
-            DocumentReference docRef = fStore.collection("Users").document(mAuth.getCurrentUser().getUid());
-            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document != null) {
-                            if (user.getUid().toString().equals(document.getString("UserId"))) {
-                                username.setText(document.getString("UserName"));
-                                StorageReference storageRef =reference.child(("User/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
-                                storageRef.getDownloadUrl()
-                                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                Glide.with(MainActivity.this).load(uri).into(img);
-        //                                        Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            } else {
-                                DocumentReference docRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
-                                docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                        if (task.isSuccessful()) {
-                                            DocumentSnapshot document = task.getResult();
-                                            if (document != null) {
-                                                if (user.getUid().toString().equals(document.getString("charityId"))) {
-                                                    username.setText(document.getString("charityName"));
-                                                    StorageReference storageRef =reference.child(("Charities/"+mAuth.getCurrentUser().getUid()+"/mainImage.jpg"));
-                                                    storageRef.getDownloadUrl()
-                                                            .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                                                @Override
-                                                                public void onSuccess(Uri uri) {
-                                                                    Glide.with(MainActivity.this).load(uri).into(img);
-                                                          //          Toast.makeText(MainActivity.this, "Image is ready", Toast.LENGTH_SHORT).show();
-                                                                }
-                                                            }).addOnFailureListener(new OnFailureListener() {
-                                                        @Override
-                                                        public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(MainActivity.this, "Failed to download profile image", Toast.LENGTH_SHORT).show();
-                                                        }
-                                                    });
-                                                }
-                                            } else {
-                                                Log.d("LOGGER", "No such document");
-                                            }
-                                        } else {
-                                            Log.d("LOGGER", "get failed with ", task.getException());
-                                        }
-                                    }
-                                });
+            dRef = fStore.collection("Users").document(id);
+            dRef.get().addOnSuccessListener((documentSnapshot) -> {
+                if (documentSnapshot != null && documentSnapshot.exists()) {
+                    if (id.equals(documentSnapshot.getString("UserId"))) {
+                        username.setText(documentSnapshot.getString("UserName"));
+                        StorageReference bookReference = storageReference.child("User/" + id + "/mainImage.jpg");
+
+                        bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                Glide.with(header.getContext()).load(uri).into(img);
                             }
-                        } else {
-                            Log.d("LOGGER", "No such document");
-                        }
-                    } else {
-                        Log.d("LOGGER", "get failed with ", task.getException());
-                    }
-                }
-            });
+                        });
 
+                    }
+                } else {
+
+                    dRef = fStore.collection("Charities").document(id);
+                    dRef.get().addOnSuccessListener((documentSnapshot2) -> {
+                        if (documentSnapshot2 != null && documentSnapshot2.exists()) {
+                            if (id.equals(documentSnapshot2.getString("charityId"))) {
+                                username.setText(documentSnapshot2.getString("charityName"));
+                                StorageReference bookReference = storageReference.child("Charities/" + id + "/mainImage.jpg");
+
+                                bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        Glide.with(MainActivity.this).load(uri).into(img);
+                                    }
+                                });
+
+                            }
+                        }
+
+
+                    });
+                }
+
+
+            });
         }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    }
+
+
+
     /*private void setSupportActionBar(Toolbar toolbar) {
 
     }*/
@@ -278,6 +212,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (mAuth.getCurrentUser()==null){
                 Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
             }else {
                 dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
                 dRef.get().addOnSuccessListener((documentSnapshot) -> {
@@ -316,6 +251,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (mAuth.getCurrentUser()==null){
             Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
         }else {
             dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
             dRef.get().addOnSuccessListener((documentSnapshot) -> {
@@ -335,6 +271,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (mAuth.getCurrentUser()==null){
                 Toast.makeText(this, "يرجى تسجيل الدخول أولا", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
             }else {
             dRef = fStore.collection("Charities").document(mAuth.getCurrentUser().getUid());
             dRef.get().addOnSuccessListener((documentSnapshot) -> {

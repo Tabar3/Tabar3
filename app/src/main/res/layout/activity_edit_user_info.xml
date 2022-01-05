@@ -98,19 +98,14 @@
                 android:layout_height="40dp"
                 android:background="@drawable/a2"
                 android:text="تعديل البيانات"
-<<<<<<< HEAD
                 android:textSize="24dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:textColor="#0060FF"
                 ></Button>
 
-=======
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:background="#0060FF"
-                android:id="@+id/edit1"></Button>
->>>>>>> Alaa
+
+
 
         </LinearLayout>
     </ScrollView>

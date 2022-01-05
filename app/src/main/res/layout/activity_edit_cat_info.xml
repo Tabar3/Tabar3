@@ -218,17 +218,9 @@
                 android:text="تعديل البيانات"
                 android:textSize="24dp"
                 android:layout_gravity="center"
-<<<<<<< HEAD
                 android:layout_marginTop="16dp"
-                android:textColor="#0060FF"
-=======
-                android:layout_marginTop="10dp"
-                android:text="اضافة"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:background="#0060FF"
->>>>>>> Alaa
-                ></Button>
+                android:textColor="#0060FF"></Button>
+
         </LinearLayout>
     </ScrollView>
 

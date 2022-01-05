@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         ></EditText>
-<<<<<<< HEAD
+
 
             <Button
                 android:id="@+id/edit1"
@@ -145,17 +145,7 @@
                 android:layout_marginTop="16dp"
                 android:textColor="#0060FF"
                 ></Button>
-=======
-<Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="تعديل البيانات"
-    android:textColor="@color/white"
-    android:textStyle="bold"
-    android:background="#0060FF"
-    android:id="@+id/edit1"></Button>
->>>>>>> Alaa
+
 
         </LinearLayout>
     </ScrollView>

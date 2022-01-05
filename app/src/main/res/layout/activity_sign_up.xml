@@ -22,11 +22,11 @@
 
         <ImageView
             android:id="@+id/imgChar"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="131dp"
-            android:background="@drawable/ic_baseline_person_24"/>
+            android:layout_gravity="center"
+            tools:srcCompat="@tools:sample/avatars"></ImageView>
+
         <Button
             android:id="@+id/button_choose_image"
             android:layout_width="55dp"

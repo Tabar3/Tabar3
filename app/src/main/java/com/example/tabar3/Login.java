@@ -9,7 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
         // [START declare_auth]
         FirebaseAuth mAuth;
         EditText UserL,PassL;
+        FirebaseUser user;
         Button LoginB;
         TextView forgetTextLink;
         @Override
@@ -43,6 +46,7 @@ import com.google.firebase.auth.FirebaseUser;
             // [START initialize_auth]
             // Initialize Firebase Auth
             mAuth = FirebaseAuth.getInstance();
+            user=mAuth.getCurrentUser();
             ActionBar actionBar;
             actionBar = getSupportActionBar();
             ColorDrawable colorDrawable
@@ -51,9 +55,47 @@ import com.google.firebase.auth.FirebaseUser;
 
             // [END initialize_auth]
             if (FirebaseAuth.getInstance().getCurrentUser()!=null){
-            Intent intent = new Intent(Login.this, MainActivity.class);
-            startActivity(intent);}
-        }
+
+                    if (!user.isEmailVerified()){
+                        AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(Login.this);
+                        PasswordResetD.setTitle("verify account ");
+                        PasswordResetD.setMessage("Verify account now?");
+                        PasswordResetD.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                    /*Intent sendemail=new Intent(Intent.ACTION_MAIN);
+                    sendemail.addCategory(Intent.CATEGORY_APP_EMAIL);
+                    startActivity(sendemail);*/
+                                FirebaseUser FUser=mAuth.getCurrentUser();
+                                FUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Toast.makeText(Login.this,"verification email sent",Toast.LENGTH_LONG).show();
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.d("tag","OnFailer:Email not sent"+e.getMessage());
+                                    }
+                                });
+                                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/"));
+                                startActivity(intent);
+                            }
+                        });
+                        PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                Intent intent = new Intent(Login.this, MainActivity.class);
+                                startActivity(intent);
+
+                            }
+                        });
+                        PasswordResetD.create().show();
+                    }}
+           }
+
+
         public void Login(View view) {
             String email= String.valueOf(UserL.getText());
             String password= String.valueOf(PassL.getText());
@@ -178,7 +220,8 @@ import com.google.firebase.auth.FirebaseUser;
             PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                    Intent intent = new Intent(Login.this, MainActivity.class);
+                    startActivity(intent);
                 }
             });
             PasswordResetD.create().show();

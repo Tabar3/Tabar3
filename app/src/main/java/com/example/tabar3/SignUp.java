@@ -1,15 +1,12 @@
 package com.example.tabar3;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -79,16 +76,11 @@ public class SignUp extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         mAuth = FirebaseAuth.getInstance();
-        ActionBar actionBar;
-        actionBar = getSupportActionBar();
-        ColorDrawable colorDrawable
-                = new ColorDrawable(Color.parseColor("#0060FF"));
-        actionBar.setBackgroundDrawable(colorDrawable);
         if(mAuth.getCurrentUser() != null){
             Toast.makeText(this,"You already have account",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-            finish();
+
 
         }
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
@@ -99,47 +91,38 @@ public class SignUp extends AppCompatActivity {
         });
     }
     public void AddToDB() {
-        Toast.makeText(SignUp.this, "yes", Toast.LENGTH_SHORT).show();
+
         fStore = FirebaseFirestore.getInstance();
         if (ChC.isChecked()){
-        CharId = FirebaseAuth.getInstance().getUid();
-        Map<String, Object> CharUsers = new HashMap<>();
-        CharUsers.put("charityId", CharId);
-        CharUsers.put("charityEmail", UserS.getText().toString());
-        CharUsers.put("charityPhone", PhoneN.getText().toString());
-        CharUsers.put("charityName", UserName.getText().toString());
-        CharUsers.put("charityLoc",Location.getText().toString());
-        CharUsers.put("charityDes","");
-        CharUsers.put("charityDate","");
-        CharUsers.put("charityGoal","");
-        CharUsers.put("typeOfUser","Char");
-        CharUsers.put("accept",false);
+            CharId = FirebaseAuth.getInstance().getUid();
+            Map<String, Object> CharUsers = new HashMap<>();
+            CharUsers.put("charityId", CharId);
+            CharUsers.put("charityEmail", UserS.getText().toString());
+            CharUsers.put("charityPhone", PhoneN.getText().toString());
+            CharUsers.put("charityName", UserName.getText().toString());
+            CharUsers.put("charityLoc",Location.getText().toString());
+            CharUsers.put("charityDes","");
+            CharUsers.put("charityDate","");
+            CharUsers.put("charityGoal","");
+            CharUsers.put("typeOfUser","Char");
+            CharUsers.put("accept",false);
 
-        DocumentReference documentReference = fStore.collection("Charities").document(CharId);
-        documentReference.set(CharUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
-            @Override
-            public void onSuccess(Void unused) {
-                Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull @NotNull Exception e) {
-                Toast.makeText(SignUp.this, "toz 3lekom", Toast.LENGTH_LONG).show();
-                Toast.makeText(SignUp .this, CharId, Toast.LENGTH_LONG).show();
-                Log.d("myTag", e.getMessage());
+            DocumentReference documentReference = fStore.collection("Charities").document(CharId);
+            documentReference.set(CharUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void unused) {
+                    Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull @NotNull Exception e) {
+                    Toast.makeText(SignUp.this, "toz 3lekom", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUp .this, CharId, Toast.LENGTH_LONG).show();
+                    Log.d("myTag", e.getMessage());
 
-            }
-        });
-        mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImgChar(mImageUri);
-            }
-        });
-
-
-
-
+                }
+            });
+            uploadImgChar(mImageUri);
         }
         if (DonC.isChecked()){
             UsersId = FirebaseAuth.getInstance().getUid();
@@ -165,14 +148,7 @@ public class SignUp extends AppCompatActivity {
                 }
             });
             //Toast.makeText(SignUp.this, "hiiiiiiiiiiiiiiiiiiiiiiiii", Toast.LENGTH_SHORT).show();
-            mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    uploadImgUser(mImageUri);
-                }
-            });
-
-
+            uploadImgUser(mImageUri);
         }
 
     }
@@ -217,10 +193,9 @@ public class SignUp extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     Toast.makeText(SignUp.this,"succeeeeeded",Toast.LENGTH_LONG).show();
+                    AddToDB();
                     Intent intent = new Intent(SignUp.this, MainActivity.class);
                     startActivity(intent);
-                    AddToDB();
-                    finish();
                 }else{
                     Toast.makeText(SignUp.this, "Authentication failed.",
                             Toast.LENGTH_SHORT).show();}
@@ -264,13 +239,13 @@ public class SignUp extends AppCompatActivity {
         riversRef.putFile(mImageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-               // pd.dismiss();
+                // pd.dismiss();
                 Toast.makeText(getApplicationContext(), "Failed To Upload", Toast.LENGTH_LONG).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-               // pd.dismiss();
+                // pd.dismiss();
                 Snackbar.make(findViewById(android.R.id.content), "Image Uploded", Snackbar.LENGTH_LONG).show();
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -293,13 +268,13 @@ public class SignUp extends AppCompatActivity {
         riversRef.putFile(mImageUri).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-               // pd.dismiss();
+                // pd.dismiss();
                 Toast.makeText(getApplicationContext(), "Failed To Upload", Toast.LENGTH_LONG).show();
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-               // pd.dismiss();
+                // pd.dismiss();
                 Snackbar.make(findViewById(android.R.id.content), "Image Uploded", Snackbar.LENGTH_LONG).show();
             }
         }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -314,8 +289,4 @@ public class SignUp extends AppCompatActivity {
 
 
     }
-
-
-
-
 }

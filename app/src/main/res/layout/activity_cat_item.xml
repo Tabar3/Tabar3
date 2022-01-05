@@ -47,13 +47,13 @@
                 android:textColor="#005FFF"
                 ></TextView>
             <TextView
-                android:layout_width="150dp"
+                android:layout_width="160dp"
                 android:layout_height="20dp"
                 android:id="@+id/charT"
                 android:text="جمعية.>"
                 android:textDirection="rtl"
                 android:textColor="#005FFF"
-                android:layout_marginRight="150dp"
+                android:layout_marginRight="138dp"
                 ></TextView>
 
         </LinearLayout>
