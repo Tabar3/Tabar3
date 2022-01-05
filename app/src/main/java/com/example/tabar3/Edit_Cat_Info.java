@@ -71,6 +71,14 @@ public class Edit_Cat_Info extends AppCompatActivity {
         dRef = fStore.collection("Users").document(s2).collection("category").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
+
+                fe2.setText(documentSnapshot.getString("name"));
+                fe4.setText(documentSnapshot.getString("numHuman"));
+                cloe2.setText(documentSnapshot.getString("numclothe"));
+                desE.setText(documentSnapshot.getString("Des"));
+                se2.setText(documentSnapshot.getString("name"));
+                se4.setText(documentSnapshot.getString("type"));
+
         mButtonChooseImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

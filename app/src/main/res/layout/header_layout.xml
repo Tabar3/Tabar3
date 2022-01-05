@@ -23,13 +23,13 @@
     <TextView
         android:id="@+id/HeaderUN"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="105dp"
         android:fontFamily="casual"
         android:hint="Account"
         android:textColor="@color/white"
         android:textSize="20dp"
         android:textStyle="bold"
         android:gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         />
 </LinearLayout>

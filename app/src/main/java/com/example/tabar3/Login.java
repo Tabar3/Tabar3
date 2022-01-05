@@ -54,45 +54,7 @@ import com.google.firebase.auth.FirebaseUser;
             actionBar.setBackgroundDrawable(colorDrawable);
 
             // [END initialize_auth]
-            if (FirebaseAuth.getInstance().getCurrentUser()!=null){
 
-                    if (!user.isEmailVerified()){
-                        AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(Login.this);
-                        PasswordResetD.setTitle("verify account ");
-                        PasswordResetD.setMessage("Verify account now?");
-                        PasswordResetD.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                    /*Intent sendemail=new Intent(Intent.ACTION_MAIN);
-                    sendemail.addCategory(Intent.CATEGORY_APP_EMAIL);
-                    startActivity(sendemail);*/
-                                FirebaseUser FUser=mAuth.getCurrentUser();
-                                FUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void unused) {
-                                        Toast.makeText(Login.this,"verification email sent",Toast.LENGTH_LONG).show();
-                                    }
-                                }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.d("tag","OnFailer:Email not sent"+e.getMessage());
-                                    }
-                                });
-                                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/"));
-                                startActivity(intent);
-                            }
-                        });
-                        PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-
-                                Intent intent = new Intent(Login.this, MainActivity.class);
-                                startActivity(intent);
-
-                            }
-                        });
-                        PasswordResetD.create().show();
-                    }}
            }
 
 
@@ -115,9 +77,45 @@ import com.google.firebase.auth.FirebaseUser;
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-                        Toast.makeText(Login.this,"succeeeeeded",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(Login.this, MainActivity.class);
-                        startActivity(intent);
+
+                            AlertDialog.Builder PasswordResetD= new AlertDialog.Builder(Login.this);
+                            PasswordResetD.setTitle("verify account ");
+                            PasswordResetD.setMessage("Verify account now?");
+                            PasswordResetD.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                    /*Intent sendemail=new Intent(Intent.ACTION_MAIN);
+                    sendemail.addCategory(Intent.CATEGORY_APP_EMAIL);
+                    startActivity(sendemail);*/
+                                    FirebaseUser FUser=mAuth.getCurrentUser();
+                                    FUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            Toast.makeText(Login.this,"verification email sent",Toast.LENGTH_LONG).show();
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.d("tag","OnFailer:Email not sent"+e.getMessage());
+                                        }
+                                    });
+                                    Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("https://mail.google.com/"));
+                                    startActivity(intent);
+                                }
+                            });
+                            PasswordResetD.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                    Toast.makeText(Login.this,"succeeeeeded",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(Login.this, MainActivity.class);
+                                    startActivity(intent);
+
+                                }
+                            });
+                            PasswordResetD.create().show();
+
+
                     }else {
                         Toast.makeText(Login.this, "User Not Found",
                                 Toast.LENGTH_SHORT).show();

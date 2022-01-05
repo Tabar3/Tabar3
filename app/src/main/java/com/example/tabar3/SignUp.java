@@ -111,7 +111,7 @@ public class SignUp extends AppCompatActivity {
             documentReference.set(CharUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(SignUp.this, "mabrooooooook", Toast.LENGTH_LONG).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -139,7 +139,7 @@ public class SignUp extends AppCompatActivity {
             documentReference2.set(DonUsers).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void unused) {
-                    Toast.makeText(SignUp.this, "yaaaaaa rab", Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(SignUp.this, "yaaaaaa rab", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -192,8 +192,8 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
-                    Toast.makeText(SignUp.this,"succeeeeeded",Toast.LENGTH_LONG).show();
                     AddToDB();
+                    Toast.makeText(SignUp.this,"succeeeeeded",Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(SignUp.this, MainActivity.class);
                     startActivity(intent);
                 }else{

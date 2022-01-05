@@ -300,7 +300,7 @@ public void food_cat_DB(){
 
 
         DocumentReference documentReference = fStore.collection("Users")
-                .document("id").collection("category").document(categotyId);
+                .document(id).collection("category").document(categotyId);
         documentReference.set(itemsFood).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {

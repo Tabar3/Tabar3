@@ -66,6 +66,7 @@ public class Cat_Info extends AppCompatActivity {
                     booked.setText("تم الحجز");
 
                 }
+
                 txtCN.setText(documentSnapshot.getString("Des"));
                 txtCD1.setText(documentSnapshot.getString("typeCat"));
                 dRef2=fStore.collection("Users").document(s2);
@@ -151,7 +152,7 @@ public class Cat_Info extends AppCompatActivity {
                 dR3 = fStore.collection("Charities").document(id);
                 dR3.get().addOnSuccessListener((documentSnapshot3) -> {
                     if (documentSnapshot3 != null && documentSnapshot3.exists()) {
-                        if(documentSnapshot.getString("show").equals("2")){
+                        if(documentSnapshot.getString("show").equals("2") ){
                             booked.setVisibility(View.GONE);
                         }
                         booked.setOnClickListener(new View.OnClickListener() {

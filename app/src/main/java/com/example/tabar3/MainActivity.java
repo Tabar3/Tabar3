@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         bookReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Glide.with(header.getContext()).load(uri).into(img);
+                                Glide.with(MainActivity.this).load(uri).into(img);
                             }
                         });
 

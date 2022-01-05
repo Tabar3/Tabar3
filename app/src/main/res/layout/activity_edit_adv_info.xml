@@ -20,16 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
-
         <ImageView
             android:id="@+id/imgAdvEdit"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:layout_alignParentEnd="true"
             android:layout_gravity="center"
-            android:layout_marginEnd="123dp"
-            android:background="@drawable/ic_baseline_person_24"
-            android:scaleType="centerCrop"></ImageView>
+            tools:srcCompat="@tools:sample/avatars"></ImageView>
+
 
         <Button
             android:id="@+id/Edit2_choose_image"

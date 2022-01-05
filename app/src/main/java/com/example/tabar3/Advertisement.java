@@ -50,11 +50,13 @@ public class Advertisement extends Fragment {
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         setViews();
         setFirebase();
     }
 
     private void setViews() {
+
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
         imgadd = requireView().findViewById(R.id.addAdv);
@@ -73,10 +75,10 @@ public class Advertisement extends Fragment {
                         startActivity(i);
                     }
                 });
-            }}
+            }
             else
                 imgadd.setVisibility(View.GONE);
-                });
+        }  });
 
 
 

@@ -49,7 +49,7 @@ public class Add_vi extends AppCompatActivity {
             public void onClick(View v) {
                 AddToDB();
                 Intent i2 = new Intent(Add_vi.this, tabar3Ch.class);
-                i.putExtra("CharId",id);
+                i2.putExtra("CharId",id);
                 startActivity(i2);
             }
         });

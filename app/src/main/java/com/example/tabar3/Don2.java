@@ -174,10 +174,12 @@ public class Don2 extends Fragment {
                     CatAdabter = new ChategoryAdapter(CitemList,"U");
 
                     mRecyclerView.setAdapter(CatAdabter);
+
                     CatAdabter.setOnItemClickListener(new ChategoryAdapter.ClickListener() {
                         @Override
                         public void onItemClick(int position, View v, List<Cat_Item> productItems) {
                             Cat_Item productItems1 = productItems.get(position);
+
                             Intent intent = new Intent(getContext(),Cat_Info.class);
                             intent.putExtra("CatId", productItems1.getCatId());
                             intent.putExtra("UserId", productItems1.getUserId());

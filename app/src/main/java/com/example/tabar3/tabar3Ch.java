@@ -35,6 +35,7 @@ public class tabar3Ch extends AppCompatActivity {
     ImageView imgadd;
     List<item>itemList;
     List<mo_Item>CitemList;
+    String s;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class tabar3Ch extends AppCompatActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         String id =mAuth.getCurrentUser().getUid();
         Intent intent =getIntent();
-        String s= intent.getStringExtra("CharId");
+        s= intent.getStringExtra("CharId");
         dRef = fStore.collection("Charities").document(s);
         dRef.get().addOnSuccessListener((documentSnapshot) -> {
             if (documentSnapshot != null && documentSnapshot.exists()) {
@@ -76,8 +77,50 @@ public class tabar3Ch extends AppCompatActivity {
     }
 
     item UserItems;
-    int a;
     private void setFirebase() {
+        FirebaseApp.initializeApp(this);
+        fStore = FirebaseFirestore.getInstance();
+
+        Query query = fStore.collection("Charities").document(s).collection("Bank");
+        // Query query = fStore.collection("Advertisement");
+        //  CollectionReference documentReference2 = fStore.collection("Book");
+        ItemListListener = query.addSnapshotListener((documentSnapshots, error) -> {
+            Log.d("tag", "yaaaaaaaaaaaaa raaaaaaaab");
+
+
+            CampAdabter.setOnItemClickListener(new CampAdabter.ClickListener() {
+                @Override
+                public void onItemClick(int position, View v, List<Camp_Item> Items) {
+                    Camp_Item ItemC = Items.get(position);
+                    if (ItemC.getCampId() != null) {
+
+
+                    } else
+                        Toast.makeText(tabar3Ch.this, "Nooot Dooonee", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onItemLongClick(int position, View v, List<Camp_Item> productItems) {
+
+                }
+            });
+        });
+        getQuery(query);
+    }
+
+
+    private void getQuery(Query query) {
+        query.get().addOnCompleteListener((task) -> {
+            if (task.isSuccessful()) {
+
+                viAdabter=new viAdabter(Objects.requireNonNull(task.getResult()).toObjects(mo_Item.class));
+                mRecyclerView.setAdapter(viAdabter);
+            }
+        });
+    }
+
+    int a;
+   /* private void setFirebase() {
         FirebaseApp.initializeApp(this);
         fStore = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -139,5 +182,5 @@ public class tabar3Ch extends AppCompatActivity {
             else
                 Toast.makeText(this, "noooooooooooooo", Toast.LENGTH_SHORT).show();
         });
-    }
+    }*/
 }

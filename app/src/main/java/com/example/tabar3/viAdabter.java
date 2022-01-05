@@ -69,7 +69,7 @@ public class viAdabter extends RecyclerView.Adapter<viAdabter.viAdabterHolder> {
 
        if (ItemId != null) {
 
-           fStore.collection("Charities").document(itm.moId).get().addOnSuccessListener(documentSnapshot -> {
+           fStore.collection("Charities").document(itm.getCharId()).get().addOnSuccessListener(documentSnapshot -> {
                if (documentSnapshot != null && documentSnapshot.exists()) {
                }
            });
