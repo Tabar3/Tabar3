@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                         }).addOnFailureListener(new OnFailureListener() {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(MainActivity.this, "Failed to download user profile image", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(MainActivity.this, "Failed to download user profile image", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             } else {
@@ -240,7 +240,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                                                             }).addOnFailureListener(new OnFailureListener() {
                                                         @Override
                                                         public void onFailure(@NonNull Exception e) {
-                                                            Toast.makeText(MainActivity.this, "Failed to download charity profile image", Toast.LENGTH_SHORT).show();
+                                                            //Toast.makeText(MainActivity.this, "Failed to download charity profile image", Toast.LENGTH_SHORT).show();
                                                         }
                                                     });
                                                 }
